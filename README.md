@@ -26,7 +26,7 @@ class Question extends React.Component {
 can be convert as:
 
 ```tsx
-import { FaBeer } from 'https://deno.land/x/react_icons/react-icons/fa/index.ts';
+import { FaBeer } from 'https://deno.land/x/react_icons/fa/index.ts';
 import { Component } from 'https://esm.sh/preact@10.11.2'
 
 class Question extends Component {
