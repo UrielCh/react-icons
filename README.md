@@ -29,7 +29,7 @@ can be convert as:
 import { FaBeer } from 'https://deno.land/x/react_icons/react-icons/fa/index.ts';
 import { Component } from 'https://esm.sh/preact@10.11.2'
 
-class Question extends React.Component {
+class Question extends Component {
   render() {
     return <h3> Lets go for a <FaBeer />? </h3>
   }
