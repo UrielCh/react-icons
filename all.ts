@@ -2,7 +2,6 @@
 export * from './ci/index.ts';
 export * from './fa/index.ts';
 export * from './io/index.ts';
-// export * from './io5/index.ts';
 export * from './md/index.ts';
 export * from './ti/index.ts';
 export * from './go/index.ts';
@@ -16,7 +15,6 @@ export * from './ri/index.ts';
 export * from './fc/index.ts';
 export * from './gr/index.ts';
 export * from './hi/index.ts';
-// export * from './hi2/index.ts';
 export * from './si/index.ts';
 export * from './sl/index.ts';
 export * from './im/index.ts';
