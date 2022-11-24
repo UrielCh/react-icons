@@ -1,6 +1,5 @@
 import * as React from "https://esm.sh/preact@10.11.2";
 import { JSXInternal } from "https://esm.sh/v95/preact@10.11.0/src/jsx.d.ts";
-
 import { DefaultContext, IconContext } from "./iconContext.tsx";
 import { ComponentChildren } from "https://esm.sh/v95/preact@10.11.0/src/index.d.ts";
 import { CSSProperties } from "https://esm.sh/v98/@types/react@18.0.25/index.d.ts";

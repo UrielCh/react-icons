@@ -1,4 +1,4 @@
-import * as React from "preact";
+import * as React from "https://esm.sh/preact@10.11.2";
 import { JSXInternal } from "https://esm.sh/v95/preact@10.11.0/src/jsx.d.ts";
 
 export interface IconContext {
