@@ -1,5 +1,5 @@
 const tag="path"
-const attr={"version":"1.1",viewBox:"0 0 17 17"}
+const attr={version:"1.1",viewBox:"0 0 17 17"}
 // THIS FILE IS AUTO GENERATED
 import { GenIcon, IconBaseProps } from "../lib/index.tsx";
 export function TfiAgenda (props: IconBaseProps) {
