@@ -1,3 +1,4 @@
+const attr={viewBox:"0 0 10 16"}
 // THIS FILE IS AUTO GENERATED
 import { GenIcon, IconBaseProps } from "../lib/index.tsx";
 export function GoAlert (props: IconBaseProps) {
@@ -10,13 +11,13 @@ export function GoArrowBoth (props: IconBaseProps) {
   return GenIcon({tag:"svg",attr:{viewBox:"0 0 20 16"},child:[{tag:"path",attr:{d:"M0 8l6-5v3h8V3l6 5-6 5v-3H6v3L0 8z"}}]})(props);
 }
 export function GoArrowDown (props: IconBaseProps) {
-  return GenIcon({tag:"svg",attr:{viewBox:"0 0 10 16"},child:[{tag:"path",attr:{"fillRule":"evenodd",d:"M7 7V3H3v4H0l5 6 5-6H7z"}}]})(props);
+  return GenIcon({tag:"svg",attr,child:[{tag:"path",attr:{"fillRule":"evenodd",d:"M7 7V3H3v4H0l5 6 5-6H7z"}}]})(props);
 }
 export function GoArrowLeft (props: IconBaseProps) {
-  return GenIcon({tag:"svg",attr:{viewBox:"0 0 10 16"},child:[{tag:"path",attr:{"fillRule":"evenodd",d:"M6 3L0 8l6 5v-3h4V6H6V3z"}}]})(props);
+  return GenIcon({tag:"svg",attr,child:[{tag:"path",attr:{"fillRule":"evenodd",d:"M6 3L0 8l6 5v-3h4V6H6V3z"}}]})(props);
 }
 export function GoArrowRight (props: IconBaseProps) {
-  return GenIcon({tag:"svg",attr:{viewBox:"0 0 10 16"},child:[{tag:"path",attr:{"fillRule":"evenodd",d:"M10 8L4 3v3H0v4h4v3l6-5z"}}]})(props);
+  return GenIcon({tag:"svg",attr,child:[{tag:"path",attr:{"fillRule":"evenodd",d:"M10 8L4 3v3H0v4h4v3l6-5z"}}]})(props);
 }
 export function GoArrowSmallDown (props: IconBaseProps) {
   return GenIcon({tag:"svg",attr:{viewBox:"0 0 6 16"},child:[{tag:"path",attr:{"fillRule":"evenodd",d:"M4 7V5H2v2H0l3 4 3-4H4z"}}]})(props);
@@ -31,7 +32,7 @@ export function GoArrowSmallUp (props: IconBaseProps) {
   return GenIcon({tag:"svg",attr:{viewBox:"0 0 6 16"},child:[{tag:"path",attr:{"fillRule":"evenodd",d:"M3 5L0 9h2v2h2V9h2L3 5z"}}]})(props);
 }
 export function GoArrowUp (props: IconBaseProps) {
-  return GenIcon({tag:"svg",attr:{viewBox:"0 0 10 16"},child:[{tag:"path",attr:{"fillRule":"evenodd",d:"M5 3L0 9h3v4h4V9h3L5 3z"}}]})(props);
+  return GenIcon({tag:"svg",attr,child:[{tag:"path",attr:{"fillRule":"evenodd",d:"M5 3L0 9h3v4h4V9h3L5 3z"}}]})(props);
 }
 export function GoBeaker (props: IconBaseProps) {
   return GenIcon({tag:"svg",attr:{viewBox:"0 0 16 16"},child:[{tag:"path",attr:{"fillRule":"evenodd",d:"M14.38 14.59L11 7V3h1V2H3v1h1v4L.63 14.59A1 1 0 0 0 1.54 16h11.94c.72 0 1.2-.75.91-1.41h-.01zM3.75 10L5 7V3h5v4l1.25 3h-7.5zM8 8h1v1H8V8zM7 7H6V6h1v1zm0-3h1v1H7V4zm0-3H6V0h1v1z"}}]})(props);
@@ -40,13 +41,13 @@ export function GoBell (props: IconBaseProps) {
   return GenIcon({tag:"svg",attr:{viewBox:"0 0 15 16"},child:[{tag:"path",attr:{"fillRule":"evenodd",d:"M14 12v1H0v-1l.73-.58c.77-.77.81-2.55 1.19-4.42C2.69 3.23 6 2 6 2c0-.55.45-1 1-1s1 .45 1 1c0 0 3.39 1.23 4.16 5 .38 1.88.42 3.66 1.19 4.42l.66.58H14zm-7 4c1.11 0 2-.89 2-2H5c0 1.11.89 2 2 2z"}}]})(props);
 }
 export function GoBold (props: IconBaseProps) {
-  return GenIcon({tag:"svg",attr:{viewBox:"0 0 10 16"},child:[{tag:"path",attr:{"fillRule":"evenodd",d:"M1 2h3.83c2.48 0 4.3.75 4.3 2.95 0 1.14-.63 2.23-1.67 2.61v.06c1.33.3 2.3 1.23 2.3 2.86 0 2.39-1.97 3.52-4.61 3.52H1V2zm3.66 4.95c1.67 0 2.38-.66 2.38-1.69 0-1.17-.78-1.61-2.34-1.61H3.13v3.3h1.53zm.27 5.39c1.77 0 2.75-.64 2.75-1.98 0-1.27-.95-1.81-2.75-1.81h-1.8v3.8h1.8v-.01z"}}]})(props);
+  return GenIcon({tag:"svg",attr,child:[{tag:"path",attr:{"fillRule":"evenodd",d:"M1 2h3.83c2.48 0 4.3.75 4.3 2.95 0 1.14-.63 2.23-1.67 2.61v.06c1.33.3 2.3 1.23 2.3 2.86 0 2.39-1.97 3.52-4.61 3.52H1V2zm3.66 4.95c1.67 0 2.38-.66 2.38-1.69 0-1.17-.78-1.61-2.34-1.61H3.13v3.3h1.53zm.27 5.39c1.77 0 2.75-.64 2.75-1.98 0-1.27-.95-1.81-2.75-1.81h-1.8v3.8h1.8v-.01z"}}]})(props);
 }
 export function GoBook (props: IconBaseProps) {
   return GenIcon({tag:"svg",attr:{viewBox:"0 0 16 16"},child:[{tag:"path",attr:{"fillRule":"evenodd",d:"M3 5h4v1H3V5zm0 3h4V7H3v1zm0 2h4V9H3v1zm11-5h-4v1h4V5zm0 2h-4v1h4V7zm0 2h-4v1h4V9zm2-6v9c0 .55-.45 1-1 1H9.5l-1 1-1-1H2c-.55 0-1-.45-1-1V3c0-.55.45-1 1-1h5.5l1 1 1-1H15c.55 0 1 .45 1 1zm-8 .5L7.5 3H2v9h6V3.5zm7-.5H9.5l-.5.5V12h6V3z"}}]})(props);
 }
 export function GoBookmark (props: IconBaseProps) {
-  return GenIcon({tag:"svg",attr:{viewBox:"0 0 10 16"},child:[{tag:"path",attr:{"fillRule":"evenodd",d:"M9 0H1C.27 0 0 .27 0 1v15l5-3.09L10 16V1c0-.73-.27-1-1-1zm-.78 4.25L6.36 5.61l.72 2.16c.06.22-.02.28-.2.17L5 6.6 3.12 7.94c-.19.11-.25.05-.2-.17l.72-2.16-1.86-1.36c-.17-.16-.14-.23.09-.23l2.3-.03.7-2.16h.25l.7 2.16 2.3.03c.23 0 .27.08.09.23h.01z"}}]})(props);
+  return GenIcon({tag:"svg",attr,child:[{tag:"path",attr:{"fillRule":"evenodd",d:"M9 0H1C.27 0 0 .27 0 1v15l5-3.09L10 16V1c0-.73-.27-1-1-1zm-.78 4.25L6.36 5.61l.72 2.16c.06.22-.02.28-.2.17L5 6.6 3.12 7.94c-.19.11-.25.05-.2-.17l.72-2.16-1.86-1.36c-.17-.16-.14-.23.09-.23l2.3-.03.7-2.16h.25l.7 2.16 2.3.03c.23 0 .27.08.09.23h.01z"}}]})(props);
 }
 export function GoBriefcase (props: IconBaseProps) {
   return GenIcon({tag:"svg",attr:{viewBox:"0 0 14 16"},child:[{tag:"path",attr:{"fillRule":"evenodd",d:"M9 4V3c0-.55-.45-1-1-1H6c-.55 0-1 .45-1 1v1H1c-.55 0-1 .45-1 1v8c0 .55.45 1 1 1h12c.55 0 1-.45 1-1V5c0-.55-.45-1-1-1H9zM6 3h2v1H6V3zm7 6H8v1H6V9H1V5h1v3h10V5h1v4z"}}]})(props);
@@ -70,7 +71,7 @@ export function GoChecklist (props: IconBaseProps) {
   return GenIcon({tag:"svg",attr:{viewBox:"0 0 16 16"},child:[{tag:"path",attr:{"fillRule":"evenodd",d:"M16 8.5l-6 6-3-3L8.5 10l1.5 1.5L14.5 7 16 8.5zM5.7 12.2l.8.8H2c-.55 0-1-.45-1-1V3c0-.55.45-1 1-1h7c.55 0 1 .45 1 1v6.5l-.8-.8c-.39-.39-1.03-.39-1.42 0L5.7 10.8a.996.996 0 0 0 0 1.41v-.01zM4 4h5V3H4v1zm0 2h5V5H4v1zm0 2h3V7H4v1zM3 9H2v1h1V9zm0-2H2v1h1V7zm0-2H2v1h1V5zm0-2H2v1h1V3z"}}]})(props);
 }
 export function GoChevronDown (props: IconBaseProps) {
-  return GenIcon({tag:"svg",attr:{viewBox:"0 0 10 16"},child:[{tag:"path",attr:{"fillRule":"evenodd",d:"M5 11L0 6l1.5-1.5L5 8.25 8.5 4.5 10 6l-5 5z"}}]})(props);
+  return GenIcon({tag:"svg",attr,child:[{tag:"path",attr:{"fillRule":"evenodd",d:"M5 11L0 6l1.5-1.5L5 8.25 8.5 4.5 10 6l-5 5z"}}]})(props);
 }
 export function GoChevronLeft (props: IconBaseProps) {
   return GenIcon({tag:"svg",attr:{viewBox:"0 0 8 16"},child:[{tag:"path",attr:{"fillRule":"evenodd",d:"M5.5 3L7 4.5 3.25 8 7 11.5 5.5 13l-5-5 5-5z"}}]})(props);
@@ -79,7 +80,7 @@ export function GoChevronRight (props: IconBaseProps) {
   return GenIcon({tag:"svg",attr:{viewBox:"0 0 8 16"},child:[{tag:"path",attr:{"fillRule":"evenodd",d:"M7.5 8l-5 5L1 11.5 4.75 8 1 4.5 2.5 3l5 5z"}}]})(props);
 }
 export function GoChevronUp (props: IconBaseProps) {
-  return GenIcon({tag:"svg",attr:{viewBox:"0 0 10 16"},child:[{tag:"path",attr:{"fillRule":"evenodd",d:"M10 10l-1.5 1.5L5 7.75 1.5 11.5 0 10l5-5 5 5z"}}]})(props);
+  return GenIcon({tag:"svg",attr,child:[{tag:"path",attr:{"fillRule":"evenodd",d:"M10 10l-1.5 1.5L5 7.75 1.5 11.5 0 10l5-5 5 5z"}}]})(props);
 }
 export function GoCircleSlash (props: IconBaseProps) {
   return GenIcon({tag:"svg",attr:{viewBox:"0 0 14 16"},child:[{tag:"path",attr:{"fillRule":"evenodd",d:"M7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm0 1.3c1.3 0 2.5.44 3.47 1.17l-8 8A5.755 5.755 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zm0 11.41c-1.3 0-2.5-.44-3.47-1.17l8-8c.73.97 1.17 2.17 1.17 3.47 0 3.14-2.56 5.7-5.7 5.7z"}}]})(props);
@@ -133,7 +134,7 @@ export function GoDeviceDesktop (props: IconBaseProps) {
   return GenIcon({tag:"svg",attr:{viewBox:"0 0 16 16"},child:[{tag:"path",attr:{"fillRule":"evenodd",d:"M15 2H1c-.55 0-1 .45-1 1v9c0 .55.45 1 1 1h5.34c-.25.61-.86 1.39-2.34 2h8c-1.48-.61-2.09-1.39-2.34-2H15c.55 0 1-.45 1-1V3c0-.55-.45-1-1-1zm0 9H1V3h14v8z"}}]})(props);
 }
 export function GoDeviceMobile (props: IconBaseProps) {
-  return GenIcon({tag:"svg",attr:{viewBox:"0 0 10 16"},child:[{tag:"path",attr:{"fillRule":"evenodd",d:"M9 0H1C.45 0 0 .45 0 1v14c0 .55.45 1 1 1h8c.55 0 1-.45 1-1V1c0-.55-.45-1-1-1zM5 15.3c-.72 0-1.3-.58-1.3-1.3 0-.72.58-1.3 1.3-1.3.72 0 1.3.58 1.3 1.3 0 .72-.58 1.3-1.3 1.3zM9 12H1V2h8v10z"}}]})(props);
+  return GenIcon({tag:"svg",attr,child:[{tag:"path",attr:{"fillRule":"evenodd",d:"M9 0H1C.45 0 0 .45 0 1v14c0 .55.45 1 1 1h8c.55 0 1-.45 1-1V1c0-.55-.45-1-1-1zM5 15.3c-.72 0-1.3-.58-1.3-1.3 0-.72.58-1.3 1.3-1.3.72 0 1.3.58 1.3 1.3 0 .72-.58 1.3-1.3 1.3zM9 12H1V2h8v10z"}}]})(props);
 }
 export function GoDiffAdded (props: IconBaseProps) {
   return GenIcon({tag:"svg",attr:{viewBox:"0 0 14 16"},child:[{tag:"path",attr:{"fillRule":"evenodd",d:"M13 1H1c-.55 0-1 .45-1 1v12c0 .55.45 1 1 1h12c.55 0 1-.45 1-1V2c0-.55-.45-1-1-1zm0 13H1V2h12v12zM6 9H3V7h3V4h2v3h3v2H8v3H6V9z"}}]})(props);
@@ -217,7 +218,7 @@ export function GoGist (props: IconBaseProps) {
   return GenIcon({tag:"svg",attr:{viewBox:"0 0 12 16"},child:[{tag:"path",attr:{"fillRule":"evenodd",d:"M7.5 5L10 7.5 7.5 10l-.75-.75L8.5 7.5 6.75 5.75 7.5 5zm-3 0L2 7.5 4.5 10l.75-.75L3.5 7.5l1.75-1.75L4.5 5zM0 13V2c0-.55.45-1 1-1h10c.55 0 1 .45 1 1v11c0 .55-.45 1-1 1H1c-.55 0-1-.45-1-1zm1 0h10V2H1v11z"}}]})(props);
 }
 export function GoGitBranch (props: IconBaseProps) {
-  return GenIcon({tag:"svg",attr:{viewBox:"0 0 10 16"},child:[{tag:"path",attr:{"fillRule":"evenodd",d:"M10 5c0-1.11-.89-2-2-2a1.993 1.993 0 0 0-1 3.72v.3c-.02.52-.23.98-.63 1.38-.4.4-.86.61-1.38.63-.83.02-1.48.16-2 .45V4.72a1.993 1.993 0 0 0-1-3.72C.88 1 0 1.89 0 3a2 2 0 0 0 1 1.72v6.56c-.59.35-1 .99-1 1.72 0 1.11.89 2 2 2 1.11 0 2-.89 2-2 0-.53-.2-1-.53-1.36.09-.06.48-.41.59-.47.25-.11.56-.17.94-.17 1.05-.05 1.95-.45 2.75-1.25S8.95 7.77 9 6.73h-.02C9.59 6.37 10 5.73 10 5zM2 1.8c.66 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2C1.35 4.2.8 3.65.8 3c0-.65.55-1.2 1.2-1.2zm0 12.41c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zm6-8c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2z"}}]})(props);
+  return GenIcon({tag:"svg",attr,child:[{tag:"path",attr:{"fillRule":"evenodd",d:"M10 5c0-1.11-.89-2-2-2a1.993 1.993 0 0 0-1 3.72v.3c-.02.52-.23.98-.63 1.38-.4.4-.86.61-1.38.63-.83.02-1.48.16-2 .45V4.72a1.993 1.993 0 0 0-1-3.72C.88 1 0 1.89 0 3a2 2 0 0 0 1 1.72v6.56c-.59.35-1 .99-1 1.72 0 1.11.89 2 2 2 1.11 0 2-.89 2-2 0-.53-.2-1-.53-1.36.09-.06.48-.41.59-.47.25-.11.56-.17.94-.17 1.05-.05 1.95-.45 2.75-1.25S8.95 7.77 9 6.73h-.02C9.59 6.37 10 5.73 10 5zM2 1.8c.66 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2C1.35 4.2.8 3.65.8 3c0-.65.55-1.2 1.2-1.2zm0 12.41c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zm6-8c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2z"}}]})(props);
 }
 export function GoGitCommit (props: IconBaseProps) {
   return GenIcon({tag:"svg",attr:{viewBox:"0 0 14 16"},child:[{tag:"path",attr:{"fillRule":"evenodd",d:"M10.86 7c-.45-1.72-2-3-3.86-3-1.86 0-3.41 1.28-3.86 3H0v2h3.14c.45 1.72 2 3 3.86 3 1.86 0 3.41-1.28 3.86-3H14V7h-3.14zM7 10.2c-1.22 0-2.2-.98-2.2-2.2 0-1.22.98-2.2 2.2-2.2 1.22 0 2.2.98 2.2 2.2 0 1.22-.98 2.2-2.2 2.2z"}}]})(props);
@@ -253,7 +254,7 @@ export function GoHome (props: IconBaseProps) {
   return GenIcon({tag:"svg",attr:{viewBox:"0 0 16 16"},child:[{tag:"path",attr:{"fillRule":"evenodd",d:"M16 9l-3-3V2h-2v2L8 1 0 9h2l1 5c0 .55.45 1 1 1h8c.55 0 1-.45 1-1l1-5h2zm-4 5H9v-4H7v4H4L2.81 7.69 8 2.5l5.19 5.19L12 14z"}}]})(props);
 }
 export function GoHorizontalRule (props: IconBaseProps) {
-  return GenIcon({tag:"svg",attr:{viewBox:"0 0 10 16"},child:[{tag:"path",attr:{"fillRule":"evenodd",d:"M1 7h2v2h1V3H3v3H1V3H0v6h1V7zm9 2V7H9v2h1zm0-3V4H9v2h1zM7 6V4h2V3H6v6h1V7h2V6H7zm-7 7h10v-2H0v2z"}}]})(props);
+  return GenIcon({tag:"svg",attr,child:[{tag:"path",attr:{"fillRule":"evenodd",d:"M1 7h2v2h1V3H3v3H1V3H0v6h1V7zm9 2V7H9v2h1zm0-3V4H9v2h1zM7 6V4h2V3H6v6h1V7h2V6H7zm-7 7h10v-2H0v2z"}}]})(props);
 }
 export function GoHubot (props: IconBaseProps) {
   return GenIcon({tag:"svg",attr:{viewBox:"0 0 14 16"},child:[{tag:"path",attr:{"fillRule":"evenodd",d:"M3 6c-.55 0-1 .45-1 1v2c0 .55.45 1 1 1h8c.55 0 1-.45 1-1V7c0-.55-.45-1-1-1H3zm8 1.75L9.75 9h-1.5L7 7.75 5.75 9h-1.5L3 7.75V7h.75L5 8.25 6.25 7h1.5L9 8.25 10.25 7H11v.75zM5 11h4v1H5v-1zm2-9C3.14 2 0 4.91 0 8.5V13c0 .55.45 1 1 1h12c.55 0 1-.45 1-1V8.5C14 4.91 10.86 2 7 2zm6 11H1V8.5c0-3.09 2.64-5.59 6-5.59s6 2.5 6 5.59V13z"}}]})(props);
@@ -421,7 +422,7 @@ export function GoRepoForcePush (props: IconBaseProps) {
   return GenIcon({tag:"svg",attr:{viewBox:"0 0 12 16"},child:[{tag:"path",attr:{"fillRule":"evenodd",d:"M10 9H8v7H6V9H4l2.25-3H4l3-4 3 4H7.75L10 9zm1-9H1C.45 0 0 .45 0 1v12c0 .55.45 1 1 1h4v-1H1v-2h4v-1H2V1h9v9H9v1h2v2H9v1h2c.55 0 1-.45 1-1V1c0-.55-.45-1-1-1z"}}]})(props);
 }
 export function GoRepoForked (props: IconBaseProps) {
-  return GenIcon({tag:"svg",attr:{viewBox:"0 0 10 16"},child:[{tag:"path",attr:{"fillRule":"evenodd",d:"M8 1a1.993 1.993 0 0 0-1 3.72V6L5 8 3 6V4.72A1.993 1.993 0 0 0 2 1a1.993 1.993 0 0 0-1 3.72V6.5l3 3v1.78A1.993 1.993 0 0 0 5 15a1.993 1.993 0 0 0 1-3.72V9.5l3-3V4.72A1.993 1.993 0 0 0 8 1zM2 4.2C1.34 4.2.8 3.65.8 3c0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zm3 10c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zm3-10c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2z"}}]})(props);
+  return GenIcon({tag:"svg",attr,child:[{tag:"path",attr:{"fillRule":"evenodd",d:"M8 1a1.993 1.993 0 0 0-1 3.72V6L5 8 3 6V4.72A1.993 1.993 0 0 0 2 1a1.993 1.993 0 0 0-1 3.72V6.5l3 3v1.78A1.993 1.993 0 0 0 5 15a1.993 1.993 0 0 0 1-3.72V9.5l3-3V4.72A1.993 1.993 0 0 0 8 1zM2 4.2C1.34 4.2.8 3.65.8 3c0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zm3 10c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zm3-10c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2z"}}]})(props);
 }
 export function GoRepoPull (props: IconBaseProps) {
   return GenIcon({tag:"svg",attr:{viewBox:"0 0 16 16"},child:[{tag:"path",attr:{"fillRule":"evenodd",d:"M13 8V6H7V4h6V2l3 3-3 3zM4 2H3v1h1V2zm7 5h1v6c0 .55-.45 1-1 1H6v2l-1.5-1.5L3 16v-2H1c-.55 0-1-.45-1-1V1c0-.55.45-1 1-1h10c.55 0 1 .45 1 1v2h-1V1H2v9h9V7zm0 4H1v2h2v-1h3v1h5v-2zM4 6H3v1h1V6zm0-2H3v1h1V4zM3 9h1V8H3v1z"}}]})(props);
@@ -442,7 +443,7 @@ export function GoRocket (props: IconBaseProps) {
   return GenIcon({tag:"svg",attr:{viewBox:"0 0 16 16"},child:[{tag:"path",attr:{"fillRule":"evenodd",d:"M12.17 3.83c-.27-.27-.47-.55-.63-.88-.16-.31-.27-.66-.34-1.02-.58.33-1.16.7-1.73 1.13-.58.44-1.14.94-1.69 1.48-.7.7-1.33 1.81-1.78 2.45H3L0 10h3l2-2c-.34.77-1.02 2.98-1 3l1 1c.02.02 2.23-.64 3-1l-2 2v3l3-3v-3c.64-.45 1.75-1.09 2.45-1.78.55-.55 1.05-1.13 1.47-1.7.44-.58.81-1.16 1.14-1.72-.36-.08-.7-.19-1.03-.34a3.39 3.39 0 0 1-.86-.63zM16 0s-.09.38-.3 1.06c-.2.7-.55 1.58-1.06 2.66-.7-.08-1.27-.33-1.66-.72-.39-.39-.63-.94-.7-1.64C13.36.84 14.23.48 14.92.28 15.62.08 16 0 16 0z"}}]})(props);
 }
 export function GoRss (props: IconBaseProps) {
-  return GenIcon({tag:"svg",attr:{viewBox:"0 0 10 16"},child:[{tag:"path",attr:{"fillRule":"evenodd",d:"M2 13H0v-2c1.11 0 2 .89 2 2zM0 3v1a9 9 0 0 1 9 9h1C10 7.48 5.52 3 0 3zm0 4v1c2.75 0 5 2.25 5 5h1c0-3.31-2.69-6-6-6z"}}]})(props);
+  return GenIcon({tag:"svg",attr,child:[{tag:"path",attr:{"fillRule":"evenodd",d:"M2 13H0v-2c1.11 0 2 .89 2 2zM0 3v1a9 9 0 0 1 9 9h1C10 7.48 5.52 3 0 3zm0 4v1c2.75 0 5 2.25 5 5h1c0-3.31-2.69-6-6-6z"}}]})(props);
 }
 export function GoRuby (props: IconBaseProps) {
   return GenIcon({tag:"svg",attr:{viewBox:"0 0 16 16"},child:[{tag:"path",attr:{"fillRule":"evenodd",d:"M13 6l-5 5V4h3l2 2zm3 0l-8 8-8-8 4-4h8l4 4zm-8 6.5L14.5 6l-3-3h-7l-3 3L8 12.5z"}}]})(props);
@@ -550,5 +551,5 @@ export function GoX (props: IconBaseProps) {
   return GenIcon({tag:"svg",attr:{viewBox:"0 0 12 16"},child:[{tag:"path",attr:{"fillRule":"evenodd",d:"M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48L7.48 8z"}}]})(props);
 }
 export function GoZap (props: IconBaseProps) {
-  return GenIcon({tag:"svg",attr:{viewBox:"0 0 10 16"},child:[{tag:"path",attr:{"fillRule":"evenodd",d:"M10 7H6l3-7-9 9h4l-3 7 9-9z"}}]})(props);
+  return GenIcon({tag:"svg",attr,child:[{tag:"path",attr:{"fillRule":"evenodd",d:"M10 7H6l3-7-9 9h4l-3 7 9-9z"}}]})(props);
 }
