@@ -1,12 +1,11 @@
-import * as React from "https://esm.sh/preact@10.11.2";
-import { JSXInternal } from "https://esm.sh/v95/preact@10.11.0/src/jsx.d.ts";
+import {default as React, JSX } from "https://esm.sh/preact@10.11.3";
 
 export interface IconContext {
   color?: string;
   size?: string;
   className?: string;
-  style?: JSXInternal.CSSProperties;
-  attr?: JSXInternal.SVGAttributes<SVGElement>;
+  style?: JSX.CSSProperties;
+  attr?: JSX.SVGAttributes<SVGElement>;
 }
 
 export const DefaultContext: IconContext = {

@@ -1,8 +1,5 @@
-import * as React from "https://esm.sh/preact@10.11.2";
-import type { JSXInternal } from "https://esm.sh/v95/preact@10.11.0/src/jsx.d.ts";
+import {default as React, JSX} from "https://esm.sh/preact@10.11.3";
 import { DefaultContext, IconContext } from "./iconContext.tsx";
-import type { ComponentChildren } from "https://esm.sh/v95/preact@10.11.0/src/index.d.ts";
-import type { CSSProperties } from "https://esm.sh/v98/@types/react@18.0.25/index.d.ts";
 
 export interface IconTree {
   tag: string;
@@ -10,11 +7,11 @@ export interface IconTree {
   child?: IconTree[];
 }
 
-function Tree2Element(tree: IconTree[]): ComponentChildren[] { // React.ReactElement => ComponentChildren
+function Tree2Element(tree: IconTree[]): React.ComponentChildren[] { // React.ReactElement => ComponentChildren
   return (
     tree &&
     tree.map((node, i) =>
-      React.createElement(
+    React.createElement(
         node.tag,
         { key: i, ...node.attr },
         Tree2Element(node.child || []),
@@ -30,17 +27,17 @@ export function GenIcon(data: IconTree) {
   );
 }
 
-export interface IconBaseProps extends JSXInternal.SVGAttributes<SVGElement> {
-  children?: ComponentChildren; // was React.ReactNode
+export interface IconBaseProps extends JSX.SVGAttributes<SVGElement> {
+  children?: React.ComponentChildren; // was React.ReactNode
   size?: number; // was string | number;
   color?: string;
   title?: string;
 }
 
-export type IconType = (props: IconBaseProps) => JSX.Element;
+export type IconType = (props: IconBaseProps) => React.VNode<any>;
 export function IconBase(
   props: IconBaseProps & { attr?: Record<string, string> },
-): JSX.Element {
+): React.VNode<any> {
   const elem = (conf: IconContext) => {
     const { attr, size, title, ...svgProps } = props;
     const computedSize = size || conf.size || "1em";
@@ -63,7 +60,7 @@ export function IconBase(
         style={{
           color: props.color || conf.color,
           ...conf.style,
-          ...(props.style as CSSProperties),
+          ...(props.style as JSX.CSSProperties),
         }}
         height={computedSize}
         width={computedSize}
