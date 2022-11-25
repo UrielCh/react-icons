@@ -34,10 +34,10 @@ export interface IconBaseProps extends JSX.SVGAttributes<SVGElement> {
   title?: string;
 }
 
-export type IconType = (props: IconBaseProps) => React.VNode<any>;
+export type IconType = (props: IconBaseProps) => React.VNode<JSX.SVGAttributes>;
 export function IconBase(
   props: IconBaseProps & { attr?: Record<string, string> },
-): React.VNode<any> {
+): React.VNode<JSX.SVGAttributes> {
   const elem = (conf: IconContext) => {
     const { attr, size, title, ...svgProps } = props;
     const computedSize = size || conf.size || "1em";
