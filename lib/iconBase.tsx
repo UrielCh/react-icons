@@ -1,4 +1,5 @@
-import {default as React, JSX} from "https://esm.sh/preact@10.11.3";
+import * as React from "preact";
+import { JSX } from "preact";
 import { DefaultContext, IconContext } from "./iconContext.tsx";
 
 export interface IconTree {
