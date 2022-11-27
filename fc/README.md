@@ -1,8 +1,14 @@
 # Devicons icons for deno / Preact
 
+**License** [MIT](https://opensource.org/licenses/MIT)
+
+**Project** [https://github.com/icons8/flat-color-icons](https://github.com/icons8/flat-color-icons)
+
 [See available icons here](https://react-icons.github.io/react-icons/icons?name=fc)
 
 ## import_map.json
+
+For a transparent usage:
 
 ```json
 {

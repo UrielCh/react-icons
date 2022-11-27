@@ -1,8 +1,14 @@
 # Feather icons for deno / Preact
 
+**License** [MIT](https://github.com/feathericons/feather/blob/master/LICENSE)
+
+**Project** [https://feathericons.com/](https://feathericons.com/)
+
 [See available icons here](https://react-icons.github.io/react-icons/icons?name=fi)
 
 ## import_map.json
+
+For a transparent usage:
 
 ```json
 {

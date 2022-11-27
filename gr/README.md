@@ -1,8 +1,14 @@
 # Grommet-Icons icons for deno / Preact
 
+**License** [Apache License Version 2.0](http://www.apache.org/licenses/)
+
+**Project** [https://github.com/grommet/grommet-icons](https://github.com/grommet/grommet-icons)
+
 [See available icons here](https://react-icons.github.io/react-icons/icons?name=gr)
 
 ## import_map.json
+
+For a transparent usage:
 
 ```json
 {

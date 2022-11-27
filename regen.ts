@@ -207,8 +207,11 @@ for await (const dirEntry of Deno.readDir(src)) {
     if (pkg) {
         const libName = pkg.name.replace(/ Icons^/, '');
         let readme = `# ${libName} icons for deno / Preact\n\n`
+        readme += `**License** [${pkg.licence[0]}](${pkg.licence[1]})\n\n`
+        readme += `**Project** [${pkg.url}](${pkg.url})\n\n`
         readme += `[See available icons here](https://react-icons.github.io/react-icons/icons?name=${name})\n\n`
         readme += `## import_map.json\n\n`;
+        readme += `For a transparent usage:\n\n`;
         readme += '```json\n';
         readme += `{
     "imports": {

@@ -1,8 +1,14 @@
 # Ant Design Icons icons for deno / Preact
 
+**License** [MIT](https://opensource.org/licenses/MIT)
+
+**Project** [https://github.com/ant-design/ant-design-icons](https://github.com/ant-design/ant-design-icons)
+
 [See available icons here](https://react-icons.github.io/react-icons/icons?name=ai)
 
 ## import_map.json
+
+For a transparent usage:
 
 ```json
 {

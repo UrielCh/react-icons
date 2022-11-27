@@ -1,8 +1,14 @@
 # Devicons icons for deno / Preact
 
+**License** [MIT](https://github.com/Klarr-Agency/Circum-Icons/blob/main/LICENSE)
+
+**Project** [https://vorillaz.github.io/devicons/](https://vorillaz.github.io/devicons/)
+
 [See available icons here](https://react-icons.github.io/react-icons/icons?name=di)
 
 ## import_map.json
+
+For a transparent usage:
 
 ```json
 {

@@ -1,8 +1,14 @@
 # Simple Icons icons for deno / Preact
 
+**License** [CC0 1.0 Universal](https://creativecommons.org/publicdomain/zero/1.0/)
+
+**Project** [https://simpleicons.org/](https://simpleicons.org/)
+
 [See available icons here](https://react-icons.github.io/react-icons/icons?name=si)
 
 ## import_map.json
+
+For a transparent usage:
 
 ```json
 {

@@ -1,8 +1,14 @@
 # IcoMoon Free icons for deno / Preact
 
+**License** [CC BY 4.0 License](https://github.com/Keyamoon/IcoMoon-Free/blob/master/License.txt)
+
+**Project** [https://github.com/Keyamoon/IcoMoon-Free](https://github.com/Keyamoon/IcoMoon-Free)
+
 [See available icons here](https://react-icons.github.io/react-icons/icons?name=im)
 
 ## import_map.json
+
+For a transparent usage:
 
 ```json
 {
