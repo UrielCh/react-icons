@@ -240,8 +240,11 @@ for await (const dirEntry of Deno.readDir(src)) {
         console.log(`generating ${dest} shorted:${shorted}`);
         await fs.ensureDir(name)
         await Deno.writeTextFile(dest, readme + content)
-
-
         // await Deno.writeTextFile(destReadme, readme)
     }
+
+    /**
+     * TODO Regen the main mod.ts
+     */
+
 }
