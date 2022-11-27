@@ -13,9 +13,9 @@
  *          "react-icons/wi": "https://deno.land/x/react_icons@0.1.1/wi/mod.ts",
  *      }
  *  }
- *  ```
- * 
+ * ```
  */
+
 const tag="path"
 const attr={version:"1.1",id:"Layer_1",x:"0px",y:"0px",viewBox:"0 0 30 30",style:"enable-background:new 0 0 30 30;"}
 // THIS FILE IS AUTO GENERATED

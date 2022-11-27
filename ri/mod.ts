@@ -13,9 +13,9 @@
  *          "react-icons/ri": "https://deno.land/x/react_icons@0.1.1/ri/mod.ts",
  *      }
  *  }
- *  ```
- * 
+ * ```
  */
+
 const fill="none"
 const tag="path"
 const attr={viewBox:"0 0 24 24"}

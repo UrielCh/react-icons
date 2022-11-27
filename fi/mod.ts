@@ -13,9 +13,9 @@
  *          "react-icons/fi": "https://deno.land/x/react_icons@0.1.1/fi/mod.ts",
  *      }
  *  }
- *  ```
- * 
+ * ```
  */
+
 const fill="none"
 const tag="path"
 const attr={viewBox:"0 0 24 24",fill,stroke:"currentColor",strokeWidth:"2",strokeLinecap:"round",strokeLinejoin:"round"}

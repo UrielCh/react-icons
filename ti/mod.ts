@@ -13,9 +13,9 @@
  *          "react-icons/ti": "https://deno.land/x/react_icons@0.1.1/ti/mod.ts",
  *      }
  *  }
- *  ```
- * 
+ * ```
  */
+
 const tag="path"
 const attr={version:"1.2",baseProfile:"tiny",viewBox:"0 0 24 24"}
 // THIS FILE IS AUTO GENERATED

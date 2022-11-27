@@ -13,9 +13,9 @@
  *          "react-icons/bi": "https://deno.land/x/react_icons@0.1.1/bi/mod.ts",
  *      }
  *  }
- *  ```
- * 
+ * ```
  */
+
 const tag="path"
 const attr={viewBox:"0 0 24 24"}
 // THIS FILE IS AUTO GENERATED

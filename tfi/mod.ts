@@ -13,9 +13,9 @@
  *          "react-icons/tfi": "https://deno.land/x/react_icons@0.1.1/tfi/mod.ts",
  *      }
  *  }
- *  ```
- * 
+ * ```
  */
+
 const tag="path"
 const attr={version:"1.1",viewBox:"0 0 17 17"}
 // THIS FILE IS AUTO GENERATED

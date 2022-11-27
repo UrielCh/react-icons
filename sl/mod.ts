@@ -13,9 +13,9 @@
  *          "react-icons/sl": "https://deno.land/x/react_icons@0.1.1/sl/mod.ts",
  *      }
  *  }
- *  ```
- * 
+ * ```
  */
+
 const tag="path"
 const attr={viewBox:"0 0 1024 1024"}
 // THIS FILE IS AUTO GENERATED

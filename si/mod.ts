@@ -13,9 +13,9 @@
  *          "react-icons/si": "https://deno.land/x/react_icons@0.1.1/si/mod.ts",
  *      }
  *  }
- *  ```
- * 
+ * ```
  */
+
 const tag="path"
 const attr={"role":"img",viewBox:"0 0 24 24"}
 // THIS FILE IS AUTO GENERATED

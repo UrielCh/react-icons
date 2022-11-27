@@ -13,9 +13,9 @@
  *          "react-icons/tb": "https://deno.land/x/react_icons@0.1.1/tb/mod.ts",
  *      }
  *  }
- *  ```
- * 
+ * ```
  */
+
 const stroke="none"
 const fill="currentColor"
 const tag="path"

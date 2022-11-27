@@ -13,9 +13,9 @@
  *          "react-icons/di": "https://deno.land/x/react_icons@0.1.1/di/mod.ts",
  *      }
  *  }
- *  ```
- * 
+ * ```
  */
+
 const tag="path"
 const attr={version:"1.1",viewBox:"0 0 32 32"}
 // THIS FILE IS AUTO GENERATED

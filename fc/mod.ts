@@ -13,9 +13,9 @@
  *          "react-icons/fc": "https://deno.land/x/react_icons@0.1.1/fc/mod.ts",
  *      }
  *  }
- *  ```
- * 
+ * ```
  */
+
 const fill="none"
 const tag="path"
 const attr={version:"1",viewBox:"0 0 48 48",enableBackground:"new 0 0 48 48"}

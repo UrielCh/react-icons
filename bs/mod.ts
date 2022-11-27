@@ -13,9 +13,9 @@
  *          "react-icons/bs": "https://deno.land/x/react_icons@0.1.1/bs/mod.ts",
  *      }
  *  }
- *  ```
- * 
+ * ```
  */
+
 const fill="currentColor"
 const tag="path"
 const attr={fill,viewBox:"0 0 16 16"}

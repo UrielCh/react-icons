@@ -13,9 +13,9 @@
  *          "react-icons/gr": "https://deno.land/x/react_icons@0.1.1/gr/mod.ts",
  *      }
  *  }
- *  ```
- * 
+ * ```
  */
+
 const stroke="#000"
 const fill="none"
 const tag="path"

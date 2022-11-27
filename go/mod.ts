@@ -13,9 +13,9 @@
  *          "react-icons/go": "https://deno.land/x/react_icons@0.1.1/go/mod.ts",
  *      }
  *  }
- *  ```
- * 
+ * ```
  */
+
 const tag="path"
 const attr={viewBox:"0 0 10 16"}
 // THIS FILE IS AUTO GENERATED

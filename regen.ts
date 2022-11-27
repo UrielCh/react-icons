@@ -192,11 +192,10 @@ for await (const dirEntry of Deno.readDir(src)) {
          "preact/": "https://esm.sh/preact@10.11.3/",
          "react-icons/${name}": "https://deno.land/x/react_icons@${nextTag}/${name}/mod.ts",
      }
- }
- `;
-        readme += '```\n';
+ }`;
+        readme += '\n```';
         // convert README TO comment README
-        readme = '/**\n' + readme.split(/[\r\n]+/g).map((line) => ` * ${line}`).join('\n') + '\n */\n';
+        readme = '/**\n' + readme.split(/[\r\n]+/g).map((line) => ` * ${line}`).join('\n') + '\n */\n\n';
 
 
         /**
