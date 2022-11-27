@@ -211,13 +211,13 @@ for await (const dirEntry of Deno.readDir(src)) {
         readme += `## import_map.json\n\n`;
         readme += '```json\n';
         readme += `{
-{
     "imports": {
         "preact": "https://esm.sh/preact@10.11.3",
         "preact/": "https://esm.sh/preact@10.11.3/",
-        "react-icons/${name}": "https://deno.land/x/react_icons@0.0.10/${name}/mod.ts",
+        "react-icons/${name}": "https://deno.land/x/react_icons@0.1.0/${name}/mod.ts",
     }
-}`;
+}
+`;
         readme += '```\n';
         await Deno.writeTextFile(destReadme, readme)
     }
