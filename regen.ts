@@ -163,6 +163,7 @@ for await (const dirEntry of Deno.readDir(src)) {
     content = content.replaceAll(/};(\s+)export/mg, '}$1export')
     content = content.replaceAll(/};(\s+)$/mg, '}$1')
     const dest = path.join(name, 'mod.ts')
+    const destReadme = path.join(name, 'README.md')
 
     let shorted = '';
     const short = {
@@ -202,4 +203,22 @@ for await (const dirEntry of Deno.readDir(src)) {
     console.log(`generating ${dest} shorted:${shorted}`);
     await fs.ensureDir(name)
     await Deno.writeTextFile(dest, content)
+    const pkg = packages[name];
+    if (pkg) {
+        const libName = pkg.name.replace(/ Icons^/, '');
+        let readme = `# ${libName} icons for deno / Preact\n\n`
+        readme += `[See available icons here](https://react-icons.github.io/react-icons/icons?name=${name})\n\n`
+        readme += `## import_map.json\n\n`;
+        readme += '```json\n';
+        readme += `{
+{
+    "imports": {
+        "preact": "https://esm.sh/preact@10.11.3",
+        "preact/": "https://esm.sh/preact@10.11.3/",
+        "react-icons/${name}": "https://deno.land/x/react_icons@0.0.10/${name}/mod.ts",
+    }
+}`;
+        readme += '```\n';
+        await Deno.writeTextFile(destReadme, readme)
+    }
 }
