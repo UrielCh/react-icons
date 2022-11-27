@@ -3,6 +3,8 @@ import * as path from "https://deno.land/std@0.165.0/path/mod.ts";
 import * as  fs from "https://deno.land/std@0.165.0/fs/mod.ts";
 const src = 'C:\\0\\react-solid\\node_modules\\react-icons';
 
+const nextTag = '0.1.1';
+
 interface Provider {
     name: string
     licence: [string, string],
@@ -165,48 +167,19 @@ for await (const dirEntry of Deno.readDir(src)) {
     const dest = path.join(name, 'mod.ts')
     const destReadme = path.join(name, 'README.md')
 
-    let shorted = '';
-    const short = {
-        'attr': ['{viewBox:"0 0 24 24"}',
-            '{viewBox:"0 0 24 24",fill:"none"}',
-            '{viewBox:"0 0 1024 1024"}',
-            '{fill:"currentColor",viewBox:"0 0 16 16"}',
-            '{version:"1.1",viewBox:"0 0 32 32"}',
-            '{version:"1",viewBox:"0 0 48 48",enableBackground:"new 0 0 48 48"}',
-            '{version:"1.1",viewBox:"0 0 16 16"}',
-            '{viewBox:"0 0 24 24",strokeWidth:"2",stroke:"currentColor",fill:"none",strokeLinecap:"round",strokeLinejoin:"round"}', // tb
-            '{viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:"2",strokeLinecap:"round",strokeLinejoin:"round"}', // fi
-            '{version:"1.2",baseProfile:"tiny",viewBox:"0 0 24 24"}',
-            '{version:"1.1",id:"Layer_1",x:"0px",y:"0px",viewBox:"0 0 30 30",style:"enable-background:new 0 0 30 30;"}',
-            '{viewBox:"0 0 16 16",fill:"currentColor"}',
-            '{"role":"img",viewBox:"0 0 24 24"}',
-            '{version:"1.1",viewBox:"0 0 17 17"}',
-            '{viewBox:"0 0 512 512"}',
-            '{viewBox:"0 0 20 20",fill:"currentColor"}',
-            '{viewBox:"0 0 10 16"}',
-        ],
-        'tag': ['"path"'],
-        'fill': ['"currentColor"', '"none"'],
-        'stroke': ['"#000"', '"none"']
-    }; // tag:"path"
+    try {
+        await Deno.remove(destReadme);
+    } catch (_) { /* ignore */ }
 
-    for (const [commonKey, commonAtts] of Object.entries(short)) {
-        for (const commonAtt of commonAtts) {
-            if (content.includes(`${commonKey}:${commonAtt}`)) {
-                content = content.replaceAll(`${commonKey}:${commonAtt}`, commonKey);
-                content = `const ${commonKey}=${commonAtt}\n${content}`;
-                shorted += commonAtt + " ";
-                break;
-            }
-        }
-    }
-    console.log(`generating ${dest} shorted:${shorted}`);
-    await fs.ensureDir(name)
-    await Deno.writeTextFile(dest, content)
+    /**
+     * DOC
+     */
+
     const pkg = packages[name];
+    let readme = ''
     if (pkg) {
         const libName = pkg.name.replace(/ Icons^/, '');
-        let readme = `# ${libName} icons for deno / Preact\n\n`
+        readme = `# ${libName} icons for deno / Preact\n\n`
         readme += `**License** [${pkg.licence[0]}](${pkg.licence[1]})\n\n`
         readme += `**Project** [${pkg.url}](${pkg.url})\n\n`
         readme += `[See available icons here](https://react-icons.github.io/react-icons/icons?name=${name})\n\n`
@@ -214,14 +187,62 @@ for await (const dirEntry of Deno.readDir(src)) {
         readme += `For a transparent usage:\n\n`;
         readme += '```json\n';
         readme += `{
-    "imports": {
-        "preact": "https://esm.sh/preact@10.11.3",
-        "preact/": "https://esm.sh/preact@10.11.3/",
-        "react-icons/${name}": "https://deno.land/x/react_icons@0.1.0/${name}/mod.ts",
-    }
-}
-`;
+     "imports": {
+         "preact": "https://esm.sh/preact@10.11.3",
+         "preact/": "https://esm.sh/preact@10.11.3/",
+         "react-icons/${name}": "https://deno.land/x/react_icons@${nextTag}/${name}/mod.ts",
+     }
+ }
+ `;
         readme += '```\n';
-        await Deno.writeTextFile(destReadme, readme)
+        // convert README TO comment README
+        readme = '/**\n' + readme.split(/[\r\n]+/g).map((line) => ` * ${line}`).join('\n') + '\n */\n';
+
+
+        /**
+         * code reduction:
+         */
+        let shorted = '';
+        const short = {
+            'attr': ['{viewBox:"0 0 24 24"}',
+                '{viewBox:"0 0 24 24",fill:"none"}',
+                '{viewBox:"0 0 1024 1024"}',
+                '{fill:"currentColor",viewBox:"0 0 16 16"}',
+                '{version:"1.1",viewBox:"0 0 32 32"}',
+                '{version:"1",viewBox:"0 0 48 48",enableBackground:"new 0 0 48 48"}',
+                '{version:"1.1",viewBox:"0 0 16 16"}',
+                '{viewBox:"0 0 24 24",strokeWidth:"2",stroke:"currentColor",fill:"none",strokeLinecap:"round",strokeLinejoin:"round"}', // tb
+                '{viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:"2",strokeLinecap:"round",strokeLinejoin:"round"}', // fi
+                '{version:"1.2",baseProfile:"tiny",viewBox:"0 0 24 24"}',
+                '{version:"1.1",id:"Layer_1",x:"0px",y:"0px",viewBox:"0 0 30 30",style:"enable-background:new 0 0 30 30;"}',
+                '{viewBox:"0 0 16 16",fill:"currentColor"}',
+                '{"role":"img",viewBox:"0 0 24 24"}',
+                '{version:"1.1",viewBox:"0 0 17 17"}',
+                '{viewBox:"0 0 512 512"}',
+                '{viewBox:"0 0 20 20",fill:"currentColor"}',
+                '{viewBox:"0 0 10 16"}',
+            ],
+            'tag': ['"path"'],
+            'fill': ['"currentColor"', '"none"'],
+            'stroke': ['"#000"', '"none"']
+        }; // tag:"path"
+
+        for (const [commonKey, commonAtts] of Object.entries(short)) {
+            for (const commonAtt of commonAtts) {
+                if (content.includes(`${commonKey}:${commonAtt}`)) {
+                    content = content.replaceAll(`${commonKey}:${commonAtt}`, commonKey);
+                    content = `const ${commonKey}=${commonAtt}\n${content}`;
+                    shorted += commonAtt + " ";
+                    break;
+                }
+            }
+        }
+
+        console.log(`generating ${dest} shorted:${shorted}`);
+        await fs.ensureDir(name)
+        await Deno.writeTextFile(dest, readme + content)
+
+
+        // await Deno.writeTextFile(destReadme, readme)
     }
 }

@@ -1,3 +1,21 @@
+/**
+ * # Heroicons icons for deno / Preact
+ * **License** [MIT](https://opensource.org/licenses/MIT)
+ * **Project** [https://github.com/tailwindlabs/heroicons](https://github.com/tailwindlabs/heroicons)
+ * [See available icons here](https://react-icons.github.io/react-icons/icons?name=hi)
+ * ## import_map.json
+ * For a transparent usage:
+ * ```json
+ * {
+ *      "imports": {
+ *          "preact": "https://esm.sh/preact@10.11.3",
+ *          "preact/": "https://esm.sh/preact@10.11.3/",
+ *          "react-icons/hi": "https://deno.land/x/react_icons@0.1.1/hi/mod.ts",
+ *      }
+ *  }
+ *  ```
+ * 
+ */
 const fill="currentColor"
 const tag="path"
 const attr={viewBox:"0 0 20 20",fill}
