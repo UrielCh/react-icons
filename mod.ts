@@ -31,11 +31,11 @@
  *     "react-icons/si":  "https://deno.land/x/react_icons@0.1.2/si/mod.ts",
  *     "react-icons/sl":  "https://deno.land/x/react_icons@0.1.2/sl/mod.ts",
  *     "react-icons/tb":  "https://deno.land/x/react_icons@0.1.2/tb/mod.ts",
- *     "react-icons/tfi": "https://deno.land/x/react_icons@0.1.2/tfi/mod.ts",
  *     "react-icons/ti":  "https://deno.land/x/react_icons@0.1.2/ti/mod.ts",
- *     "react-icons/vsc": "https://deno.land/x/react_icons@0.1.2/vsc/mod.ts",
  *     "react-icons/wi":  "https://deno.land/x/react_icons@0.1.2/wi/mod.ts",
- *     "react-icons/cg":  "https://deno.land/x/react_icons@0.1.2/cg/mod.ts"
+ *     "react-icons/cg":  "https://deno.land/x/react_icons@0.1.2/cg/mod.ts",
+ *     "react-icons/tfi": "https://deno.land/x/react_icons@0.1.2/tfi/mod.ts",
+ *     "react-icons/vsc": "https://deno.land/x/react_icons@0.1.2/vsc/mod.ts"
  *   }
  * }
  * ```
