@@ -4,6 +4,5 @@
 /// <reference lib="dom.asynciterable" />
 /// <reference lib="deno.ns" />
 
-export * from "./iconsManifest.d.ts";
 export * from "./iconBase.tsx";
 export * from "./iconContext.tsx";

@@ -5,142 +5,143 @@ const src = 'C:\\0\\react-solid\\node_modules\\react-icons';
 
 const nextTag = '0.1.1';
 
+// lioke original IconManifest
 interface Provider {
     name: string
     licence: [string, string],
-    url: string
+    projectUrl: string
 }
 
 const packages: { [key: string]: Provider } = {
     ai: {
         name: 'Ant Design Icons',
         licence: ['MIT', 'https://opensource.org/licenses/MIT'],
-        url: 'https://github.com/ant-design/ant-design-icons'
+        projectUrl: 'https://github.com/ant-design/ant-design-icons'
     },
     bs: {
         name: 'Bootstrap Icons',
         licence: ['MIT', 'https://opensource.org/licenses/MIT'],
-        url: 'https://github.com/twbs/icons'
+        projectUrl: 'https://github.com/twbs/icons'
     },
     bi: {
         name: 'BoxIcons',
         licence: ['CC BY 4.0 License', 'https://github.com/atisawd/boxicons/blob/master/LICENSE'],
-        url: 'https://github.com/atisawd/boxicons'
+        projectUrl: 'https://github.com/atisawd/boxicons'
     },
     ci: {
         name: 'Circum Icons',
         licence: ['MPL-2.0 license', 'https://github.com/Klarr-Agency/Circum-Icons/blob/main/LICENSE'],
-        url: 'https://circumicons.com/'
+        projectUrl: 'https://circumicons.com/'
     },
     di: {
         name: 'Devicons',
         licence: ['MIT', 'https://github.com/Klarr-Agency/Circum-Icons/blob/main/LICENSE'],
-        url: 'https://vorillaz.github.io/devicons/'
+        projectUrl: 'https://vorillaz.github.io/devicons/'
     },
     fi: {
         name: 'Feather',
         licence: ['MIT', 'https://github.com/feathericons/feather/blob/master/LICENSE'],
-        url: 'https://feathericons.com/'
+        projectUrl: 'https://feathericons.com/'
     },
     fc: {
         name: 'Devicons',
         licence: ['MIT', 'https://opensource.org/licenses/MIT'],
-        url: 'https://github.com/icons8/flat-color-icons'
+        projectUrl: 'https://github.com/icons8/flat-color-icons'
     },
     fa: {
         name: 'Font Awesome',
         licence: ['CC BY 4.0 License', 'https://creativecommons.org/licenses/by/4.0/'],
-        url: 'https://fontawesome.com/'
+        projectUrl: 'https://fontawesome.com/'
     },
     gi: {
         name: 'Game Icons',
         licence: ['CC BY 3.0', 'https://creativecommons.org/licenses/by/3.0/'],
-        url: 'https://game-icons.net/'
+        projectUrl: 'https://game-icons.net/'
     },
     go: {
         name: 'Github Octicons icons',
         licence: ['MIT', 'https://github.com/primer/octicons/blob/master/LICENSE'],
-        url: 'https://octicons.github.com/'
+        projectUrl: 'https://octicons.github.com/'
     },
     gr: {
         name: 'Grommet-Icons',
         licence: ['Apache License Version 2.0', 'http://www.apache.org/licenses/'],
-        url: 'https://github.com/grommet/grommet-icons'
+        projectUrl: 'https://github.com/grommet/grommet-icons'
     },
     hi: {
         name: 'Heroicons',
         licence: ['MIT', 'https://opensource.org/licenses/MIT'],
-        url: 'https://github.com/tailwindlabs/heroicons'
+        projectUrl: 'https://github.com/tailwindlabs/heroicons'
     },
     hi2: {
         name: 'Heroicons 2',
         licence: ['MIT', 'https://opensource.org/licenses/MIT'],
-        url: 'https://github.com/tailwindlabs/heroicons'
+        projectUrl: 'https://github.com/tailwindlabs/heroicons'
     },
     im: {
         name: 'IcoMoon Free',
         licence: ['CC BY 4.0 License', 'https://github.com/Keyamoon/IcoMoon-Free/blob/master/License.txt'],
-        url: 'https://github.com/Keyamoon/IcoMoon-Free'
+        projectUrl: 'https://github.com/Keyamoon/IcoMoon-Free'
     },
     io: {
         name: 'Ionicons 4',
         licence: ['MIT', 'https://github.com/ionic-team/ionicons/blob/master/LICENSE'],
-        url: 'https://ionicons.com/'
+        projectUrl: 'https://ionicons.com/'
     },
     io5: {
         name: 'Ionicons 5',
         licence: ['MIT', 'https://github.com/ionic-team/ionicons/blob/master/LICENSE'],
-        url: 'https://ionicons.com/'
+        projectUrl: 'https://ionicons.com/'
     },
     md: {
         name: 'Material Design icons',
         licence: ['Apache License Version 2.0', 'https://github.com/google/material-design-icons/blob/master/LICENSE'],
-        url: 'http://google.github.io/material-design-icons/'
+        projectUrl: 'http://google.github.io/material-design-icons/'
     },
     ri: {
         name: 'Remix Icon',
         licence: ['Apache License Version 2.0', 'http://www.apache.org/licenses/'],
-        url: 'https://github.com/Remix-Design/RemixIcon'
+        projectUrl: 'https://github.com/Remix-Design/RemixIcon'
     },
     si: {
         name: 'Simple Icons',
         licence: ['CC0 1.0 Universal', 'https://creativecommons.org/publicdomain/zero/1.0/'],
-        url: 'https://simpleicons.org/'
+        projectUrl: 'https://simpleicons.org/'
     },
     sl: {
         name: 'Simple Line Icons',
         licence: ['MIT', 'https://opensource.org/licenses/MIT'],
-        url: 'https://thesabbir.github.io/simple-line-icons/'
+        projectUrl: 'https://thesabbir.github.io/simple-line-icons/'
     },
     tb: {
         name: 'Tabler Icons',
         licence: ['MIT', 'https://opensource.org/licenses/MIT'],
-        url: 'https://github.com/tabler/tabler-icons'
+        projectUrl: 'https://github.com/tabler/tabler-icons'
     },
     tfi: {
         name: 'Themify Icons',
         licence: ['MIT', 'https://github.com/thecreation/standard-icons/blob/master/modules/themify-icons/LICENSE'],
-        url: 'https://github.com/lykmapipo/themify-icons'
+        projectUrl: 'https://github.com/lykmapipo/themify-icons'
     },
     ti: {
         name: 'Typicons',
         licence: ['CC BY-SA 3.0', 'https://creativecommons.org/licenses/by-sa/3.0/'],
-        url: 'http://s-ings.com/typicons/'
+        projectUrl: 'http://s-ings.com/typicons/'
     },
     vsc: {
         name: 'VS Code Icons',
         licence: ['CC BY 4.0', 'https://creativecommons.org/licenses/by/4.0/'],
-        url: 'https://github.com/microsoft/vscode-codicons'
+        projectUrl: 'https://github.com/microsoft/vscode-codicons'
     },
     wi: {
         name: 'Weather Icons',
         licence: ['SIL OFL 1.1', 'http://scripts.sil.org/OFL'],
-        url: 'https://erikflowers.github.io/weather-icons/'
+        projectUrl: 'https://erikflowers.github.io/weather-icons/'
     },
     cg: {
         name: 'css.gg',
         licence: ['MIT', 'https://opensource.org/licenses/MIT'],
-        url: 'https://github.com/astrit/css.gg'
+        projectUrl: 'https://github.com/astrit/css.gg'
     },
 };
 
@@ -181,7 +182,7 @@ for await (const dirEntry of Deno.readDir(src)) {
         const libName = pkg.name.replace(/ Icons^/, '');
         readme = `# ${libName} icons for deno / Preact\n\n`
         readme += `**License** [${pkg.licence[0]}](${pkg.licence[1]})\n\n`
-        readme += `**Project** [${pkg.url}](${pkg.url})\n\n`
+        readme += `**Project** [${pkg.projectUrl}](${pkg.projectUrl})\n\n`
         readme += `[See available icons here](https://react-icons.github.io/react-icons/icons?name=${name})\n\n`
         readme += `## import_map.json\n\n`;
         readme += `For a transparent usage:\n\n`;
