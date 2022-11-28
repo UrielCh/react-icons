@@ -10,7 +10,7 @@
  *      "imports": {
  *          "preact": "https://esm.sh/preact@10.11.3",
  *          "preact/": "https://esm.sh/preact@10.11.3/",
- *          "react-icons/bs": "https://deno.land/x/react_icons@0.1.1/bs/mod.ts",
+ *          "react-icons/bs": "https://deno.land/x/react_icons@0.1.2/bs/mod.ts",
  *      }
  *  }
  * ```
