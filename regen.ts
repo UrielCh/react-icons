@@ -3,7 +3,7 @@ import * as path from "https://deno.land/std@0.165.0/path/mod.ts";
 import * as  fs from "https://deno.land/std@0.165.0/fs/mod.ts";
 const src = 'C:\\0\\react-solid\\node_modules\\react-icons';
 
-const nextTag = '0.1.2';
+const nextTag = '0.1.3';
 
 // lioke original IconManifest
 interface Provider {
@@ -188,13 +188,15 @@ for await (const dirEntry of Deno.readDir(src)) {
         readme += `For a transparent usage:\n\n`;
         readme += '```json\n';
         readme += `{
-     "imports": {
-         "preact": "https://esm.sh/preact@10.11.3",
-         "preact/": "https://esm.sh/preact@10.11.3/",
-         "react-icons/${name}": "https://deno.land/x/react_icons@${nextTag}/${name}/mod.ts",
-     }
- }`;
+  "imports": {
+    "preact": "https://esm.sh/preact@10.11.3",
+    "preact/": "https://esm.sh/preact@10.11.3/",
+    "react-icons/${name}": "https://deno.land/x/react_icons@${nextTag}/${name}/mod.ts",
+  }
+}`;
         readme += '\n```';
+        readme += '\n\n@module';
+
         // convert README TO comment README
         readme = '/**\n' + readme.split(/[\r\n]+/g).map((line) => ` * ${line}`).join('\n') + '\n */\n\n';
 
