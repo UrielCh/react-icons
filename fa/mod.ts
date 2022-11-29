@@ -1,3 +1,4 @@
+// Copyright 2012-2022 the Font Awesome authors. All rights reserved. CC BY 4.0 License (https://creativecommons.org/licenses/by/4.0/).
 /**
  * # Font Awesome icons for deno / Preact
  * **License** [CC BY 4.0 License](https://creativecommons.org/licenses/by/4.0/)

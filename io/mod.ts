@@ -1,3 +1,4 @@
+// Copyright 2015-2022 the Ionicons 4 authors. All rights reserved. MIT (https://github.com/ionic-team/ionicons/blob/master/LICENSE).
 /**
  * # Ionicons 4 icons for deno / Preact
  * **License** [MIT](https://github.com/ionic-team/ionicons/blob/master/LICENSE)

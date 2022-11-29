@@ -1,3 +1,4 @@
+// Copyright 2016-2022 the Simple Line Icons authors. All rights reserved. MIT (https://opensource.org/licenses/MIT).
 /**
  * # Simple Line Icons icons for deno / Preact
  * **License** [MIT](https://opensource.org/licenses/MIT)

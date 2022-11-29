@@ -1,3 +1,4 @@
+// Copyright 2016-2022 the Material Design icons authors. All rights reserved. Apache License Version 2.0 (https://github.com/google/material-design-icons/blob/master/LICENSE).
 /**
  * # Material Design icons icons for deno / Preact
  * **License** [Apache License Version 2.0](https://github.com/google/material-design-icons/blob/master/LICENSE)

@@ -1,3 +1,4 @@
+// Copyright 2019-2022 the VS Code Icons authors. All rights reserved. CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/).
 /**
  * # VS Code Icons icons for deno / Preact
  * **License** [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)

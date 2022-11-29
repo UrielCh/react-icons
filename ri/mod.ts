@@ -1,3 +1,4 @@
+// Copyright 2019-2022 the Remix Icon authors. All rights reserved. Apache License Version 2.0 (http://www.apache.org/licenses/).
 /**
  * # Remix Icon icons for deno / Preact
  * **License** [Apache License Version 2.0](http://www.apache.org/licenses/)

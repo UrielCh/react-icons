@@ -1,3 +1,4 @@
+// Copyright 2014-2022 the IcoMoon Free authors. All rights reserved. CC BY 4.0 License (https://github.com/Keyamoon/IcoMoon-Free/blob/master/License.txt).
 /**
  * # IcoMoon Free icons for deno / Preact
  * **License** [CC BY 4.0 License](https://github.com/Keyamoon/IcoMoon-Free/blob/master/License.txt)

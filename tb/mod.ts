@@ -1,3 +1,4 @@
+// Copyright 2020-2022 the Tabler Icons authors. All rights reserved. MIT (https://opensource.org/licenses/MIT).
 /**
  * # Tabler Icons icons for deno / Preact
  * **License** [MIT](https://opensource.org/licenses/MIT)

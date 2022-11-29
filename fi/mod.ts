@@ -1,3 +1,4 @@
+// Copyright 2017-2022 the Feather authors. All rights reserved. MIT (https://github.com/feathericons/feather/blob/master/LICENSE).
 /**
  * # Feather icons for deno / Preact
  * **License** [MIT](https://github.com/feathericons/feather/blob/master/LICENSE)

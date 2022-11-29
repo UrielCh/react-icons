@@ -1,3 +1,4 @@
+// Copyright 2019-2022 the Typicons authors. All rights reserved. CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0/).
 /**
  * # Typicons icons for deno / Preact
  * **License** [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/)

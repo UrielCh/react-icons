@@ -1,3 +1,4 @@
+// Copyright 2014-2022 the Devicons authors. All rights reserved. MIT (https://github.com/Klarr-Agency/Circum-Icons/blob/main/LICENSE).
 /**
  * # Devicons icons for deno / Preact
  * **License** [MIT](https://github.com/Klarr-Agency/Circum-Icons/blob/main/LICENSE)

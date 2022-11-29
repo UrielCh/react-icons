@@ -1,3 +1,4 @@
+// Copyright 2014-2022 the Themify Icons authors. All rights reserved. MIT (https://github.com/thecreation/standard-icons/blob/master/modules/themify-icons/LICENSE).
 /**
  * # Themify Icons icons for deno / Preact
  * **License** [MIT](https://github.com/thecreation/standard-icons/blob/master/modules/themify-icons/LICENSE)

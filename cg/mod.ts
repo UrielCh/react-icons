@@ -1,3 +1,4 @@
+// Copyright 2019-2022 the css.gg authors. All rights reserved. MIT (https://opensource.org/licenses/MIT).
 /**
  * # css.gg icons for deno / Preact
  * **License** [MIT](https://opensource.org/licenses/MIT)

@@ -1,3 +1,4 @@
+// Copyright 2020-2022 the Heroicons authors. All rights reserved. MIT (https://opensource.org/licenses/MIT).
 /**
  * # Heroicons icons for deno / Preact
  * **License** [MIT](https://opensource.org/licenses/MIT)

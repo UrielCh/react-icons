@@ -1,3 +1,4 @@
+// Copyright 2013-2022 the Weather Icons authors. All rights reserved. SIL OFL 1.1 (http://scripts.sil.org/OFL).
 /**
  * # Weather Icons icons for deno / Preact
  * **License** [SIL OFL 1.1](http://scripts.sil.org/OFL)

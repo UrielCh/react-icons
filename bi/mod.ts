@@ -1,3 +1,4 @@
+// Copyright 2015-2022 the BoxIcons authors. All rights reserved. CC BY 4.0 License (https://github.com/atisawd/boxicons/blob/master/LICENSE).
 /**
  * # BoxIcons icons for deno / Preact
  * **License** [CC BY 4.0 License](https://github.com/atisawd/boxicons/blob/master/LICENSE)

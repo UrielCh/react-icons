@@ -1,3 +1,4 @@
+// Copyright 2019-2022 the Bootstrap Icons authors. All rights reserved. MIT (https://opensource.org/licenses/MIT).
 /**
  * # Bootstrap Icons icons for deno / Preact
  * **License** [MIT](https://opensource.org/licenses/MIT)

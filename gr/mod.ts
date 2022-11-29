@@ -1,3 +1,4 @@
+// Copyright 2017-2022 the Grommet-Icons authors. All rights reserved. Apache License Version 2.0 (http://www.apache.org/licenses/).
 /**
  * # Grommet-Icons icons for deno / Preact
  * **License** [Apache License Version 2.0](http://www.apache.org/licenses/)

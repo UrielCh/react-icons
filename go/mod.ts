@@ -1,3 +1,4 @@
+// Copyright 2014-2022 the Github Octicons icons authors. All rights reserved. MIT (https://github.com/primer/octicons/blob/master/LICENSE).
 /**
  * # Github Octicons icons icons for deno / Preact
  * **License** [MIT](https://github.com/primer/octicons/blob/master/LICENSE)

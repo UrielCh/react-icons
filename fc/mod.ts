@@ -1,3 +1,4 @@
+// Copyright 2015-2022 the Devicons authors. All rights reserved. MIT (https://opensource.org/licenses/MIT).
 /**
  * # Devicons icons for deno / Preact
  * **License** [MIT](https://opensource.org/licenses/MIT)

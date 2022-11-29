@@ -1,3 +1,4 @@
+// Copyright 2018-2022 the Ant Design Icons authors. All rights reserved. MIT (https://opensource.org/licenses/MIT).
 /**
  * # Ant Design Icons icons for deno / Preact
  * **License** [MIT](https://opensource.org/licenses/MIT)
