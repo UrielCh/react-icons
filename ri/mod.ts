@@ -17,10 +17,19 @@
  *   "imports": {
  *     "preact": "https://esm.sh/preact@10.11.3",
  *     "preact/": "https://esm.sh/preact@10.11.3/",
- *     "react-icons/ri": "https://deno.land/x/react_icons@0.1.3/ri/mod.ts",
+ *     "react-icons/ri": "https://deno.land/x/react_icons@0.1.4/ri/mod.ts",
  *   }
  * }
  * ```
+ * 
+ * ## Direct import sample
+ * 
+ * `import { RiAncientGateFill } from "https://deno.land/x/react_icons@0.1.4/ri/mod.ts"`
+ * 
+ * ## import_map import sample
+ * 
+ * `import { RiAncientGateFill } from "react-icons/ri"`
+ * 
  * @module
  */
 

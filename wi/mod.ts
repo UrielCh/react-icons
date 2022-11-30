@@ -17,10 +17,19 @@
  *   "imports": {
  *     "preact": "https://esm.sh/preact@10.11.3",
  *     "preact/": "https://esm.sh/preact@10.11.3/",
- *     "react-icons/wi": "https://deno.land/x/react_icons@0.1.3/wi/mod.ts",
+ *     "react-icons/wi": "https://deno.land/x/react_icons@0.1.4/wi/mod.ts",
  *   }
  * }
  * ```
+ * 
+ * ## Direct import sample
+ * 
+ * `import { WiAlien } from "https://deno.land/x/react_icons@0.1.4/wi/mod.ts"`
+ * 
+ * ## import_map import sample
+ * 
+ * `import { WiAlien } from "react-icons/wi"`
+ * 
  * @module
  */
 

@@ -17,10 +17,19 @@
  *   "imports": {
  *     "preact": "https://esm.sh/preact@10.11.3",
  *     "preact/": "https://esm.sh/preact@10.11.3/",
- *     "react-icons/gr": "https://deno.land/x/react_icons@0.1.3/gr/mod.ts",
+ *     "react-icons/gr": "https://deno.land/x/react_icons@0.1.4/gr/mod.ts",
  *   }
  * }
  * ```
+ * 
+ * ## Direct import sample
+ * 
+ * `import { GrAccessibility } from "https://deno.land/x/react_icons@0.1.4/gr/mod.ts"`
+ * 
+ * ## import_map import sample
+ * 
+ * `import { GrAccessibility } from "react-icons/gr"`
+ * 
  * @module
  */
 

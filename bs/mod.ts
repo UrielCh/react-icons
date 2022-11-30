@@ -17,10 +17,19 @@
  *   "imports": {
  *     "preact": "https://esm.sh/preact@10.11.3",
  *     "preact/": "https://esm.sh/preact@10.11.3/",
- *     "react-icons/bs": "https://deno.land/x/react_icons@0.1.3/bs/mod.ts",
+ *     "react-icons/bs": "https://deno.land/x/react_icons@0.1.4/bs/mod.ts",
  *   }
  * }
  * ```
+ * 
+ * ## Direct import sample
+ * 
+ * `import { BsFillAlarmFill } from "https://deno.land/x/react_icons@0.1.4/bs/mod.ts"`
+ * 
+ * ## import_map import sample
+ * 
+ * `import { BsFillAlarmFill } from "react-icons/bs"`
+ * 
  * @module
  */
 

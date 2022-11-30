@@ -3,7 +3,7 @@ import * as path from "https://deno.land/std@0.165.0/path/mod.ts";
 import * as  fs from "https://deno.land/std@0.165.0/fs/mod.ts";
 const src = 'C:\\0\\react-solid\\node_modules\\react-icons';
 
-const nextTag = '0.1.3';
+const nextTag = '0.1.4';
 
 // lioke original IconManifest
 interface Provider {
@@ -193,12 +193,13 @@ const packages: { [key: string]: Provider } = {
 };
 
 for await (const dirEntry of Deno.readDir(src)) {
-    if (dirEntry.isFile) {
-        continue;
-    }
+    if (dirEntry.isFile) continue;
     const { name } = dirEntry;
-    if (['io5', 'hi2'].includes(name)) // make colision
-        continue;
+    if (name === 'lib') continue; // lib is not a provider
+    if (name === 'io') continue; // collision io5
+    if (name === 'hi') continue; // collision hi2
+    const pkg = packages[name];
+    if (!pkg) throw Error(`no Licence for lib ${name}`)
     const esm = path.join(src, name, 'index.esm.js')
     let content = '';
     try {
@@ -212,93 +213,86 @@ for await (const dirEntry of Deno.readDir(src)) {
         content = content.replaceAll(new RegExp(`\s?"${att}"\s?:\s?`, 'g'), `${att}:`)
     content = content.replaceAll(/};(\s+)export/mg, '}$1export')
     content = content.replaceAll(/};(\s+)$/mg, '}$1')
+    const first = content.match(/export function ([\w]+)\(props/)![1];
+    // console.log(first);
     const dest = path.join(name, 'mod.ts')
-    const destReadme = path.join(name, 'README.md')
-
-    try {
-        await Deno.remove(destReadme);
-    } catch (_) { /* ignore */ }
-
     /**
      * DOC
      */
-
-    const pkg = packages[name];
-    let readme = ''
-    if (pkg) {
-        const libName = pkg.name.replace(/ Icons^/, '');
-        readme = `# ${libName} icons for deno / Preact\n\n`
-        readme += `**License** [${pkg.licence[0]}](${pkg.licence[1]})\n\n`
-        readme += `**Project** [${pkg.projectUrl}](${pkg.projectUrl})\n\n`
-        readme += `[See available icons here](https://react-icons.github.io/react-icons/icons?name=${name})\n\n`
-        readme += `## import_map.json\n\n`;
-        readme += `For a transparent usage:\n\n`;
-        readme += '```json\n';
-        readme += `{
+    const libName = pkg.name.replace(/ Icons^/, '');
+    let readme = `# ${libName} icons for deno / Preact\n\n`
+    readme += `**License** [${pkg.licence[0]}](${pkg.licence[1]})\n\n`
+    readme += `**Project** [${pkg.projectUrl}](${pkg.projectUrl})\n\n`
+    readme += `[See available icons here](https://react-icons.github.io/react-icons/icons?name=${name})\n\n`
+    readme += `## import_map.json\n\n`;
+    readme += `For a transparent usage:\n\n`;
+    readme += '```json\n';
+    readme += `{
   "imports": {
     "preact": "https://esm.sh/preact@10.11.3",
     "preact/": "https://esm.sh/preact@10.11.3/",
     "react-icons/${name}": "https://deno.land/x/react_icons@${nextTag}/${name}/mod.ts",
   }
 }`;
-        readme += '\n```';
-        readme += '\n@module';
+    readme += '\n```\n\n';
+    readme += `## Direct import sample\n\n`;
+    readme += '`import { ' + first + ' } from "https://deno.land/x/react_icons@' + nextTag + '/' + name + '/mod.ts"`\n\n';
+    readme += `## import_map import sample\n\n`;
+    readme += '`import { ' + first + ' } from "react-icons/' + name + '"`\n\n';
+    readme += '@module';
+    // convert README TO comment README
+    readme = '/**\n' + readme.split(/\r?\n/g).map((line) => ` * ${line}`).join('\n') + '\n */\n\n';
 
-        // convert README TO comment README
-        readme = '/**\n' + readme.split(/\r?\n/g).map((line) => ` * ${line}`).join('\n') + '\n */\n\n';
+    /**
+     * code reduction:
+     */
+    let shorted = '';
+    const short = {
+        'attr': ['{viewBox:"0 0 24 24"}',
+            '{viewBox:"0 0 24 24",fill:"none"}',
+            '{viewBox:"0 0 1024 1024"}',
+            '{fill:"currentColor",viewBox:"0 0 16 16"}',
+            '{version:"1.1",viewBox:"0 0 32 32"}',
+            '{version:"1",viewBox:"0 0 48 48",enableBackground:"new 0 0 48 48"}',
+            '{version:"1.1",viewBox:"0 0 16 16"}',
+            '{viewBox:"0 0 24 24",strokeWidth:"2",stroke:"currentColor",fill:"none",strokeLinecap:"round",strokeLinejoin:"round"}', // tb
+            '{viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:"2",strokeLinecap:"round",strokeLinejoin:"round"}', // fi
+            '{version:"1.2",baseProfile:"tiny",viewBox:"0 0 24 24"}',
+            '{version:"1.1",id:"Layer_1",x:"0px",y:"0px",viewBox:"0 0 30 30",style:"enable-background:new 0 0 30 30;"}',
+            '{viewBox:"0 0 16 16",fill:"currentColor"}',
+            '{"role":"img",viewBox:"0 0 24 24"}',
+            '{version:"1.1",viewBox:"0 0 17 17"}',
+            '{viewBox:"0 0 512 512"}',
+            '{viewBox:"0 0 20 20",fill:"currentColor"}',
+            '{viewBox:"0 0 10 16"}',
+        ],
+        'tag': ['"path"'],
+        'fill': ['"currentColor"', '"none"'],
+        'stroke': ['"none"']
+        // 'stroke': ['"#000"', '"none"']
+    }; // tag:"path"
 
+    if (name === 'gr') {
+        // remove all stroke to fix dark mode usage
+        content = content.replaceAll(/,stroke:"[^"]+"/g, '');
+    }
 
-        /**
-         * code reduction:
-         */
-        let shorted = '';
-        const short = {
-            'attr': ['{viewBox:"0 0 24 24"}',
-                '{viewBox:"0 0 24 24",fill:"none"}',
-                '{viewBox:"0 0 1024 1024"}',
-                '{fill:"currentColor",viewBox:"0 0 16 16"}',
-                '{version:"1.1",viewBox:"0 0 32 32"}',
-                '{version:"1",viewBox:"0 0 48 48",enableBackground:"new 0 0 48 48"}',
-                '{version:"1.1",viewBox:"0 0 16 16"}',
-                '{viewBox:"0 0 24 24",strokeWidth:"2",stroke:"currentColor",fill:"none",strokeLinecap:"round",strokeLinejoin:"round"}', // tb
-                '{viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:"2",strokeLinecap:"round",strokeLinejoin:"round"}', // fi
-                '{version:"1.2",baseProfile:"tiny",viewBox:"0 0 24 24"}',
-                '{version:"1.1",id:"Layer_1",x:"0px",y:"0px",viewBox:"0 0 30 30",style:"enable-background:new 0 0 30 30;"}',
-                '{viewBox:"0 0 16 16",fill:"currentColor"}',
-                '{"role":"img",viewBox:"0 0 24 24"}',
-                '{version:"1.1",viewBox:"0 0 17 17"}',
-                '{viewBox:"0 0 512 512"}',
-                '{viewBox:"0 0 20 20",fill:"currentColor"}',
-                '{viewBox:"0 0 10 16"}',
-            ],
-            'tag': ['"path"'],
-            'fill': ['"currentColor"', '"none"'],
-            'stroke': ['"none"']
-            // 'stroke': ['"#000"', '"none"']
-        }; // tag:"path"
-
-        if (name === 'gr') {
-            // remove all stroke to fix dark mode usage
-            content = content.replaceAll(/,stroke:"[^"]+"/g, '');
-        }
-
-        for (const [commonKey, commonAtts] of Object.entries(short)) {
-            for (const commonAtt of commonAtts) {
-                if (content.includes(`${commonKey}:${commonAtt}`)) {
-                    content = content.replaceAll(`${commonKey}:${commonAtt}`, commonKey);
-                    content = `const ${commonKey}=${commonAtt}\n${content}`;
-                    shorted += commonAtt + " ";
-                    break;
-                }
+    for (const [commonKey, commonAtts] of Object.entries(short)) {
+        for (const commonAtt of commonAtts) {
+            if (content.includes(`${commonKey}:${commonAtt}`)) {
+                content = content.replaceAll(`${commonKey}:${commonAtt}`, commonKey);
+                content = `const ${commonKey}=${commonAtt}\n${content}`;
+                shorted += commonAtt + " ";
+                break;
             }
         }
-
-        console.log(`generating ${dest} shorted:${shorted}`);
-        await fs.ensureDir(name)
-
-        const licenceHeader = `// Copyright ${pkg.since}-2022 the ${pkg.name} authors. All rights reserved. ${pkg.licence[0]} (${pkg.licence[1]}).\n`
-        await Deno.writeTextFile(dest, licenceHeader + readme + content)
     }
+
+    console.log(`generating ${dest} shorted:${shorted}`);
+    await fs.ensureDir(name)
+
+    const licenceHeader = `// Copyright ${pkg.since}-2022 the ${pkg.name} authors. All rights reserved. ${pkg.licence[0]} (${pkg.licence[1]}).\n`
+    await Deno.writeTextFile(dest, licenceHeader + readme + content)
 
     /**
      * TODO Regen the main mod.ts
