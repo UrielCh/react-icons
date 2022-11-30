@@ -17,14 +17,14 @@
  *   "imports": {
  *     "preact": "https://esm.sh/preact@10.11.3",
  *     "preact/": "https://esm.sh/preact@10.11.3/",
- *     "react-icons/tb": "https://deno.land/x/react_icons@0.2.0/tb/mod.ts",
+ *     "react-icons/tb": "https://deno.land/x/react_icons@0.2.1/tb/mod.ts",
  *   }
  * }
  * ```
  * 
  * ## Direct import sample
  * 
- * `import { Tb2Fa } from "https://deno.land/x/react_icons@0.2.0/tb/mod.ts"`
+ * `import { Tb2Fa } from "https://deno.land/x/react_icons@0.2.1/tb/mod.ts"`
  * 
  * ## import_map import sample
  * 

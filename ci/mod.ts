@@ -17,14 +17,14 @@
  *   "imports": {
  *     "preact": "https://esm.sh/preact@10.11.3",
  *     "preact/": "https://esm.sh/preact@10.11.3/",
- *     "react-icons/ci": "https://deno.land/x/react_icons@0.2.0/ci/mod.ts",
+ *     "react-icons/ci": "https://deno.land/x/react_icons@0.2.1/ci/mod.ts",
  *   }
  * }
  * ```
  * 
  * ## Direct import sample
  * 
- * `import { CiAirportSign1 } from "https://deno.land/x/react_icons@0.2.0/ci/mod.ts"`
+ * `import { CiAirportSign1 } from "https://deno.land/x/react_icons@0.2.1/ci/mod.ts"`
  * 
  * ## import_map import sample
  * 

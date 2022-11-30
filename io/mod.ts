@@ -17,14 +17,14 @@
  *   "imports": {
  *     "preact": "https://esm.sh/preact@10.11.3",
  *     "preact/": "https://esm.sh/preact@10.11.3/",
- *     "react-icons/io": "https://deno.land/x/react_icons@0.2.0/io/mod.ts",
+ *     "react-icons/io": "https://deno.land/x/react_icons@0.2.1/io/mod.ts",
  *   }
  * }
  * ```
  * 
  * ## Direct import sample
  * 
- * `import { IoIosAddCircleOutline } from "https://deno.land/x/react_icons@0.2.0/io/mod.ts"`
+ * `import { IoIosAddCircleOutline } from "https://deno.land/x/react_icons@0.2.1/io/mod.ts"`
  * 
  * ## import_map import sample
  * 

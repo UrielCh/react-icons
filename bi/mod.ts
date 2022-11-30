@@ -17,14 +17,14 @@
  *   "imports": {
  *     "preact": "https://esm.sh/preact@10.11.3",
  *     "preact/": "https://esm.sh/preact@10.11.3/",
- *     "react-icons/bi": "https://deno.land/x/react_icons@0.2.0/bi/mod.ts",
+ *     "react-icons/bi": "https://deno.land/x/react_icons@0.2.1/bi/mod.ts",
  *   }
  * }
  * ```
  * 
  * ## Direct import sample
  * 
- * `import { BiAbacus } from "https://deno.land/x/react_icons@0.2.0/bi/mod.ts"`
+ * `import { BiAbacus } from "https://deno.land/x/react_icons@0.2.1/bi/mod.ts"`
  * 
  * ## import_map import sample
  * 

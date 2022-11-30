@@ -17,14 +17,14 @@
  *   "imports": {
  *     "preact": "https://esm.sh/preact@10.11.3",
  *     "preact/": "https://esm.sh/preact@10.11.3/",
- *     "react-icons/ti": "https://deno.land/x/react_icons@0.2.0/ti/mod.ts",
+ *     "react-icons/ti": "https://deno.land/x/react_icons@0.2.1/ti/mod.ts",
  *   }
  * }
  * ```
  * 
  * ## Direct import sample
  * 
- * `import { TiAdjustBrightness } from "https://deno.land/x/react_icons@0.2.0/ti/mod.ts"`
+ * `import { TiAdjustBrightness } from "https://deno.land/x/react_icons@0.2.1/ti/mod.ts"`
  * 
  * ## import_map import sample
  * 

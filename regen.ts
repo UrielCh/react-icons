@@ -1,11 +1,11 @@
 // deno run --allow-read --allow-write .\regen.ts
 // du --exclude .git --exclude node_modules --bytes .
-// Maximum allowed size is 20971520 bytes,  20480 Kbytes
+// Maximum allowed size is 20971520 bytes, 20480 Kbytes
 import * as path from "https://deno.land/std@0.165.0/path/mod.ts";
 import * as  fs from "https://deno.land/std@0.165.0/fs/mod.ts";
 const src = 'node_modules/react-icons';
 
-const nextTag = '0.2.0';
+const nextTag = '0.2.1';
 
 // lioke original IconManifest
 interface Provider {
@@ -278,14 +278,11 @@ for await (const dirEntry of Deno.readDir(src)) {
         'tag': ['"path"'],
         'fill': ['"currentColor"', '"none"'],
         'stroke': ['"none"']
-        // 'stroke': ['"#000"', '"none"']
-    }; // tag:"path"
-
+    };
     if (name === 'gr') {
         // remove all stroke to fix dark mode usage
         content = content.replaceAll(/,stroke:"[^"]+"/g, '');
     }
-
     for (const [commonKey, commonAtts] of Object.entries(short)) {
         for (const commonAtt of commonAtts) {
             if (content.includes(`${commonKey}:${commonAtt}`)) {
@@ -296,14 +293,9 @@ for await (const dirEntry of Deno.readDir(src)) {
             }
         }
     }
-
     console.log(`generating ${dest} shorted:${shorted}`);
     await fs.ensureDir(name)
-
     const licenceHeader = `// Copyright ${pkg.since}-2022 the ${pkg.name} authors. All rights reserved. ${pkg.licence[0]} (${pkg.licence[1]}).\n`
     await Deno.writeTextFile(dest, licenceHeader + readme + content)
-
-    /**
-     * TODO Regen the main mod.ts
-     */
+    // TODO Regen the main mod.ts
 }
