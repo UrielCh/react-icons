@@ -1,5 +1,6 @@
 // deno run --allow-read --allow-write .\regen.ts
-// du --exclude .git  --exclude node_modules .
+// du --exclude .git --exclude node_modules --bytes .
+// Maximum allowed size is 20971520 bytes,  20480 Kbytes
 import * as path from "https://deno.land/std@0.165.0/path/mod.ts";
 import * as  fs from "https://deno.land/std@0.165.0/fs/mod.ts";
 const src = 'node_modules/react-icons';
@@ -205,6 +206,7 @@ for await (const dirEntry of Deno.readDir(src)) {
     if (name === 'lib') continue; // lib is not a provider
     if (name === 'io5') continue; // collision io io5 is too large
     if (name === 'hi') continue; // collision hi2
+    if (name === 'hi2') continue; // collision hi too large
     const pkg = packages[name];
     if (!pkg) throw Error(`no Licence for lib ${name}`)
     const esm = path.join(src, name, 'index.esm.js')

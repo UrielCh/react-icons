@@ -34,7 +34,6 @@
  *     "react-icons/wi":  "https://deno.land/x/react_icons@0.2.0/wi/mod.ts",
  *     "react-icons/cg":  "https://deno.land/x/react_icons@0.2.0/cg/mod.ts",
  *     "react-icons/io":  "https://deno.land/x/react_icons@0.2.0/io/mod.ts",
- *     "react-icons/hi2": "https://deno.land/x/react_icons@0.2.0/hi2/mod.ts",
  *     "react-icons/tfi": "https://deno.land/x/react_icons@0.2.0/tfi/mod.ts",
  *     "react-icons/vsc": "https://deno.land/x/react_icons@0.2.0/vsc/mod.ts"
  *   }
@@ -104,7 +103,7 @@ export * from './bi/mod.ts';
 export * from './cg/mod.ts';
 export * from './vsc/mod.ts';
 // export * from './hi/mod.ts';
-export * from './hi2/mod.ts';
+// export * from './hi2/mod.ts';
 // export * from './io5/mod.ts';
 export * from './io/mod.ts';
 export * from './tb/mod.ts';
