@@ -137,6 +137,12 @@ const packages: { [key: string]: Provider } = {
         projectUrl: 'https://github.com/Remix-Design/RemixIcon',
         since: "2019",
     },
+    rx: {
+        name: 'Radix Icons',
+        licence: ['MIT', 'https://github.com/radix-ui/icons/blob/master/LICENSE'],
+        projectUrl: 'https://icons.radix-ui.com',
+        since: "2022",
+    },
     si: {
         name: 'Simple Icons',
         licence: ['CC0 1.0 Universal', 'https://creativecommons.org/publicdomain/zero/1.0/'],
