@@ -17,14 +17,14 @@
  *   "imports": {
  *     "preact": "https://esm.sh/preact@10.11.3",
  *     "preact/": "https://esm.sh/preact@10.11.3/",
- *     "react-icons/hi2": "https://deno.land/x/react_icons@0.1.4/hi2/mod.ts",
+ *     "react-icons/hi2": "https://deno.land/x/react_icons@0.2.0/hi2/mod.ts",
  *   }
  * }
  * ```
  * 
  * ## Direct import sample
  * 
- * `import { HiAcademicCap } from "https://deno.land/x/react_icons@0.1.4/hi2/mod.ts"`
+ * `import { HiAcademicCap } from "https://deno.land/x/react_icons@0.2.0/hi2/mod.ts"`
  * 
  * ## import_map import sample
  * 

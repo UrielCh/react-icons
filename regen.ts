@@ -3,7 +3,7 @@ import * as path from "https://deno.land/std@0.165.0/path/mod.ts";
 import * as  fs from "https://deno.land/std@0.165.0/fs/mod.ts";
 const src = 'C:\\0\\react-solid\\node_modules\\react-icons';
 
-const nextTag = '0.1.4';
+const nextTag = '0.2.0';
 
 // lioke original IconManifest
 interface Provider {

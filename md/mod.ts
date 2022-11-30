@@ -17,14 +17,14 @@
  *   "imports": {
  *     "preact": "https://esm.sh/preact@10.11.3",
  *     "preact/": "https://esm.sh/preact@10.11.3/",
- *     "react-icons/md": "https://deno.land/x/react_icons@0.1.4/md/mod.ts",
+ *     "react-icons/md": "https://deno.land/x/react_icons@0.2.0/md/mod.ts",
  *   }
  * }
  * ```
  * 
  * ## Direct import sample
  * 
- * `import { Md3DRotation } from "https://deno.land/x/react_icons@0.1.4/md/mod.ts"`
+ * `import { Md3DRotation } from "https://deno.land/x/react_icons@0.2.0/md/mod.ts"`
  * 
  * ## import_map import sample
  * 
