@@ -1,11 +1,17 @@
 // Copyright 2015-2022 the Ionicons 4 authors. All rights reserved. MIT (https://github.com/ionic-team/ionicons/blob/master/LICENSE).
 /**
  * # Ionicons 4 icons for deno / Preact
+ * 
  * **License** [MIT](https://github.com/ionic-team/ionicons/blob/master/LICENSE)
+ * 
  * **Project** [https://ionicons.com/](https://ionicons.com/)
+ * 
  * [See available icons here](https://react-icons.github.io/react-icons/icons?name=io)
+ * 
  * ## import_map.json
+ * 
  * For a transparent usage:
+ * 
  * ```json
  * {
  *   "imports": {

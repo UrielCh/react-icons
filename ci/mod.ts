@@ -1,11 +1,17 @@
 // Copyright 2022-2022 the Circum Icons authors. All rights reserved. MPL-2.0 license (https://github.com/Klarr-Agency/Circum-Icons/blob/main/LICENSE).
 /**
  * # Circum Icons icons for deno / Preact
+ * 
  * **License** [MPL-2.0 license](https://github.com/Klarr-Agency/Circum-Icons/blob/main/LICENSE)
+ * 
  * **Project** [https://circumicons.com/](https://circumicons.com/)
+ * 
  * [See available icons here](https://react-icons.github.io/react-icons/icons?name=ci)
+ * 
  * ## import_map.json
+ * 
  * For a transparent usage:
+ * 
  * ```json
  * {
  *   "imports": {

@@ -1,11 +1,17 @@
 // Copyright 2019-2022 the VS Code Icons authors. All rights reserved. CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/).
 /**
  * # VS Code Icons icons for deno / Preact
+ * 
  * **License** [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
+ * 
  * **Project** [https://github.com/microsoft/vscode-codicons](https://github.com/microsoft/vscode-codicons)
+ * 
  * [See available icons here](https://react-icons.github.io/react-icons/icons?name=vsc)
+ * 
  * ## import_map.json
+ * 
  * For a transparent usage:
+ * 
  * ```json
  * {
  *   "imports": {

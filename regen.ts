@@ -242,10 +242,10 @@ for await (const dirEntry of Deno.readDir(src)) {
   }
 }`;
         readme += '\n```';
-        readme += '\n\n@module';
+        readme += '\n@module';
 
         // convert README TO comment README
-        readme = '/**\n' + readme.split(/[\r\n]+/g).map((line) => ` * ${line}`).join('\n') + '\n */\n\n';
+        readme = '/**\n' + readme.split(/\r?\n/g).map((line) => ` * ${line}`).join('\n') + '\n */\n\n';
 
 
         /**

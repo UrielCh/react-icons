@@ -1,11 +1,17 @@
 // Copyright 2020-2022 the Heroicons authors. All rights reserved. MIT (https://opensource.org/licenses/MIT).
 /**
  * # Heroicons icons for deno / Preact
+ * 
  * **License** [MIT](https://opensource.org/licenses/MIT)
+ * 
  * **Project** [https://github.com/tailwindlabs/heroicons](https://github.com/tailwindlabs/heroicons)
+ * 
  * [See available icons here](https://react-icons.github.io/react-icons/icons?name=hi)
+ * 
  * ## import_map.json
+ * 
  * For a transparent usage:
+ * 
  * ```json
  * {
  *   "imports": {

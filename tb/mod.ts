@@ -1,11 +1,17 @@
 // Copyright 2020-2022 the Tabler Icons authors. All rights reserved. MIT (https://opensource.org/licenses/MIT).
 /**
  * # Tabler Icons icons for deno / Preact
+ * 
  * **License** [MIT](https://opensource.org/licenses/MIT)
+ * 
  * **Project** [https://github.com/tabler/tabler-icons](https://github.com/tabler/tabler-icons)
+ * 
  * [See available icons here](https://react-icons.github.io/react-icons/icons?name=tb)
+ * 
  * ## import_map.json
+ * 
  * For a transparent usage:
+ * 
  * ```json
  * {
  *   "imports": {
