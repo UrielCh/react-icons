@@ -273,8 +273,14 @@ for await (const dirEntry of Deno.readDir(src)) {
             ],
             'tag': ['"path"'],
             'fill': ['"currentColor"', '"none"'],
-            'stroke': ['"#000"', '"none"']
+            'stroke': ['"none"']
+            // 'stroke': ['"#000"', '"none"']
         }; // tag:"path"
+
+        if (name === 'gr') {
+            // remove all stroke to fix dark mode usage
+            content = content.replaceAll(/,stroke:"[^"]+"/g, '');
+        }
 
         for (const [commonKey, commonAtts] of Object.entries(short)) {
             for (const commonAtt of commonAtts) {
