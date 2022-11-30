@@ -23,17 +23,18 @@
  *     "react-icons/gi":  "https://deno.land/x/react_icons@0.2.0/gi/mod.ts",
  *     "react-icons/go":  "https://deno.land/x/react_icons@0.2.0/go/mod.ts",
  *     "react-icons/gr":  "https://deno.land/x/react_icons@0.2.0/gr/mod.ts",
- *     "react-icons/hi":  "https://deno.land/x/react_icons@0.2.0/hi/mod.ts",
  *     "react-icons/im":  "https://deno.land/x/react_icons@0.2.0/im/mod.ts",
- *     "react-icons/io":  "https://deno.land/x/react_icons@0.2.0/io/mod.ts",
  *     "react-icons/md":  "https://deno.land/x/react_icons@0.2.0/md/mod.ts",
  *     "react-icons/ri":  "https://deno.land/x/react_icons@0.2.0/ri/mod.ts",
+ *     "react-icons/rx":  "https://deno.land/x/react_icons@0.2.0/rx/mod.ts",
  *     "react-icons/si":  "https://deno.land/x/react_icons@0.2.0/si/mod.ts",
  *     "react-icons/sl":  "https://deno.land/x/react_icons@0.2.0/sl/mod.ts",
  *     "react-icons/tb":  "https://deno.land/x/react_icons@0.2.0/tb/mod.ts",
  *     "react-icons/ti":  "https://deno.land/x/react_icons@0.2.0/ti/mod.ts",
  *     "react-icons/wi":  "https://deno.land/x/react_icons@0.2.0/wi/mod.ts",
  *     "react-icons/cg":  "https://deno.land/x/react_icons@0.2.0/cg/mod.ts",
+ *     "react-icons/io":  "https://deno.land/x/react_icons@0.2.0/io/mod.ts",
+ *     "react-icons/hi2": "https://deno.land/x/react_icons@0.2.0/hi2/mod.ts",
  *     "react-icons/tfi": "https://deno.land/x/react_icons@0.2.0/tfi/mod.ts",
  *     "react-icons/vsc": "https://deno.land/x/react_icons@0.2.0/vsc/mod.ts"
  *   }
@@ -83,8 +84,6 @@
 // THIS FILE IS AUTO GENERATED
 export * from './ci/mod.ts';
 export * from './fa/mod.ts';
-export * from './io5/mod.ts';
-// export * from './io/mod.ts';
 export * from './md/mod.ts';
 export * from './ti/mod.ts';
 export * from './go/mod.ts';
@@ -95,15 +94,18 @@ export * from './di/mod.ts';
 export * from './ai/mod.ts';
 export * from './bs/mod.ts';
 export * from './ri/mod.ts';
+export * from './rx/mod.ts';
 export * from './fc/mod.ts';
 export * from './gr/mod.ts';
-export * from './hi2/mod.ts';
-// export * from './hi/mod.ts';
 export * from './si/mod.ts';
 export * from './sl/mod.ts';
 export * from './im/mod.ts';
 export * from './bi/mod.ts';
 export * from './cg/mod.ts';
 export * from './vsc/mod.ts';
+// export * from './hi/mod.ts';
+export * from './hi2/mod.ts';
+// export * from './io5/mod.ts';
+export * from './io/mod.ts';
 export * from './tb/mod.ts';
 export * from './tfi/mod.ts';
