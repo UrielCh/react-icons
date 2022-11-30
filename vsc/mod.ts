@@ -17,14 +17,14 @@
  *   "imports": {
  *     "preact": "https://esm.sh/preact@10.11.3",
  *     "preact/": "https://esm.sh/preact@10.11.3/",
- *     "react-icons/vsc": "https://deno.land/x/react_icons@0.2.1/vsc/mod.ts",
+ *     "react-icons/vsc": "https://deno.land/x/react_icons@0.2.2/vsc/mod.ts",
  *   }
  * }
  * ```
  * 
  * ## Direct import sample
  * 
- * `import { VscAccount } from "https://deno.land/x/react_icons@0.2.1/vsc/mod.ts"`
+ * `import { VscAccount } from "https://deno.land/x/react_icons@0.2.2/vsc/mod.ts"`
  * 
  * ## import_map import sample
  * 

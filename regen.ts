@@ -4,8 +4,7 @@
 import * as path from "https://deno.land/std@0.165.0/path/mod.ts";
 import * as  fs from "https://deno.land/std@0.165.0/fs/mod.ts";
 const src = 'node_modules/react-icons';
-
-const nextTag = '0.2.1';
+const nextTag = '0.2.2';
 
 // lioke original IconManifest
 interface Provider {
@@ -205,6 +204,7 @@ for await (const dirEntry of Deno.readDir(src)) {
     const { name } = dirEntry;
     if (name === 'lib') continue; // lib is not a provider
     if (name === 'io5') continue; // collision io io5 is too large
+    if (name === 'io') continue;
     if (name === 'hi') continue; // collision hi2
     if (name === 'hi2') continue; // collision hi too large
     const pkg = packages[name];

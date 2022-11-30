@@ -17,14 +17,14 @@
  *   "imports": {
  *     "preact": "https://esm.sh/preact@10.11.3",
  *     "preact/": "https://esm.sh/preact@10.11.3/",
- *     "react-icons/tfi": "https://deno.land/x/react_icons@0.2.1/tfi/mod.ts",
+ *     "react-icons/tfi": "https://deno.land/x/react_icons@0.2.2/tfi/mod.ts",
  *   }
  * }
  * ```
  * 
  * ## Direct import sample
  * 
- * `import { TfiAgenda } from "https://deno.land/x/react_icons@0.2.1/tfi/mod.ts"`
+ * `import { TfiAgenda } from "https://deno.land/x/react_icons@0.2.2/tfi/mod.ts"`
  * 
  * ## import_map import sample
  * 

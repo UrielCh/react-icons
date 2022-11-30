@@ -17,14 +17,14 @@
  *   "imports": {
  *     "preact": "https://esm.sh/preact@10.11.3",
  *     "preact/": "https://esm.sh/preact@10.11.3/",
- *     "react-icons/go": "https://deno.land/x/react_icons@0.2.1/go/mod.ts",
+ *     "react-icons/go": "https://deno.land/x/react_icons@0.2.2/go/mod.ts",
  *   }
  * }
  * ```
  * 
  * ## Direct import sample
  * 
- * `import { GoAlert } from "https://deno.land/x/react_icons@0.2.1/go/mod.ts"`
+ * `import { GoAlert } from "https://deno.land/x/react_icons@0.2.2/go/mod.ts"`
  * 
  * ## import_map import sample
  * 
