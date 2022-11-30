@@ -207,7 +207,7 @@ for await (const dirEntry of Deno.readDir(src)) {
         continue
     }
     content = content.replace(`import { GenIcon } from '../lib';`, `import { GenIcon, IconBaseProps } from "../lib/mod.tsx";`)
-    content = content.replaceAll(`(props) {`, `(props: IconBaseProps) {`)
+    content = content.replaceAll(` (props) {`, `(props: IconBaseProps) {`)
     for (const att of ['tag', 'viewBox', 'attr', 'child', 'd', 'id', 'dataName', 'strokeLinecap', 'strokeLinejoin', 'strokeWidth', 'fill', 'ariaHidden', 'fillRule', 'version', 'x', 'y', 'style', 'baseProfile', 'enableBackground', 'stroke'])
         content = content.replaceAll(new RegExp(`\s?"${att}"\s?:\s?`, 'g'), `${att}:`)
     content = content.replaceAll(/};(\s+)export/mg, '}$1export')
