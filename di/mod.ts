@@ -17,14 +17,14 @@
  *   "imports": {
  *     "preact": "https://esm.sh/preact@10.11.3",
  *     "preact/": "https://esm.sh/preact@10.11.3/",
- *     "react-icons/di": "https://deno.land/x/react_icons@0.2.2/di/mod.ts",
+ *     "react-icons/di": "https://deno.land/x/react_icons@0.2.3/di/mod.ts",
  *   }
  * }
  * ```
  * 
  * ## Direct import sample
  * 
- * `import { DiAndroid } from "https://deno.land/x/react_icons@0.2.2/di/mod.ts"`
+ * `import { DiAndroid } from "https://deno.land/x/react_icons@0.2.3/di/mod.ts"`
  * 
  * ## import_map import sample
  * 

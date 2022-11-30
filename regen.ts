@@ -4,7 +4,7 @@
 import * as path from "https://deno.land/std@0.165.0/path/mod.ts";
 import * as  fs from "https://deno.land/std@0.165.0/fs/mod.ts";
 const src = 'node_modules/react-icons';
-const nextTag = '0.2.2';
+const nextTag = '0.2.3';
 
 // lioke original IconManifest
 interface Provider {
@@ -282,6 +282,8 @@ for await (const dirEntry of Deno.readDir(src)) {
     if (name === 'gr') {
         // remove all stroke to fix dark mode usage
         content = content.replaceAll(/,stroke:"[^"]+"/g, '');
+        content = content.replaceAll(/{stroke:"[^"]+",/g, '{');
+
     }
     for (const [commonKey, commonAtts] of Object.entries(short)) {
         for (const commonAtt of commonAtts) {
