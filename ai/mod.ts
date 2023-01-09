@@ -17,14 +17,14 @@
  *   "imports": {
  *     "preact": "https://esm.sh/preact@10.11.3",
  *     "preact/": "https://esm.sh/preact@10.11.3/",
- *     "react-icons/ai": "https://deno.land/x/react_icons@0.2.3/ai/mod.ts",
+ *     "react-icons/ai": "https://deno.land/x/react_icons@0.2.4/ai/mod.ts",
  *   }
  * }
  * ```
  * 
  * ## Direct import sample
  * 
- * `import { AiFillAccountBook } from "https://deno.land/x/react_icons@0.2.3/ai/mod.ts"`
+ * `import { AiFillAccountBook } from "https://deno.land/x/react_icons@0.2.4/ai/mod.ts"`
  * 
  * ## import_map import sample
  * 

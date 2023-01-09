@@ -4,7 +4,7 @@
 import * as path from "https://deno.land/std@0.165.0/path/mod.ts";
 import * as  fs from "https://deno.land/std@0.165.0/fs/mod.ts";
 const src = 'node_modules/react-icons';
-const nextTag = '0.2.3';
+const nextTag = '0.2.4';
 
 // lioke original IconManifest
 interface Provider {
@@ -203,10 +203,10 @@ for await (const dirEntry of Deno.readDir(src)) {
     if (dirEntry.isFile) continue;
     const { name } = dirEntry;
     if (name === 'lib') continue; // lib is not a provider
-    if (name === 'io5') continue; // collision io io5 is too large
-    if (name === 'io') continue;
-    if (name === 'hi') continue; // collision hi2
-    if (name === 'hi2') continue; // collision hi too large
+    // if (name === 'io5') continue; // collision io io5 is too large
+    // if (name === 'io') continue;
+    // if (name === 'hi') continue; // collision hi2
+    // if (name === 'hi2') continue; // collision hi too large
     const pkg = packages[name];
     if (!pkg) throw Error(`no Licence for lib ${name}`)
     const esm = path.join(src, name, 'index.esm.js')

@@ -17,14 +17,14 @@
  *   "imports": {
  *     "preact": "https://esm.sh/preact@10.11.3",
  *     "preact/": "https://esm.sh/preact@10.11.3/",
- *     "react-icons/fi": "https://deno.land/x/react_icons@0.2.3/fi/mod.ts",
+ *     "react-icons/fi": "https://deno.land/x/react_icons@0.2.4/fi/mod.ts",
  *   }
  * }
  * ```
  * 
  * ## Direct import sample
  * 
- * `import { FiActivity } from "https://deno.land/x/react_icons@0.2.3/fi/mod.ts"`
+ * `import { FiActivity } from "https://deno.land/x/react_icons@0.2.4/fi/mod.ts"`
  * 
  * ## import_map import sample
  * 

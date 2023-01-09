@@ -3,5 +3,8 @@
   "compilerOptions": {
     "jsx": "react-jsx",
     "jsxImportSource": "preact"
+  },
+  "tasks": {
+    "regen": "deno run --allow-read=. --allow-write=. regen.ts"
   }
 }
