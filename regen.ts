@@ -17,6 +17,13 @@ interface Provider {
     contributors?: string[],
 }
 
+const EXTRA_COMPRESSION = true;
+const WRITE_BIG_MOTS = true;
+const NL = '\n';
+const BQ = '`';
+const BQ3 = '```';
+const NL2 = `${NL}${NL}`;
+
 const packages: { [key: string]: Provider } = {
     ai: {
         name: 'Ant Design Icons',
@@ -216,7 +223,7 @@ for await (const dirEntry of Deno.readDir(src)) {
     } catch (_) {
         continue
     }
-    content = content.replace(`import { GenIcon } from '../lib';`, `import { GenIcon, IconBaseProps } from "../lib/mod.tsx";`)
+    content = content.replace(`import { GenIcon } from '../lib';`, `import { GenIcon, type IconBaseProps } from "../lib/mod.tsx";`)
     content = content.replaceAll(` (props) {`, `(props: IconBaseProps) {`)
     for (const att of ['tag', 'viewBox', 'attr', 'child', 'd', 'id', 'dataName', 'strokeLinecap', 'strokeLinejoin', 'strokeWidth', 'fill', 'ariaHidden', 'fillRule', 'version', 'x', 'y', 'style', 'baseProfile', 'enableBackground', 'stroke'])
         content = content.replaceAll(new RegExp(`\s?"${att}"\s?:\s?`, 'g'), `${att}:`)
@@ -229,13 +236,13 @@ for await (const dirEntry of Deno.readDir(src)) {
      * DOC
      */
     const libName = pkg.name.replace(/ Icons^/, '');
-    let readme = `# ${libName} icons for deno / Preact\n\n`
-    readme += `**License** [${pkg.licence[0]}](${pkg.licence[1]})\n\n`
-    readme += `**Project** [${pkg.projectUrl}](${pkg.projectUrl})\n\n`
-    readme += `[See available icons here](https://react-icons.github.io/react-icons/icons?name=${name})\n\n`
-    readme += `## import_map.json\n\n`;
-    readme += `For a transparent usage:\n\n`;
-    readme += '```json\n';
+    let readme = `# ${libName} icons for deno / Preact${NL2}`
+    readme += `**License** [${pkg.licence[0]}](${pkg.licence[1]})${NL2}`
+    readme += `**Project** [${pkg.projectUrl}](${pkg.projectUrl})${NL2}`
+    readme += `[See available icons here](https://react-icons.github.io/react-icons/icons?name=${name})${NL2}`
+    readme += `## import_map.json${NL2}`;
+    readme += `For a transparent usage:${NL2}`;
+    readme += `${BQ3}json${NL}`;
     readme += `{
   "imports": {
     "preact": "https://esm.sh/preact@10.11.3",
@@ -243,61 +250,79 @@ for await (const dirEntry of Deno.readDir(src)) {
     "react-icons/${name}": "https://deno.land/x/react_icons@${nextTag}/${name}/mod.ts",
   }
 }`;
-    readme += '\n```\n\n';
-    readme += `## Direct import sample\n\n`;
-    readme += '`import { ' + first + ' } from "https://deno.land/x/react_icons@' + nextTag + '/' + name + '/mod.ts"`\n\n';
-    readme += `## import_map import sample\n\n`;
-    readme += '`import { ' + first + ' } from "react-icons/' + name + '"`\n\n';
+    readme += `${NL}${BQ3}${NL2}`;
+    readme += `## Direct import sample${NL2}`;
+    readme += `${BQ}import { ${first} } from "https://deno.land/x/react_icons@${nextTag}/${name}/mod.ts"${BQ}${NL2}`;
+    readme += `## import_map import sample${NL2}`;
+    readme += `${BQ}import { ${first} } from "react-icons/${name}"${BQ}${NL2}`;
     readme += '@module';
     // convert README TO comment README
-    readme = '/**\n' + readme.split(/\r?\n/g).map((line) => ` * ${line}`).join('\n') + '\n */\n\n';
+    readme = `/**${NL}` + readme.split(/\r?\n/g).map((line) => ` * ${line}`).join(NL) + `${NL} */${NL2}`;
 
     /**
      * code reduction:
      */
-    let shorted = '';
-    const short = {
-        'attr': ['{viewBox:"0 0 24 24"}',
-            '{viewBox:"0 0 24 24",fill:"none"}',
-            '{viewBox:"0 0 1024 1024"}',
-            '{fill:"currentColor",viewBox:"0 0 16 16"}',
-            '{version:"1.1",viewBox:"0 0 32 32"}',
-            '{version:"1",viewBox:"0 0 48 48",enableBackground:"new 0 0 48 48"}',
-            '{version:"1.1",viewBox:"0 0 16 16"}',
-            '{viewBox:"0 0 24 24",strokeWidth:"2",stroke:"currentColor",fill:"none",strokeLinecap:"round",strokeLinejoin:"round"}', // tb
-            '{viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:"2",strokeLinecap:"round",strokeLinejoin:"round"}', // fi
-            '{version:"1.2",baseProfile:"tiny",viewBox:"0 0 24 24"}',
-            '{version:"1.1",id:"Layer_1",x:"0px",y:"0px",viewBox:"0 0 30 30",style:"enable-background:new 0 0 30 30;"}',
-            '{viewBox:"0 0 16 16",fill:"currentColor"}',
-            '{"role":"img",viewBox:"0 0 24 24"}',
-            '{version:"1.1",viewBox:"0 0 17 17"}',
-            '{viewBox:"0 0 512 512"}',
-            '{viewBox:"0 0 20 20",fill:"currentColor"}',
-            '{viewBox:"0 0 10 16"}',
-        ],
-        'tag': ['"path"'],
-        'fill': ['"currentColor"', '"none"'],
-        'stroke': ['"none"']
-    };
+    if (EXTRA_COMPRESSION) {
+        let shorted = '';
+        const short = {
+            'attr': ['{viewBox:"0 0 24 24"}',
+                '{viewBox:"0 0 24 24",fill:"none"}',
+                '{viewBox:"0 0 1024 1024"}',
+                '{fill:"currentColor",viewBox:"0 0 16 16"}',
+                '{version:"1.1",viewBox:"0 0 32 32"}',
+                '{version:"1",viewBox:"0 0 48 48",enableBackground:"new 0 0 48 48"}',
+                '{version:"1.1",viewBox:"0 0 16 16"}',
+                '{viewBox:"0 0 24 24",strokeWidth:"2",stroke:"currentColor",fill:"none",strokeLinecap:"round",strokeLinejoin:"round"}', // tb
+                '{viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:"2",strokeLinecap:"round",strokeLinejoin:"round"}', // fi
+                '{version:"1.2",baseProfile:"tiny",viewBox:"0 0 24 24"}',
+                '{version:"1.1",id:"Layer_1",x:"0px",y:"0px",viewBox:"0 0 30 30",style:"enable-background:new 0 0 30 30;"}',
+                '{viewBox:"0 0 16 16",fill:"currentColor"}',
+                '{"role":"img",viewBox:"0 0 24 24"}',
+                '{version:"1.1",viewBox:"0 0 17 17"}',
+                '{viewBox:"0 0 512 512"}',
+                '{viewBox:"0 0 20 20",fill:"currentColor"}',
+                '{viewBox:"0 0 10 16"}',
+            ],
+            'tag': ['"path"'],
+            'fill': ['"currentColor"', '"none"'],
+            'stroke': ['"none"']
+        };
+        // look for best compression tips
+        for (const [commonKey, commonAtts] of Object.entries(short)) {
+            for (const commonAtt of commonAtts) {
+                if (content.includes(`${commonKey}:${commonAtt}`)) {
+                    content = content.replaceAll(`${commonKey}:${commonAtt}`, commonKey);
+                    content = `const ${commonKey}=${commonAtt}${NL}${content}`;
+                    shorted += commonAtt + " ";
+                    break;
+                }
+            }
+        }
+        console.log(`generating ${dest} shorted:${shorted}`);
+    }
+
     if (name === 'gr') {
         // remove all stroke to fix dark mode usage
         content = content.replaceAll(/,stroke:"[^"]+"/g, '');
         content = content.replaceAll(/{stroke:"[^"]+",/g, '{');
 
     }
-    for (const [commonKey, commonAtts] of Object.entries(short)) {
-        for (const commonAtt of commonAtts) {
-            if (content.includes(`${commonKey}:${commonAtt}`)) {
-                content = content.replaceAll(`${commonKey}:${commonAtt}`, commonKey);
-                content = `const ${commonKey}=${commonAtt}\n${content}`;
-                shorted += commonAtt + " ";
-                break;
-            }
-        }
-    }
-    console.log(`generating ${dest} shorted:${shorted}`);
+
     await fs.ensureDir(name)
-    const licenceHeader = `// Copyright ${pkg.since}-2022 the ${pkg.name} authors. All rights reserved. ${pkg.licence[0]} (${pkg.licence[1]}).\n`
-    await Deno.writeTextFile(dest, licenceHeader + readme + content)
+    const licenceHeader = `// Copyright ${pkg.since}-2022 the ${pkg.name} authors. All rights reserved. ${pkg.licence[0]} (${pkg.licence[1]}).${NL}`
+    if (WRITE_BIG_MOTS) {
+        await Deno.writeTextFile(dest, licenceHeader + readme + content)
+    } else {
+        const blocks = content.matchAll(/export function ([^\(]+)\(props: IconBaseProps\) {[\r\n]+.+[\r\n]+}/g)
+        const all = [...blocks];
+        const subMod = [licenceHeader, readme];
+
+        for (const [ code, name ] of all) {
+            subMod.push(`export { ${name} } from './${name}.ts';${NL}`);
+        }
+        // const [ code, name ] = all[0]
+        //console.log(all[0][1])
+        await Deno.writeTextFile(dest, subMod.join(''))
+    }
     // TODO Regen the main mod.ts
 }
