@@ -223,7 +223,10 @@ for await (const dirEntry of Deno.readDir(src)) {
     } catch (_) {
         continue
     }
-    content = content.replace(`import { GenIcon } from '../lib';`, `import { GenIcon, type IconBaseProps } from "../lib/mod.tsx";`)
+
+    const mainImport = `import { GenIcon, type IconBaseProps } from "../lib/mod.tsx";`;
+
+    content = content.replace(`import { GenIcon } from '../lib';`, mainImport)
     content = content.replaceAll(` (props) {`, `(props: IconBaseProps) {`)
     for (const att of ['tag', 'viewBox', 'attr', 'child', 'd', 'id', 'dataName', 'strokeLinecap', 'strokeLinejoin', 'strokeWidth', 'fill', 'ariaHidden', 'fillRule', 'version', 'x', 'y', 'style', 'baseProfile', 'enableBackground', 'stroke'])
         content = content.replaceAll(new RegExp(`\s?"${att}"\s?:\s?`, 'g'), `${att}:`)
@@ -311,14 +314,26 @@ for await (const dirEntry of Deno.readDir(src)) {
     await fs.ensureDir(name)
     const licenceHeader = `// Copyright ${pkg.since}-2022 the ${pkg.name} authors. All rights reserved. ${pkg.licence[0]} (${pkg.licence[1]}).${NL}`
     if (WRITE_BIG_MOTS) {
+        for await (const file of fs.walk(name)) {
+            if (file.name === 'mod.ts')
+                continue;
+            if (!file.name.endsWith('ts'))
+                continue;
+            const fullpath =path.join(name, file.name)
+            console.log(`removing old ${fullpath}`);
+            await Deno.remove(fullpath)
+        }
         await Deno.writeTextFile(dest, licenceHeader + readme + content)
     } else {
         const blocks = content.matchAll(/export function ([^\(]+)\(props: IconBaseProps\) {[\r\n]+.+[\r\n]+}/g)
         const all = [...blocks];
         const subMod = [licenceHeader, readme];
 
-        for (const [ code, name ] of all) {
-            subMod.push(`export { ${name} } from './${name}.ts';${NL}`);
+        for (const [ code, icoName ] of all) {
+            const icoDest = path.join(name, `${icoName}.ts`)
+            console.log(`generating ${icoDest}`);
+            subMod.push(`export { ${icoName} } from './${icoName}.ts';${NL}`);
+            await Deno.writeTextFile(icoDest, mainImport + NL2 + code + NL)
         }
         // const [ code, name ] = all[0]
         //console.log(all[0][1])
