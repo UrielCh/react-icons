@@ -5,4 +5,4 @@
 /// <reference lib="deno.ns" />
 
 export * from "./iconBase.tsx";
-export * from "./iconContext.tsx";
+export * from "./iconContext.ts";

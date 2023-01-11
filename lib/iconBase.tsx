@@ -1,6 +1,6 @@
 import * as React from "preact";
 import { JSX } from "preact";
-import { DefaultContext, IconContext } from "./iconContext.tsx";
+import { DefaultContext, IconContext } from "./iconContext.ts";
 
 export interface IconTree {
   tag: string;

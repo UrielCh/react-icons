@@ -224,7 +224,7 @@ for await (const dirEntry of Deno.readDir(src)) {
         continue
     }
 
-    const mainImport = `import { GenIcon, type IconBaseProps } from "../lib/mod.tsx";`;
+    const mainImport = `import { GenIcon, type IconBaseProps } from "../lib/mod.ts";`;
 
     content = content.replace(`import { GenIcon } from '../lib';`, mainImport)
     content = content.replaceAll(` (props) {`, `(props: IconBaseProps) {`)
