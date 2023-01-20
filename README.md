@@ -2,6 +2,10 @@
 
 This library is a simple port from [react-icons](https://www.npmjs.com/package/react-icons) compatible with deno fresh project.
 
+
+The React Icons [doc](https://react-icons.github.io/react-icons/) The for fresh version is [here](https://react-icons.deno.dev/) if you have time to help the project is [here](https://github.com/UrielCh/react-icons-web)
+
+
 ## setup
 
 To use it simply fill your `import_map.json`
