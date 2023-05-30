@@ -90,6 +90,10 @@ for await (const dirEntry of Deno.readDir(src)) {
   readme += `${BQ}import { ${first} } from "https://deno.land/x/react_icons_${name}${nextTag}/mod.ts"${BQ}${NL2}`;
   readme += `## import_map import sample${NL2}`;
   readme += `${BQ}import { ${first} } from "react-icons/${name}"${BQ}${NL2}`;
+
+
+  const markDown = readme;
+
   readme += "@module";
   // convert README TO comment README
   readme =
@@ -194,5 +198,11 @@ for await (const dirEntry of Deno.readDir(src)) {
       },
     }, undefined, 2)
   );
+
+  await Deno.writeTextFile(
+    path.join(destDir, "README.md"),
+    markDown
+  );
+  
   // TODO Regen the main mod.ts
 }
