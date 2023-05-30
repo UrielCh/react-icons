@@ -29,7 +29,7 @@ for await (const dirEntry of Deno.readDir(src)) {
         continue
     }
 
-    const mainImport = `import { GenIcon, type IconBaseProps } from "../../react-icons/mod.ts";`; // tmp
+    const mainImport = `import { GenIcon, type IconBaseProps } from "https://deno.land/x/react_icons/mod.ts";`;
     content = content.replace(`import { GenIcon } from '../lib';`, mainImport)
     content = content.replaceAll(` (props) {`, `(props: IconBaseProps) {`)
     for (const att of ['tag', 'viewBox', 'attr', 'child', 'd', 'id', 'dataName', 'strokeLinecap', 'strokeLinejoin', 'strokeWidth', 'fill', 'ariaHidden', 'fillRule', 'version', 'x', 'y', 'style', 'baseProfile', 'enableBackground', 'stroke'])
@@ -56,8 +56,8 @@ for await (const dirEntry of Deno.readDir(src)) {
     readme += `${BQ3}json${NL}`;
     readme += `{
   "imports": {
-    "preact": "https://esm.sh/preact@10.11.3",
-    "preact/": "https://esm.sh/preact@10.11.3/",
+    "preact": "https://esm.sh/preact@10.15.1",
+    "preact/": "https://esm.sh/preact@10.15.1/",
     "react-icons/${name}": "https://deno.land/x/react_icons@${nextTag}/${name}/mod.ts",
   }
 }`;

@@ -5,9 +5,9 @@ export interface IconContext {
   color?: string;
   size?: string;
   class?: string;
-  stroke?: string | JSX.SignalLike<string>; // allow overide stroke color "currentColor"
-  fill?: string | JSX.SignalLike<string>; // allow overide fill color "currentColor"
-  strokeWidth?:  number | string | JSX.SignalLike<number | string>; // allow overide strokeWidth default 0
+  stroke?: string | JSX.SignalLike<string | undefined>; // allow overide stroke color "currentColor"
+  fill?: string | JSX.SignalLike<string | undefined>; // allow overide fill color "currentColor"
+  strokeWidth?:  number | string | JSX.SignalLike<number | string | undefined>; // allow overide strokeWidth default 0
 
   style?: JSX.CSSProperties;
   attr?: JSX.SVGAttributes<SVGSVGElement>;
