@@ -117,6 +117,13 @@ export const providers: { [key: string]: Provider } = {
         source: 'https://github.com/ionic-team/ionicons',
         since: "2020",
     },
+    lu: {
+        name: 'Lucide icons',
+        licence: ['ISC License', 'https://lucide.dev/license'],
+        projectUrl: 'https://lucide.dev/',
+        source: 'https://github.com/lucide-icons/lucide',
+        since: "2022",
+    },
     md: {
         name: 'Material Design icons',
         licence: ['Apache License Version 2.0', 'https://github.com/google/material-design-icons/blob/master/LICENSE'],
