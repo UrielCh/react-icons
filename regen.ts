@@ -6,7 +6,7 @@ import * as fs from "https://deno.land/std@0.184.0/fs/mod.ts";
 import { providers } from "./lib/providers.ts";
 
 const src = "node_modules/react-icons";
-const nextTag = "0.2.4";
+const nextTag = "@1.0.0";
 
 const EXTRA_COMPRESSION = false;
 const WRITE_BIG_MOD_TS = false;
@@ -82,12 +82,12 @@ for await (const dirEntry of Deno.readDir(src)) {
   "imports": {
     "preact": "https://esm.sh/preact@10.15.1",
     "preact/": "https://esm.sh/preact@10.15.1/",
-    "react-icons/${name}": "https://deno.land/x/react_icons_${name}@${nextTag}//mod.ts",
+    "react-icons/${name}": "https://deno.land/x/react_icons_${name}${nextTag}//mod.ts",
   }
 }`;
   readme += `${NL}${BQ3}${NL2}`;
   readme += `## Direct import sample${NL2}`;
-  readme += `${BQ}import { ${first} } from "https://deno.land/x/react_icons_${name}@${nextTag}/mod.ts"${BQ}${NL2}`;
+  readme += `${BQ}import { ${first} } from "https://deno.land/x/react_icons_${name}${nextTag}/mod.ts"${BQ}${NL2}`;
   readme += `## import_map import sample${NL2}`;
   readme += `${BQ}import { ${first} } from "react-icons/${name}"${BQ}${NL2}`;
   readme += "@module";
