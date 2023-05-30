@@ -1,8 +1,8 @@
 // deno run --allow-read --allow-write .\regen.ts
 // du --exclude .git --exclude node_modules --bytes .
 // Maximum allowed size is 20971520 bytes, 20480 Kbytes
-import * as path from "https://deno.land/std@0.165.0/path/mod.ts";
-import * as  fs from "https://deno.land/std@0.165.0/fs/mod.ts";
+import * as path from "https://deno.land/std@0.184.0/path/mod.ts";
+import * as  fs from "https://deno.land/std@0.184.0/fs/mod.ts";
 import { providers } from "./lib/providers.ts";
 
 const src = 'node_modules/react-icons';
