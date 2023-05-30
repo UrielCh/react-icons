@@ -1,18 +1,26 @@
-import * as React from "preact";
-import { JSX } from "preact";
-import { DefaultContext, IconContext } from "./iconContext.ts";
+import { type ComponentChildren, type VNode, createElement } from "preact";
+import { type JSX } from "preact";
+import { defaultIconContext, IconContext } from "./iconContext.ts";
 
+/**
+ * tree level for SVG
+ */
 export interface IconTree {
   tag: string;
   attr: { [key: string]: string };
   child?: IconTree[];
 }
 
-function Tree2Element(tree: IconTree[]): React.ComponentChildren[] { // React.ReactElement => ComponentChildren
+/**
+ * recursivly build internal SVG element
+ * @param tree 
+ * @returns 
+ */
+function Tree2Element(tree: IconTree[]): ComponentChildren[] { // React.ReactElement => ComponentChildren
   return (
     tree &&
     tree.map((node, i) =>
-    React.createElement(
+    createElement(
         node.tag,
         { key: i, ...node.attr },
         Tree2Element(node.child || []),
@@ -20,6 +28,10 @@ function Tree2Element(tree: IconTree[]): React.ComponentChildren[] { // React.Re
     )
   );
 }
+
+/**
+ * build a SVG componant from an IconTree
+ */
 export function GenIcon(data: IconTree) {
   return (props: IconBaseProps) => (
     <IconBase attr={{ ...data.attr }} {...props}>
@@ -28,36 +40,44 @@ export function GenIcon(data: IconTree) {
   );
 }
 
-export interface IconBaseProps extends JSX.SVGAttributes<SVGElement> {
-  children?: React.ComponentChildren; // was React.ReactNode
+/**
+ * attribut for all custom SVG
+ */
+export interface IconBaseProps extends JSX.SVGAttributes<SVGSVGElement> {
+  children?: ComponentChildren; // was React.ReactNode
   size?: number; // was string | number;
   color?: string;
   title?: string;
+  class?: string; // new
 }
 
-export type IconType = (props: IconBaseProps) => React.VNode<JSX.SVGAttributes>;
+export type IconType = (props: IconBaseProps) => VNode<JSX.SVGAttributes>;
+
+/**
+ * build outer SVG element
+ */
 export function IconBase(
   props: IconBaseProps & { attr?: Record<string, string> },
-): React.VNode<JSX.SVGAttributes> {
+): VNode<JSX.SVGAttributes> {
   const elem = (conf: IconContext) => {
     const { attr, size, title, ...svgProps } = props;
+    let clazz = props.class || '';
     const computedSize = size || conf.size || "1em";
-    let className;
-    if (conf.className) className = conf.className;
-    if (props.className) {
-      className = (className ? className + " " : "") + props.className;
+    if (conf.class) {
+      if (clazz)
+        clazz = `${clazz} ${conf.class}`;
+      else
+        clazz = conf.class;
     }
-
     return (
-      // @ts-ignore TODO Fix me
       <svg
-        stroke="currentColor"
-        fill="currentColor"
-        strokeWidth="0"
+        stroke={conf.stroke || "currentColor"}
+        fill={conf.fill || "currentColor"}
+        strokeWidth={conf.strokeWidth || 0}
+        class={clazz}
         {...conf.attr}
         {...attr}
         {...svgProps}
-        className={className}
         style={{
           color: props.color || conf.color,
           ...conf.style,
@@ -73,13 +93,13 @@ export function IconBase(
     );
   };
 
-  return IconContext !== undefined
+  return defaultIconContext !== undefined
     ? (
-      <IconContext.Consumer>
+      <defaultIconContext.Consumer>
         {(conf: IconContext) => elem(conf)}
-      </IconContext.Consumer>
+      </defaultIconContext.Consumer>
     )
     : (
-      elem(DefaultContext)
+      elem(defaultIconContext)
     );
 }

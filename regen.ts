@@ -1,15 +1,15 @@
 // deno run --allow-read --allow-write .\regen.ts
 // du --exclude .git --exclude node_modules --bytes .
 // Maximum allowed size is 20971520 bytes, 20480 Kbytes
-import * as path from "https://deno.land/std@0.165.0/path/mod.ts";
-import * as  fs from "https://deno.land/std@0.165.0/fs/mod.ts";
+import * as path from "https://deno.land/std@0.184.0/path/mod.ts";
+import * as  fs from "https://deno.land/std@0.184.0/fs/mod.ts";
 import { providers } from "./lib/providers.ts";
 
 const src = 'node_modules/react-icons';
 const nextTag = '0.2.4';
 
-const EXTRA_COMPRESSION = true;
-const WRITE_BIG_MOTS = true;
+const EXTRA_COMPRESSION = false;
+const WRITE_BIG_MOD_TS = false;
 const NL = '\n';
 const BQ = '`';
 const BQ3 = '```';
@@ -19,10 +19,6 @@ for await (const dirEntry of Deno.readDir(src)) {
     if (dirEntry.isFile) continue;
     const { name } = dirEntry;
     if (name === 'lib') continue; // lib is not a provider
-    // if (name === 'io5') continue; // collision io io5 is too large
-    // if (name === 'io') continue;
-    // if (name === 'hi') continue; // collision hi2
-    // if (name === 'hi2') continue; // collision hi too large
     const pkg = providers[name];
     if (!pkg) throw Error(`no Licence for lib ${name}`)
     const esm = path.join(src, name, 'index.esm.js')
@@ -33,8 +29,7 @@ for await (const dirEntry of Deno.readDir(src)) {
         continue
     }
 
-    const mainImport = `import { GenIcon, type IconBaseProps } from "../lib/mod.ts";`;
-
+    const mainImport = `import { GenIcon, type IconBaseProps } from "https://deno.land/x/react_icons/mod.ts";`;
     content = content.replace(`import { GenIcon } from '../lib';`, mainImport)
     content = content.replaceAll(` (props) {`, `(props: IconBaseProps) {`)
     for (const att of ['tag', 'viewBox', 'attr', 'child', 'd', 'id', 'dataName', 'strokeLinecap', 'strokeLinejoin', 'strokeWidth', 'fill', 'ariaHidden', 'fillRule', 'version', 'x', 'y', 'style', 'baseProfile', 'enableBackground', 'stroke'])
@@ -43,7 +38,11 @@ for await (const dirEntry of Deno.readDir(src)) {
     content = content.replaceAll(/};(\s+)$/mg, '}$1')
     const first = content.match(/export function ([\w]+)\(props/)![1];
     // console.log(first);
-    const dest = path.join(name, 'mod.ts')
+    const destDir = path.join('..', `react-icons-${name}`)
+    const destDirico = path.join(destDir, 'ico')
+    const dest = path.join(destDir, 'mod.ts')
+    await fs.ensureDir(destDirico)
+
     /**
      * DOC
      */
@@ -57,8 +56,8 @@ for await (const dirEntry of Deno.readDir(src)) {
     readme += `${BQ3}json${NL}`;
     readme += `{
   "imports": {
-    "preact": "https://esm.sh/preact@10.11.3",
-    "preact/": "https://esm.sh/preact@10.11.3/",
+    "preact": "https://esm.sh/preact@10.15.1",
+    "preact/": "https://esm.sh/preact@10.15.1/",
     "react-icons/${name}": "https://deno.land/x/react_icons@${nextTag}/${name}/mod.ts",
   }
 }`;
@@ -113,22 +112,20 @@ for await (const dirEntry of Deno.readDir(src)) {
         console.log(`generating ${dest} shorted:${shorted}`);
     }
 
-    if (name === 'gr') {
-        // remove all stroke to fix dark mode usage
-        content = content.replaceAll(/,stroke:"[^"]+"/g, '');
-        content = content.replaceAll(/{stroke:"[^"]+",/g, '{');
+    //if (name === 'gr') {
+    //    // remove all stroke to fix dark mode usage
+    //    content = content.replaceAll(/,stroke:"[^"]+"/g, '');
+    //    content = content.replaceAll(/{stroke:"[^"]+",/g, '{');
+    //}
 
-    }
-
-    await fs.ensureDir(name)
     const licenceHeader = `// Copyright ${pkg.since}-2022 the ${pkg.name} authors. All rights reserved. ${pkg.licence[0]} (${pkg.licence[1]}).${NL}`
-    if (WRITE_BIG_MOTS) {
+    if (WRITE_BIG_MOD_TS) {
         for await (const file of fs.walk(name)) {
             if (file.name === 'mod.ts')
                 continue;
             if (!file.name.endsWith('ts'))
                 continue;
-            const fullpath =path.join(name, file.name)
+            const fullpath = path.join(destDir, file.name)
             console.log(`removing old ${fullpath}`);
             await Deno.remove(fullpath)
         }
@@ -139,9 +136,9 @@ for await (const dirEntry of Deno.readDir(src)) {
         const subMod = [licenceHeader, readme];
 
         for (const [ code, icoName ] of all) {
-            const icoDest = path.join(name, `${icoName}.ts`)
+            const icoDest = path.join(destDirico, `${icoName}.ts`)
             console.log(`generating ${icoDest}`);
-            subMod.push(`export { ${icoName} } from './${icoName}.ts';${NL}`);
+            subMod.push(`export { ${icoName} } from './ico/${icoName}.ts';${NL}`);
             await Deno.writeTextFile(icoDest, mainImport + NL2 + code + NL)
         }
         // const [ code, name ] = all[0]
