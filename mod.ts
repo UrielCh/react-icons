@@ -10,35 +10,36 @@
  * ```json
  * {
  *   "imports": {
- *     "preact":  "https://esm.sh/preact@10.11.3",
- *     "preact/": "https://esm.sh/preact@10.11.3/",
- *     "react-icons/ai":  "https://deno.land/x/react_icons@0.2.4/ai/mod.ts",
- *     "react-icons/bs":  "https://deno.land/x/react_icons@0.2.4/bs/mod.ts",
- *     "react-icons/bi":  "https://deno.land/x/react_icons@0.2.4/bi/mod.ts",
- *     "react-icons/ci":  "https://deno.land/x/react_icons@0.2.4/ci/mod.ts",
- *     "react-icons/di":  "https://deno.land/x/react_icons@0.2.4/di/mod.ts",
- *     "react-icons/fi":  "https://deno.land/x/react_icons@0.2.4/fi/mod.ts",
- *     "react-icons/fc":  "https://deno.land/x/react_icons@0.2.4/fc/mod.ts",
- *     "react-icons/fa":  "https://deno.land/x/react_icons@0.2.4/fa/mod.ts",
- *     "react-icons/gi":  "https://deno.land/x/react_icons@0.2.4/gi/mod.ts",
- *     "react-icons/go":  "https://deno.land/x/react_icons@0.2.4/go/mod.ts",
- *     "react-icons/gr":  "https://deno.land/x/react_icons@0.2.4/gr/mod.ts",
- *     "react-icons/im":  "https://deno.land/x/react_icons@0.2.4/im/mod.ts",
- *     "react-icons/md":  "https://deno.land/x/react_icons@0.2.4/md/mod.ts",
- *     "react-icons/ri":  "https://deno.land/x/react_icons@0.2.4/ri/mod.ts",
- *     "react-icons/rx":  "https://deno.land/x/react_icons@0.2.4/rx/mod.ts",
- *     "react-icons/si":  "https://deno.land/x/react_icons@0.2.4/si/mod.ts",
- *     "react-icons/sl":  "https://deno.land/x/react_icons@0.2.4/sl/mod.ts",
- *     "react-icons/tb":  "https://deno.land/x/react_icons@0.2.4/tb/mod.ts",
- *     "react-icons/ti":  "https://deno.land/x/react_icons@0.2.4/ti/mod.ts",
- *     "react-icons/wi":  "https://deno.land/x/react_icons@0.2.4/wi/mod.ts",
- *     "react-icons/cg":  "https://deno.land/x/react_icons@0.2.4/cg/mod.ts",
- *     "react-icons/tfi": "https://deno.land/x/react_icons@0.2.4/tfi/mod.ts",
- *     "react-icons/vsc": "https://deno.land/x/react_icons@0.2.4/vsc/mod.ts",
- *     "react-icons/hi": "https://deno.land/x/react_icons@0.2.4/hi/mod.ts",
- *     "react-icons/hi2": "https://deno.land/x/react_icons@0.2.4/hi2/mod.ts",
- *     "react-icons/io": "https://deno.land/x/react_icons@0.2.4/io/mod.ts",
- *     "react-icons/io5": "https://deno.land/x/react_icons@0.2.4/vsc/io5.ts"
+ *     "preact":  "https://esm.sh/preact",
+ *     "preact/": "https://esm.sh/preact/",
+ *     "react-icons/ai":  "https://deno.land/x/react_icons_ai/mod.ts",
+ *     "react-icons/bs":  "https://deno.land/x/react_icons_bs/mod.ts",
+ *     "react-icons/bi":  "https://deno.land/x/react_icons_bi/mod.ts",
+ *     "react-icons/ci":  "https://deno.land/x/react_icons_ci/mod.ts",
+ *     "react-icons/di":  "https://deno.land/x/react_icons_di/mod.ts",
+ *     "react-icons/fi":  "https://deno.land/x/react_icons_fi/mod.ts",
+ *     "react-icons/fc":  "https://deno.land/x/react_icons_fc/mod.ts",
+ *     "react-icons/fa":  "https://deno.land/x/react_icons_fa/mod.ts",
+ *     "react-icons/gi":  "https://deno.land/x/react_icons_gi/mod.ts",
+ *     "react-icons/go":  "https://deno.land/x/react_icons_go/mod.ts",
+ *     "react-icons/gr":  "https://deno.land/x/react_icons_gr/mod.ts",
+ *     "react-icons/im":  "https://deno.land/x/react_icons_im/mod.ts",
+ *     "react-icons/lu":  "https://deno.land/x/react_icons_lu/mod.ts",
+ *     "react-icons/md":  "https://deno.land/x/react_icons_md/mod.ts",
+ *     "react-icons/ri":  "https://deno.land/x/react_icons_ri/mod.ts",
+ *     "react-icons/rx":  "https://deno.land/x/react_icons_rx/mod.ts",
+ *     "react-icons/si":  "https://deno.land/x/react_icons_si/mod.ts",
+ *     "react-icons/sl":  "https://deno.land/x/react_icons_sl/mod.ts",
+ *     "react-icons/tb":  "https://deno.land/x/react_icons_tb/mod.ts",
+ *     "react-icons/ti":  "https://deno.land/x/react_icons_ti/mod.ts",
+ *     "react-icons/wi":  "https://deno.land/x/react_icons_wi/mod.ts",
+ *     "react-icons/cg":  "https://deno.land/x/react_icons_cg/mod.ts",
+ *     "react-icons/tfi": "https://deno.land/x/react_icons_tfi/mod.ts",
+ *     "react-icons/vsc": "https://deno.land/x/react_icons_vsc/mod.ts",
+ *     "react-icons/hi":  "https://deno.land/x/react_icons_hi/mod.ts",
+ *     "react-icons/hi2": "https://deno.land/x/react_icons_hi2/mod.ts",
+ *     "react-icons/io":  "https://deno.land/x/react_icons_io/mod.ts",
+ *     "react-icons/io5": "https://deno.land/x/react_icons_vsc/io5.ts"
  *   }
  * }
  * ```
@@ -82,34 +83,11 @@
  * ```
  * @module
  */
+/// <reference no-default-lib="true" />
+/// <reference lib="dom" />
+/// <reference lib="dom.iterable" />
+/// <reference lib="dom.asynciterable" />
+/// <reference lib="deno.ns" />
 
-// THIS FILE IS AUTO GENERATED
-export * from './ci/mod.ts';
-export * from './fa/mod.ts';
-export * from './md/mod.ts';
-export * from './ti/mod.ts';
-export * from './go/mod.ts';
-export * from './fi/mod.ts';
-export * from './gi/mod.ts';
-export * from './wi/mod.ts';
-export * from './di/mod.ts';
-export * from './ai/mod.ts';
-export * from './bs/mod.ts';
-export * from './ri/mod.ts';
-export * from './rx/mod.ts';
-export * from './fc/mod.ts';
-export * from './gr/mod.ts';
-export * from './si/mod.ts';
-export * from './sl/mod.ts';
-export * from './im/mod.ts';
-export * from './bi/mod.ts';
-export * from './cg/mod.ts';
-export * from './vsc/mod.ts';
-// avoid collision with hi2/mod.ts by not exporting hi/mod.ts in the main mod.ts
-// export * from './hi/mod.ts';
-export * from './hi2/mod.ts';
-// avoid collision with io5/mod.ts by not exporting io/mod.ts in the main mod.ts
-// export * from './io/mod.ts';
-export * from './io5/mod.ts';
-export * from './tb/mod.ts';
-export * from './tfi/mod.ts';
+export { type IconTree, type IconBaseProps, GenIcon, IconBase } from "./lib/iconBase.tsx";
+export { type IconContext, defaultIconContext, defaultContext } from "./lib/iconContext.ts";
