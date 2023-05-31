@@ -45,7 +45,7 @@ for await (const dirEntry of Deno.readDir(src)) {
 
   const lowercase = new Set<string>();
 
-  const mainImport = `import { GenIcon, type IconBaseProps } from "https://deno.land/x/react_icons@1.0.0/mod.ts";`;
+  const mainImport = `import { GenIcon, type IconBaseProps } from "https://deno.land/x/react_icons@1.0.1/mod.ts";`;
   content = content.replace(`import { GenIcon } from '../lib';`, mainImport);
   content = content.replaceAll(` (props) {`, `(props: IconBaseProps) {`);
   for (const att of [

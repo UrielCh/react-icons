@@ -73,7 +73,7 @@ export function IconBase(
       <svg
         stroke={conf.stroke || "currentColor"}
         fill={conf.fill || "currentColor"}
-        strokeWidth={conf.strokeWidth || 0}
+        stroke-width={conf.strokeWidth || 0}
         class={clazz}
         {...conf.attr}
         {...attr}
