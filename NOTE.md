@@ -23,10 +23,17 @@ for X in $pkgs; do
 done;
 ```
 
+### diff
+```bash
+for X in $pkgs; do
+  echo start $X; cd react-icons-$X; git diff; cd ..;
+done;
+```
+
 ### commit
 ```bash
 for X in $pkgs; do
-  echo start $X; cd react-icons-$X; git add .; git commit -avm "bump version"; git push; cd ..;
+  echo start $X; cd react-icons-$X; git add .; git commit -avm "fix dual @"; git push; cd ..;
 done;
 ```
 

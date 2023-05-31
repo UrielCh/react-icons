@@ -6,8 +6,8 @@ import * as fs from "https://deno.land/std@0.190.0/fs/mod.ts";
 import { providers } from "./lib/providers.ts";
 
 const src = "node_modules/react-icons";
-const nextTag = "@1.0.5";
-const reactIconVersion = "@1.0.5";
+const nextTag = "@1.0.6";
+const reactIconVersion = "@1.0.6";
 
 const EXTRA_COMPRESSION = false;
 const WRITE_BIG_MOD_TS = false;
