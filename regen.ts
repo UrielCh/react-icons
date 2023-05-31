@@ -6,13 +6,11 @@ import * as fs from "https://deno.land/std@0.190.0/fs/mod.ts";
 import { providers } from "./lib/providers.ts";
 
 const src = "node_modules/react-icons";
-const nextTag = "@1.0.7";
-const reactIconVersion = "@1.0.7";
+const nextTag = "@1.0.8";
+const reactIconVersion = "@1.0.8";
 
 const EXTRA_COMPRESSION = false;
-// const WRITE_BIG_MOD_TS = false;
 const NL = "\n";
-// const BQ = "`";
 const BQ3 = "```";
 const NL2 = `${NL}${NL}`;
 
@@ -97,7 +95,7 @@ for await (const dirEntry of Deno.readDir(src)) {
   readme += `**License** [${pkg.licence[0]}](${pkg.licence[1]})${NL2}`;
   readme += `**Project** [${pkg.projectUrl}](${pkg.projectUrl})${NL2}`;
   readme +=
-    `[See available icons here](https://react-icons.github.io/react-icons/icons?name=${name})${NL2}`;
+    `[See available icons here](https://react-icons.deno.dev/${name})${NL2}`;
   readme += `## import_map.json${NL2}`;
   readme += `For a transparent usage:${NL2}`;
   readme += `${BQ3}json${NL}`;

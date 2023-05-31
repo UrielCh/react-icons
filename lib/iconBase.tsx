@@ -2,6 +2,22 @@ import { type ComponentChildren, type VNode, createElement } from "preact";
 import { type JSX } from "preact";
 import { defaultIconContext, IconContext } from "./iconContext.ts";
 
+
+const CAMEL_PROPS =
+  /^(?:accent|alignment|arabic|baseline|cap|clip(?!PathU)|color|dominant|fill|flood|font|glyph(?!R)|horiz|image(!S)|letter|lighting|marker(?!H|W|U)|overline|paint|pointer|shape|stop|strikethrough|stroke|text(?!L)|transform|underline|unicode|units|v|vector|vert|word|writing|x(?!C))[A-Z]/;
+const CAMEL_REPLACE = /[A-Z0-9]/g;
+
+function filterKebabCase<T extends Record<string, any>>(attrs: T): T {
+  const newAttrs: Record<string, any> = {};
+  for (const key in attrs) {
+    if (key.indexOf('-') === -1 && CAMEL_PROPS.test(key))
+      newAttrs[key.replace(CAMEL_REPLACE, '-$&').toLowerCase()] = attrs[key];
+    else
+      newAttrs[key] = attrs[key];
+  }
+  return newAttrs as T;
+}
+
 /**
  * tree level for SVG
  */
@@ -20,9 +36,9 @@ function Tree2Element(tree: IconTree[]): ComponentChildren[] { // React.ReactEle
   return (
     tree &&
     tree.map((node, i) =>
-    createElement(
+      createElement(
         node.tag,
-        { key: i, ...node.attr },
+        { key: i, ...filterKebabCase(node.attr) },
         Tree2Element(node.child || []),
       )
     )
@@ -69,22 +85,26 @@ export function IconBase(
       else
         clazz = conf.class;
     }
+    let attrs = {
+      stroke: conf.stroke || "currentColor",
+      fill: conf.fill || "currentColor",
+      strokeWidth: conf.strokeWidth || 0,
+      class: clazz,
+      ...conf.attr,
+      ...attr,
+      ...svgProps,
+      height: computedSize,
+      width: computedSize,
+    };
+    attrs = filterKebabCase(attrs);
     return (
       <svg
-        stroke={conf.stroke || "currentColor"}
-        fill={conf.fill || "currentColor"}
-        stroke-width={conf.strokeWidth || 0}
-        class={clazz}
-        {...conf.attr}
-        {...attr}
-        {...svgProps}
-        style={{
+        {...attrs}
+        style={filterKebabCase({
           color: props.color || conf.color,
           ...conf.style,
           ...(props.style as JSX.CSSProperties),
-        }}
-        height={computedSize}
-        width={computedSize}
+        })}
         xmlns="http://www.w3.org/2000/svg"
       >
         {title && <title>{title}</title>}

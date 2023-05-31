@@ -1,0 +1,13 @@
+{
+  "lock": false,
+  "tasks": {
+    "start": "deno run -A --watch=static/,routes/ dev.ts",
+    "regen": "deno run --allow-read=.. --allow-write=.. regen.ts",
+    "size": "du -s --exclude=node_modules --exclude=.git ."
+  },
+  "importMap": "./import_map.json",
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "jsxImportSource": "preact"
+  }
+}
