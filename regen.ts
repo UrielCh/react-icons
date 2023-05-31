@@ -6,7 +6,7 @@ import * as fs from "https://deno.land/std@0.184.0/fs/mod.ts";
 import { providers } from "./lib/providers.ts";
 
 const src = "node_modules/react-icons";
-const nextTag = "@1.0.0";
+const nextTag = "@1.0.1";
 
 const EXTRA_COMPRESSION = false;
 const WRITE_BIG_MOD_TS = false;
@@ -24,8 +24,7 @@ async function writeFile(dest: string, content: string): Promise<void> {
   }
   const v1 = oldContent.replaceAll(/[\r\n]+/g, "");
   const v2 = content.replaceAll(/[\r\n]+/g, "");
-  if (v1 === v2)
-    return;
+  if (v1 === v2) return;
   console.log(`updating ${dest}`);
   await Deno.writeTextFile(dest, content);
 }
@@ -110,6 +109,8 @@ for await (const dirEntry of Deno.readDir(src)) {
   readme += `${BQ}import { ${first} } from "react-icons/${name}"${BQ}${NL2}`;
   readme += `## minimal import${NL2}`;
   readme += `${BQ}import { ${first} } from "react-icons/${name}/${first}.ts"${BQ}${NL2}`;
+  readme += `## minimal import default${NL2}`;
+  readme += `${BQ}import ${first} from "react-icons/${name}/${first}.ts"${BQ}${NL2}`;
 
   const markDown = readme;
 
@@ -188,13 +189,17 @@ for await (const dirEntry of Deno.readDir(src)) {
     );
     const all = [...blocks];
     const subMod = [licenceHeader, readme];
+    await Promise.all(
+      all.map(async ([code, icoName]) => {
+        const icoDest = path.join(destDirico, `${icoName}.ts`);
+        subMod.push(`export { ${icoName} } from './ico/${icoName}.ts';${NL}`);
+        const def = `export default ${icoName};`;
+        await writeFile(icoDest, mainImport + NL2 + code + NL + def + NL);
+      })
+    );
 
-    for (const [code, icoName] of all) {
-      const icoDest = path.join(destDirico, `${icoName}.ts`);
-      subMod.push(`export { ${icoName} } from './ico/${icoName}.ts';${NL}`);
-      const def = `export default ${icoName};`;
-      await writeFile(icoDest, mainImport + NL2 + code + NL + def + NL);
-    }
+    // for (const [code, icoName] of all) {
+    // }
     await writeFile(destMod, subMod.join(""));
   }
   await writeFile(
