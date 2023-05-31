@@ -12,11 +12,11 @@
  *   "imports": {
  *     "preact":  "https://esm.sh/preact",
  *     "preact/": "https://esm.sh/preact/",
- *     "react-icons/ai":  "https://cdn.jsdelivr.net/gh/urielch/react-icons-ai@1.0.4/mod.ts",
- *     "react-icons/bs":  "https://cdn.jsdelivr.net/gh/urielch/react-icons-bs@1.0.4/mod.ts",
+ *     "react-icons/ai":  "https://cdn.jsdelivr.net/gh/urielch/react-icons-ai@1.0.5/mod.ts",
+ *     "react-icons/bs":  "https://cdn.jsdelivr.net/gh/urielch/react-icons-bs@1.0.5/mod.ts",
  *     ...
- *     "react-icons/ai/":  "https://cdn.jsdelivr.net/gh/urielch/react-icons-ai@1.0.4/ico/",
- *     "react-icons/bs/":  "https://cdn.jsdelivr.net/gh/urielch/react-icons-bs@1.0.4/ico/",
+ *     "react-icons/ai/":  "https://cdn.jsdelivr.net/gh/urielch/react-icons-ai@1.0.5/ico/",
+ *     "react-icons/bs/":  "https://cdn.jsdelivr.net/gh/urielch/react-icons-bs@1.0.5/ico/",
  *   }
  * }
  * ```

@@ -6,8 +6,8 @@ import * as fs from "https://deno.land/std@0.190.0/fs/mod.ts";
 import { providers } from "./lib/providers.ts";
 
 const src = "node_modules/react-icons";
-const nextTag = "@1.0.4";
-const reactIconVersion = "@1.0.4";
+const nextTag = "@1.0.5";
+const reactIconVersion = "@1.0.5";
 
 const EXTRA_COMPRESSION = false;
 const WRITE_BIG_MOD_TS = false;
@@ -186,7 +186,7 @@ for await (const dirEntry of Deno.readDir(src)) {
   //}
 
   let mainExport = `// export { GenIcon, type IconBaseProps } from "https://deno.land/x/react_icons${reactIconVersion}/mod.ts";${NL}`;
-  mainExport += `export { GenIcon, type IconBaseProps } from "https://cdn.jsdelivr.net/gh/urielch/react-icons@${reactIconVersion}/mod.ts";${NL}`;
+  mainExport += `export { GenIcon, type IconBaseProps } from "https://cdn.jsdelivr.net/gh/urielch/react-icons${reactIconVersion}/mod.ts";${NL}`;
   await writeFile(destDeps, mainExport);
 
   const licenceHeader = `// Copyright ${pkg.since}-2022 the ${pkg.name} authors. All rights reserved. ${pkg.licence[0]} (${pkg.licence[1]}).${NL}`;
