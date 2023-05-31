@@ -266,5 +266,7 @@ for await (const dirEntry of Deno.readDir(src)) {
 
   await writeFile(path.join(destDir, "README.md"), markDown);
 
-  // TODO Regen the main mod.ts
+  let mod = await Deno.readTextFile("mod.ts");
+  mod = mod.replaceAll(/@[0-9.]+\/(mod.ts|ico)/g, `${nextTag}/$1`);
+  await writeFile("mod.ts", mod);
 }
