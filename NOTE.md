@@ -33,7 +33,7 @@ done;
 ### commit
 ```bash
 for X in $pkgs; do
-  echo start $X; cd react-icons-$X; git add .; git commit -avm "fix dual @"; git push; cd ..;
+  echo start $X; cd react-icons-$X; git add .; git commit -avm "bump version"; git push; cd ..;
 done;
 ```
 
@@ -41,7 +41,7 @@ done;
 ```bash
 for X in $pkgs; do
   cd react-icons-$X; 
-  gh release create 1.0.5 --notes "fix dual @";
+  gh release create 1.0.6 --notes "bump version";
   cd ..;
 done;
 ```

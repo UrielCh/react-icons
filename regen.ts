@@ -6,11 +6,11 @@ import * as fs from "https://deno.land/std@0.190.0/fs/mod.ts";
 import { providers } from "./lib/providers.ts";
 
 const src = "node_modules/react-icons";
-const nextTag = "@1.0.6";
-const reactIconVersion = "@1.0.6";
+const nextTag = "@1.0.7";
+const reactIconVersion = "@1.0.7";
 
 const EXTRA_COMPRESSION = false;
-const WRITE_BIG_MOD_TS = false;
+// const WRITE_BIG_MOD_TS = false;
 const NL = "\n";
 // const BQ = "`";
 const BQ3 = "```";
@@ -46,35 +46,39 @@ for await (const dirEntry of Deno.readDir(src)) {
 
   const lowercase = new Set<string>();
 
-  const mainImport = `import { GenIcon, type IconBaseProps } from "../deps.ts";`;
-  content = content.replace(`import { GenIcon } from '../lib';`, mainImport);
+  const mainImport1 = 'import { GenIcon, type IconBaseProps } from "./deps.ts";';
+  const mainImport2 = 'import { GenIcon, type IconBaseProps } from "../deps.ts";';
+  content = content.replace(`import { GenIcon } from '../lib';`, mainImport2);
   content = content.replaceAll(` (props) {`, `(props: IconBaseProps) {`);
-  for (const att of [
-    "tag",
-    "viewBox",
-    "attr",
-    "child",
-    "d",
-    "id",
-    "dataName",
-    "strokeLinecap",
-    "strokeLinejoin",
-    "strokeWidth",
-    "fill",
-    "ariaHidden",
-    "fillRule",
-    "version",
-    "x",
-    "y",
-    "style",
-    "baseProfile",
-    "enableBackground",
-    "stroke",
-  ])
+  for (
+    const att of [
+      "tag",
+      "viewBox",
+      "attr",
+      "child",
+      "d",
+      "id",
+      "dataName",
+      "strokeLinecap",
+      "strokeLinejoin",
+      "strokeWidth",
+      "fill",
+      "ariaHidden",
+      "fillRule",
+      "version",
+      "x",
+      "y",
+      "style",
+      "baseProfile",
+      "enableBackground",
+      "stroke",
+    ]
+  ) {
     content = content.replaceAll(
       new RegExp(`\s?"${att}"\s?:\s?`, "g"),
-      `${att}:`
+      `${att}:`,
     );
+  }
   content = content.replaceAll(/};(\s+)export/gm, "}$1export");
   content = content.replaceAll(/};(\s+)$/gm, "}$1");
   const first = content.match(/export function ([\w]+)\(props/)![1];
@@ -92,7 +96,8 @@ for await (const dirEntry of Deno.readDir(src)) {
   let readme = `# ${libName} icons for deno / Preact${NL2}`;
   readme += `**License** [${pkg.licence[0]}](${pkg.licence[1]})${NL2}`;
   readme += `**Project** [${pkg.projectUrl}](${pkg.projectUrl})${NL2}`;
-  readme += `[See available icons here](https://react-icons.github.io/react-icons/icons?name=${name})${NL2}`;
+  readme +=
+    `[See available icons here](https://react-icons.github.io/react-icons/icons?name=${name})${NL2}`;
   readme += `## import_map.json${NL2}`;
   readme += `For a transparent usage:${NL2}`;
   readme += `${BQ3}json${NL}`;
@@ -102,24 +107,27 @@ for await (const dirEntry of Deno.readDir(src)) {
   readme += `    "preact/": "https://esm.sh/preact@10.15.1/",${NL}`;
   // readme += `    "react-icons/${name}": "https://deno.land/x/react_icons_${name}${nextTag}/mod.ts",${NL}`;
   // readme += `    "react-icons/${name}/":  "https://deno.land/x/react_icons_${name}/ico/",${NL}`;
-  readme += `    "react-icons/${name}":  "https://cdn.jsdelivr.net/gh/urielch/react-icons-${name}${nextTag}/mod.ts",${NL}`;
-  readme += `    "react-icons/${name}/": "https://cdn.jsdelivr.net/gh/urielch/react-icons-${name}${nextTag}/ico/",${NL}`;
+  readme +=
+    `    "react-icons/${name}":  "https://cdn.jsdelivr.net/gh/urielch/react-icons-${name}${nextTag}/mod.ts",${NL}`;
+  readme +=
+    `    "react-icons/${name}/": "https://cdn.jsdelivr.net/gh/urielch/react-icons-${name}${nextTag}/ico/",${NL}`;
   readme += `  }${NL}`;
   readme += `}${NL}`;
   readme += `${BQ3}${NL2}`;
-  readme += `## Direct import sample${NL2}`;
+  readme += `## Import an icon without import_map by and afer loading all icons from the lib ${name}${NL2}`;
   readme += `${BQ3}ts${NL}`;
-  readme += `import { ${first} } from "https://deno.land/x/react_icons_${name}${nextTag}/mod.ts"${NL}`;
+  readme +=
+    `import { ${first} } from "https://deno.land/x/react_icons_${name}${nextTag}/mod.ts"${NL}`;
   readme += `${BQ3}${NL2}`;
-  readme += `## import_map import sample${NL2}`;
+  readme += `## import_map import an icon from all icons${NL2}`;
   readme += `${BQ3}ts${NL}`;
   readme += `import { ${first} } from "react-icons/${name}"${NL}`;
   readme += `${BQ3}${NL2}`;
-  readme += `## minimal import${NL2}`;
+  readme += `## import a single icon, downloading just one icon${NL2}`;
   readme += `${BQ3}ts${NL}`;
   readme += `import { ${first} } from "react-icons/${name}/${first}.ts"${NL}`;
   readme += `${BQ3}${NL2}`;
-  readme += `## minimal import using default export${NL2}`;
+  readme += `or using default export${NL2}`;
   readme += `${BQ3}ts${NL}`;
   readme += `import ${first} from "react-icons/${name}/${first}.ts"${NL}`;
   readme += `${BQ3}${NL2}`;
@@ -128,8 +136,7 @@ for await (const dirEntry of Deno.readDir(src)) {
 
   readme += "@module";
   // convert README TO comment README
-  readme =
-    `/**${NL}` +
+  readme = `/**${NL}` +
     readme
       .split(/\r?\n/g)
       .map((line) => ` * ${line}`)
@@ -185,48 +192,52 @@ for await (const dirEntry of Deno.readDir(src)) {
   //    content = content.replaceAll(/{stroke:"[^"]+",/g, '{');
   //}
 
-  let mainExport = `// export { GenIcon, type IconBaseProps } from "https://deno.land/x/react_icons${reactIconVersion}/mod.ts";${NL}`;
-  mainExport += `export { GenIcon, type IconBaseProps } from "https://cdn.jsdelivr.net/gh/urielch/react-icons${reactIconVersion}/mod.ts";${NL}`;
+  let mainExport =
+    `// export { GenIcon, type IconBaseProps } from "https://deno.land/x/react_icons${reactIconVersion}/mod.ts";${NL}`;
+  mainExport +=
+    `export { GenIcon, type IconBaseProps } from "https://cdn.jsdelivr.net/gh/urielch/react-icons${reactIconVersion}/mod.ts";${NL}`;
   await writeFile(destDeps, mainExport);
 
-  const licenceHeader = `// Copyright ${pkg.since}-2022 the ${pkg.name} authors. All rights reserved. ${pkg.licence[0]} (${pkg.licence[1]}).${NL}`;
-  if (WRITE_BIG_MOD_TS) {
-    for await (const file of fs.walk(name)) {
-      if (file.name === "mod.ts") continue;
-      if (!file.name.endsWith("ts")) continue;
-      const fullpath = path.join(destDir, file.name);
-      console.log(`removing old ${fullpath}`);
-      await Deno.remove(fullpath);
-    }
-    await writeFile(destMod, licenceHeader + readme + content);
-  } else {
-    const blocks = content.matchAll(
-      /export function ([^\(]+)\(props: IconBaseProps\) {[\r\n]+.+[\r\n]+}/g
-    );
-    let all = [...blocks];
-    // drop case colision
-    all = all.filter(([, icoName]) => {
-      icoName = icoName.toLocaleLowerCase();
-      const ret = lowercase.has(icoName);
-      lowercase.add(icoName);
-      if (ret) console.log(`drop ${name}.${icoName} case colision.`);
-      return !ret;
-    });
+  const licenceHeader =
+    `// Copyright ${pkg.since}-2022 the ${pkg.name} authors. All rights reserved. ${
+      pkg.licence[0]
+    } (${pkg.licence[1]}).${NL}`;
+    
+  const blocks = content.matchAll(
+    /export function ([^\(]+)\(props: IconBaseProps\) {[\r\n]+.+[\r\n]+}/g,
+  );
+  let all = [...blocks];
+  // drop case colision
+  all = all.filter(([, icoName]) => {
+    icoName = icoName.toLocaleLowerCase();
+    const ret = lowercase.has(icoName);
+    lowercase.add(icoName);
+    if (ret) console.log(`drop ${name}.${icoName} case colision.`);
+    return !ret;
+  });
 
-    const subMod = [licenceHeader, readme];
-    await Promise.all(
-      all.map(async ([code, icoName]) => {
-        const icoDest = path.join(destDirico, `${icoName}.ts`);
-        subMod.push(`export { ${icoName} } from './ico/${icoName}.ts';${NL}`);
-        const def = `export default ${icoName};`;
-        await writeFile(icoDest, mainImport + NL2 + code + NL + def + NL);
-      })
-    );
+  const subMod = [licenceHeader, readme, mainImport1 + NL2];
+  await Promise.all(
+    all.map(async ([code, icoName]) => {
+      const icoDest = path.join(destDirico, `${icoName}.ts`);
+      const def = `export default ${icoName};`;
+      await writeFile(icoDest, mainImport2 + NL2 + code + NL + def + NL);
+      subMod.push(code + NL);
+    }),
+  );
+  await writeFile(destMod, subMod.join(""));
 
-    // for (const [code, icoName] of all) {
-    // }
-    await writeFile(destMod, subMod.join(""));
-  }
+  // if (WRITE_BIG_MOD_TS) {
+  //   for await (const file of fs.walk(name)) {
+  //     if (file.name === "mod.ts") continue;
+  //     if (!file.name.endsWith("ts")) continue;
+  //     const fullpath = path.join(destDir, file.name);
+  //     console.log(`removing old ${fullpath}`);
+  //     await Deno.remove(fullpath);
+  //   }
+  //   await writeFile(destMod, licenceHeader + readme + content);
+  // }
+
   await writeFile(
     path.join(destDir, "deno.jsonc"),
     JSON.stringify(
@@ -238,8 +249,8 @@ for await (const dirEntry of Deno.readDir(src)) {
         },
       },
       undefined,
-      2
-    )
+      2,
+    ),
   );
   await writeFile(
     path.join(destDir, "import_map.json"),
@@ -251,8 +262,8 @@ for await (const dirEntry of Deno.readDir(src)) {
         },
       },
       undefined,
-      2
-    )
+      2,
+    ),
   );
 
   await writeFile(path.join(destDir, "README.md"), markDown);
