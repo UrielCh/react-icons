@@ -1,7 +1,7 @@
 /* *
  * # Preact + deno convertion of react-icons
  * 
- * This library is a simple port from [react-icons](https://www.npmjs.com/package/react-icons) compatible with deno fresh project.
+ * This library is port from [react-icons](https://www.npmjs.com/package/react-icons) built for deno fresh projects.
  * 
  * ## setup
  * 
@@ -12,44 +12,23 @@
  *   "imports": {
  *     "preact":  "https://esm.sh/preact",
  *     "preact/": "https://esm.sh/preact/",
- *     "react-icons/ai":  "https://deno.land/x/react_icons_ai/mod.ts",
- *     "react-icons/bs":  "https://deno.land/x/react_icons_bs/mod.ts",
- *     "react-icons/bi":  "https://deno.land/x/react_icons_bi/mod.ts",
- *     "react-icons/ci":  "https://deno.land/x/react_icons_ci/mod.ts",
- *     "react-icons/di":  "https://deno.land/x/react_icons_di/mod.ts",
- *     "react-icons/fi":  "https://deno.land/x/react_icons_fi/mod.ts",
- *     "react-icons/fc":  "https://deno.land/x/react_icons_fc/mod.ts",
- *     "react-icons/fa":  "https://deno.land/x/react_icons_fa/mod.ts",
- *     "react-icons/gi":  "https://deno.land/x/react_icons_gi/mod.ts",
- *     "react-icons/go":  "https://deno.land/x/react_icons_go/mod.ts",
- *     "react-icons/gr":  "https://deno.land/x/react_icons_gr/mod.ts",
- *     "react-icons/im":  "https://deno.land/x/react_icons_im/mod.ts",
- *     "react-icons/lu":  "https://deno.land/x/react_icons_lu/mod.ts",
- *     "react-icons/md":  "https://deno.land/x/react_icons_md/mod.ts",
- *     "react-icons/ri":  "https://deno.land/x/react_icons_ri/mod.ts",
- *     "react-icons/rx":  "https://deno.land/x/react_icons_rx/mod.ts",
- *     "react-icons/si":  "https://deno.land/x/react_icons_si/mod.ts",
- *     "react-icons/sl":  "https://deno.land/x/react_icons_sl/mod.ts",
- *     "react-icons/tb":  "https://deno.land/x/react_icons_tb/mod.ts",
- *     "react-icons/ti":  "https://deno.land/x/react_icons_ti/mod.ts",
- *     "react-icons/wi":  "https://deno.land/x/react_icons_wi/mod.ts",
- *     "react-icons/cg":  "https://deno.land/x/react_icons_cg/mod.ts",
- *     "react-icons/tfi": "https://deno.land/x/react_icons_tfi/mod.ts",
- *     "react-icons/vsc": "https://deno.land/x/react_icons_vsc/mod.ts",
- *     "react-icons/hi":  "https://deno.land/x/react_icons_hi/mod.ts",
- *     "react-icons/hi2": "https://deno.land/x/react_icons_hi2/mod.ts",
- *     "react-icons/io":  "https://deno.land/x/react_icons_io/mod.ts",
- *     "react-icons/io5": "https://deno.land/x/react_icons_vsc/io5.ts"
+ *     "react-icons/ai":  "https://cdn.jsdelivr.net/gh/urielch/react-icons-ai@1.0.4/mod.ts",
+ *     "react-icons/bs":  "https://cdn.jsdelivr.net/gh/urielch/react-icons-bs@1.0.4/mod.ts",
+ *     ...
+ *     "react-icons/ai/":  "https://cdn.jsdelivr.net/gh/urielch/react-icons-ai@1.0.4/ico/",
+ *     "react-icons/bs/":  "https://cdn.jsdelivr.net/gh/urielch/react-icons-bs@1.0.4/ico/",
  *   }
  * }
  * ```
  * 
- * Now just use it like in a regular `React` app, bur with `Preact`
+ * Now just use it like in a regular `React` app, but with `Preact`
  * 
  * ## sample
  * 
  * ```tsx
  * import { AiFillAccountBook } from "react-icons/ai";
+ * // or
+ * import AiFillAccountBook from "react-icons/ai/AiFillAccountBook.ts";
  * 
  * export default function TesSvg() {
  *   return (<AiFillAccountBook />)
