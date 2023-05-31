@@ -46,7 +46,7 @@ for await (const dirEntry of Deno.readDir(src)) {
 
   const lowercase = new Set<string>();
 
-  const mainImport = `import { GenIcon, type IconBaseProps } from "https://deno.land/x/react_icons${reactIconVersion}/mod.ts";`;
+  const mainImport = `import { GenIcon, type IconBaseProps } from "../deps.ts";`;
   content = content.replace(`import { GenIcon } from '../lib';`, mainImport);
   content = content.replaceAll(` (props) {`, `(props: IconBaseProps) {`);
   for (const att of [
@@ -82,6 +82,7 @@ for await (const dirEntry of Deno.readDir(src)) {
   const destDir = path.join("..", `react-icons-${name}`);
   const destDirico = path.join(destDir, "ico");
   const destMod = path.join(destDir, "mod.ts");
+  const destDeps = path.join(destDir, "deps.ts");
   await fs.ensureDir(destDirico);
 
   /**
@@ -183,6 +184,9 @@ for await (const dirEntry of Deno.readDir(src)) {
   //    content = content.replaceAll(/,stroke:"[^"]+"/g, '');
   //    content = content.replaceAll(/{stroke:"[^"]+",/g, '{');
   //}
+
+  const mainExport = `export { GenIcon, type IconBaseProps } from "https://deno.land/x/react_icons${reactIconVersion}/mod.ts";${NL}`;
+  await writeFile(destDeps, mainExport);
 
   const licenceHeader = `// Copyright ${pkg.since}-2022 the ${pkg.name} authors. All rights reserved. ${pkg.licence[0]} (${pkg.licence[1]}).${NL}`;
   if (WRITE_BIG_MOD_TS) {
