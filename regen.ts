@@ -185,7 +185,8 @@ for await (const dirEntry of Deno.readDir(src)) {
   //    content = content.replaceAll(/{stroke:"[^"]+",/g, '{');
   //}
 
-  const mainExport = `export { GenIcon, type IconBaseProps } from "https://deno.land/x/react_icons${reactIconVersion}/mod.ts";${NL}`;
+  let mainExport = `// export { GenIcon, type IconBaseProps } from "https://deno.land/x/react_icons${reactIconVersion}/mod.ts";${NL}`;
+  mainExport += `export { GenIcon, type IconBaseProps } from "https://cdn.jsdelivr.net/gh/urielch/react-icons@${reactIconVersion}/mod.ts";${NL}`;
   await writeFile(destDeps, mainExport);
 
   const licenceHeader = `// Copyright ${pkg.since}-2022 the ${pkg.name} authors. All rights reserved. ${pkg.licence[0]} (${pkg.licence[1]}).${NL}`;
