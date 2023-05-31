@@ -6,7 +6,8 @@ import * as fs from "https://deno.land/std@0.190.0/fs/mod.ts";
 import { providers } from "./lib/providers.ts";
 
 const src = "node_modules/react-icons";
-const nextTag = "@1.0.2";
+const nextTag = "@1.0.3";
+const reactIconVersion = "@1.0.2";
 
 const EXTRA_COMPRESSION = false;
 const WRITE_BIG_MOD_TS = false;
@@ -45,7 +46,7 @@ for await (const dirEntry of Deno.readDir(src)) {
 
   const lowercase = new Set<string>();
 
-  const mainImport = `import { GenIcon, type IconBaseProps } from "https://deno.land/x/react_icons@1.0.1/mod.ts";`;
+  const mainImport = `import { GenIcon, type IconBaseProps } from "https://deno.land/x/react_icons${reactIconVersion}/mod.ts";`;
   content = content.replace(`import { GenIcon } from '../lib';`, mainImport);
   content = content.replaceAll(` (props) {`, `(props: IconBaseProps) {`);
   for (const att of [
