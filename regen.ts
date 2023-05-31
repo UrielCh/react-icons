@@ -22,9 +22,9 @@ async function writeFile(dest: string, content: string): Promise<void> {
   } catch (_) {
     // ignore
   }
-  if (
-    oldContent.replaceAll(/[\r\n]+/g, "") === content.replaceAll(/[\r\n]+/g, "")
-  )
+  const v1 = oldContent.replaceAll(/[\r\n]+/g, "");
+  const v2 = content.replaceAll(/[\r\n]+/g, "");
+  if (v1 === v2)
     return;
   console.log(`updating ${dest}`);
   await Deno.writeTextFile(dest, content);
@@ -93,18 +93,23 @@ for await (const dirEntry of Deno.readDir(src)) {
   readme += `## import_map.json${NL2}`;
   readme += `For a transparent usage:${NL2}`;
   readme += `${BQ3}json${NL}`;
-  readme += `{
-  "imports": {
-    "preact": "https://esm.sh/preact@10.15.1",
-    "preact/": "https://esm.sh/preact@10.15.1/",
-    "react-icons/${name}": "https://deno.land/x/react_icons_${name}${nextTag}//mod.ts",
-  }
-}`;
-  readme += `${NL}${BQ3}${NL2}`;
+  readme += `{${NL}`;
+  readme += `  "imports": {${NL}`;
+  readme += `    "preact":  "https://esm.sh/preact@10.15.1",${NL}`;
+  readme += `    "preact/": "https://esm.sh/preact@10.15.1/",${NL}`;
+  // readme += `    "react-icons/${name}": "https://deno.land/x/react_icons_${name}${nextTag}/mod.ts",${NL}`;
+  // readme += `    "react-icons/${name}/":  "https://deno.land/x/react_icons_${name}/ico/",${NL}`;
+  readme += `    "react-icons/${name}":  "https://cdn.jsdelivr.net/gh/urielch/react-icons-${name}${nextTag}/mod.ts",${NL}`;
+  readme += `    "react-icons/${name}/": "https://cdn.jsdelivr.net/gh/urielch/react-icons-${name}/ico/",${NL}`;
+  readme += `  }${NL}`;
+  readme += `}${NL}`;
+  readme += `${BQ3}${NL2}`;
   readme += `## Direct import sample${NL2}`;
   readme += `${BQ}import { ${first} } from "https://deno.land/x/react_icons_${name}${nextTag}/mod.ts"${BQ}${NL2}`;
   readme += `## import_map import sample${NL2}`;
   readme += `${BQ}import { ${first} } from "react-icons/${name}"${BQ}${NL2}`;
+  readme += `## minimal import${NL2}`;
+  readme += `${BQ}import { ${first} } from "react-icons/${name}/${first}.ts"${BQ}${NL2}`;
 
   const markDown = readme;
 
@@ -183,6 +188,7 @@ for await (const dirEntry of Deno.readDir(src)) {
     );
     const all = [...blocks];
     const subMod = [licenceHeader, readme];
+
     for (const [code, icoName] of all) {
       const icoDest = path.join(destDirico, `${icoName}.ts`);
       subMod.push(`export { ${icoName} } from './ico/${icoName}.ts';${NL}`);
@@ -219,7 +225,7 @@ for await (const dirEntry of Deno.readDir(src)) {
     )
   );
 
-  await Deno.writeTextFile(path.join(destDir, "README.md"), markDown);
+  await writeFile(path.join(destDir, "README.md"), markDown);
 
   // TODO Regen the main mod.ts
 }
