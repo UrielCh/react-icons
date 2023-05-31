@@ -15,6 +15,21 @@ const BQ = "`";
 const BQ3 = "```";
 const NL2 = `${NL}${NL}`;
 
+async function writeFile(dest: string, content: string): Promise<void> {
+  let oldContent = "";
+  try {
+    oldContent = await Deno.readTextFile(dest);
+  } catch (_) {
+    // ignore
+  }
+  if (
+    oldContent.replaceAll(/[\r\n]+/g, "") === content.replaceAll(/[\r\n]+/g, "")
+  )
+    return;
+  console.log(`updating ${dest}`);
+  await Deno.writeTextFile(dest, content);
+}
+
 for await (const dirEntry of Deno.readDir(src)) {
   if (dirEntry.isFile) continue;
   const { name } = dirEntry;
@@ -91,7 +106,6 @@ for await (const dirEntry of Deno.readDir(src)) {
   readme += `## import_map import sample${NL2}`;
   readme += `${BQ}import { ${first} } from "react-icons/${name}"${BQ}${NL2}`;
 
-
   const markDown = readme;
 
   readme += "@module";
@@ -162,47 +176,50 @@ for await (const dirEntry of Deno.readDir(src)) {
       console.log(`removing old ${fullpath}`);
       await Deno.remove(fullpath);
     }
-    await Deno.writeTextFile(destMod, licenceHeader + readme + content);
+    await writeFile(destMod, licenceHeader + readme + content);
   } else {
-     const blocks = content.matchAll(
-       /export function ([^\(]+)\(props: IconBaseProps\) {[\r\n]+.+[\r\n]+}/g
-     );
-     const all = [...blocks];
-     const subMod = [licenceHeader, readme];
-     for (const [code, icoName] of all) {
-       const icoDest = path.join(destDirico, `${icoName}.ts`);
-       console.log(`generating ${icoDest}`);
-       subMod.push(`export { ${icoName} } from './ico/${icoName}.ts';${NL}`);
-       await Deno.writeTextFile(icoDest, mainImport + NL2 + code + NL);
-     }
-     // const [ code, name ] = all[0]
-     //console.log(all[0][1])
-     await Deno.writeTextFile(destMod, subMod.join(""));
+    const blocks = content.matchAll(
+      /export function ([^\(]+)\(props: IconBaseProps\) {[\r\n]+.+[\r\n]+}/g
+    );
+    const all = [...blocks];
+    const subMod = [licenceHeader, readme];
+    for (const [code, icoName] of all) {
+      const icoDest = path.join(destDirico, `${icoName}.ts`);
+      subMod.push(`export { ${icoName} } from './ico/${icoName}.ts';${NL}`);
+      const def = `export default ${icoName};`;
+      await writeFile(icoDest, mainImport + NL2 + code + NL + def + NL);
+    }
+    await writeFile(destMod, subMod.join(""));
   }
-  await Deno.writeTextFile(
+  await writeFile(
     path.join(destDir, "deno.jsonc"),
-    JSON.stringify({
-      importMap: "./import_map.json",
-      compilerOptions: {
-        jsx: "react-jsx",
-        jsxImportSource: "preact",
+    JSON.stringify(
+      {
+        importMap: "./import_map.json",
+        compilerOptions: {
+          jsx: "react-jsx",
+          jsxImportSource: "preact",
+        },
       },
-    }, undefined, 2)
+      undefined,
+      2
+    )
   );
-  await Deno.writeTextFile(
+  await writeFile(
     path.join(destDir, "import_map.json"),
-    JSON.stringify({
-      imports: {
-        preact: "https://esm.sh/preact@10.15.1",
-        "preact/": "https://esm.sh/preact@10.15.1/",
+    JSON.stringify(
+      {
+        imports: {
+          preact: "https://esm.sh/preact@10.15.1",
+          "preact/": "https://esm.sh/preact@10.15.1/",
+        },
       },
-    }, undefined, 2)
+      undefined,
+      2
+    )
   );
 
-  await Deno.writeTextFile(
-    path.join(destDir, "README.md"),
-    markDown
-  );
-  
+  await Deno.writeTextFile(path.join(destDir, "README.md"), markDown);
+
   // TODO Regen the main mod.ts
 }

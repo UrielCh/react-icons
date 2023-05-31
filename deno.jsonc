@@ -5,7 +5,7 @@
     "jsxImportSource": "preact"
   },
   "tasks": {
-    "regen": "deno run --allow-read=. --allow-write=.. regen.ts",
+    "regen": "deno run --allow-read=.. --allow-write=.. regen.ts",
     "size": "du -s --exclude=node_modules --exclude=.git ."
   }
 }
