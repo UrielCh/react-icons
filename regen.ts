@@ -104,13 +104,21 @@ for await (const dirEntry of Deno.readDir(src)) {
   readme += `}${NL}`;
   readme += `${BQ3}${NL2}`;
   readme += `## Direct import sample${NL2}`;
-  readme += `${BQ}import { ${first} } from "https://deno.land/x/react_icons_${name}${nextTag}/mod.ts"${BQ}${NL2}`;
+  readme += `${BQ3}ts${NL}`;
+  readme += `import { ${first} } from "https://deno.land/x/react_icons_${name}${nextTag}/mod.ts"${NL}`;
+  readme += `${BQ3}${NL2}`;
   readme += `## import_map import sample${NL2}`;
-  readme += `${BQ}import { ${first} } from "react-icons/${name}"${BQ}${NL2}`;
+  readme += `${BQ3}ts${NL}`;
+  readme += `import { ${first} } from "react-icons/${name}"${NL}`;
+  readme += `${BQ3}${NL2}`;
   readme += `## minimal import${NL2}`;
-  readme += `${BQ}import { ${first} } from "react-icons/${name}/${first}.ts"${BQ}${NL2}`;
-  readme += `## minimal import default${NL2}`;
-  readme += `${BQ}import ${first} from "react-icons/${name}/${first}.ts"${BQ}${NL2}`;
+  readme += `${BQ3}ts${NL}`;
+  readme += `import { ${first} } from "react-icons/${name}/${first}.ts"${NL}`;
+  readme += `${BQ3}${NL2}`;
+  readme += `## minimal import using default export${NL2}`;
+  readme += `${BQ3}ts${NL}`;
+  readme += `import ${first} from "react-icons/${name}/${first}.ts"${NL}`;
+  readme += `${BQ3}${NL2}`;
 
   const markDown = readme;
 
