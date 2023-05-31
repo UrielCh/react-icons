@@ -11,7 +11,7 @@ const nextTag = "@1.0.1";
 const EXTRA_COMPRESSION = false;
 const WRITE_BIG_MOD_TS = false;
 const NL = "\n";
-const BQ = "`";
+// const BQ = "`";
 const BQ3 = "```";
 const NL2 = `${NL}${NL}`;
 
@@ -42,6 +42,8 @@ for await (const dirEntry of Deno.readDir(src)) {
   } catch (_) {
     continue;
   }
+
+  const lowercase = new Set<string>();
 
   const mainImport = `import { GenIcon, type IconBaseProps } from "https://deno.land/x/react_icons@1.0.0/mod.ts";`;
   content = content.replace(`import { GenIcon } from '../lib';`, mainImport);
@@ -195,7 +197,16 @@ for await (const dirEntry of Deno.readDir(src)) {
     const blocks = content.matchAll(
       /export function ([^\(]+)\(props: IconBaseProps\) {[\r\n]+.+[\r\n]+}/g
     );
-    const all = [...blocks];
+    let all = [...blocks];
+    // drop case colision
+    all = all.filter(([, icoName]) => {
+      icoName = icoName.toLocaleLowerCase();
+      const ret = lowercase.has(icoName);
+      lowercase.add(icoName);
+      if (ret) console.log(`drop ${name}.${icoName} case colision.`);
+      return !ret;
+    });
+
     const subMod = [licenceHeader, readme];
     await Promise.all(
       all.map(async ([code, icoName]) => {

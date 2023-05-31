@@ -12,11 +12,13 @@ To use it simply fill your `import_map.json`
 
 ### Using jsdelivr (best approch)
 
+node preact can not be import via `cdn.jsdelivr.net` keep `esm.sh`
+
 ```json
 {
   "imports": {
-    "preact":  "https://cdn.jsdelivr.net/npm/preact@10.15.1",
-    "preact/": "https://cdn.jsdelivr.net/npm/preact@10.15.1/",
+    "preact": "https://esm.sh/preact@10.15.1",
+    "preact/": "https://esm.sh/preact@10.15.1/",
     "react-icons/ai":  "https://cdn.jsdelivr.net/gh/urielch/react-icons-ai@1.0.0/mod.ts",
     "react-icons/bs":  "https://cdn.jsdelivr.net/gh/urielch/react-icons-bs@1.0.0/mod.ts",
     "react-icons/bi":  "https://cdn.jsdelivr.net/gh/urielch/react-icons-bi@1.0.0/mod.ts",
