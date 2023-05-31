@@ -103,7 +103,7 @@ for await (const dirEntry of Deno.readDir(src)) {
   // readme += `    "react-icons/${name}": "https://deno.land/x/react_icons_${name}${nextTag}/mod.ts",${NL}`;
   // readme += `    "react-icons/${name}/":  "https://deno.land/x/react_icons_${name}/ico/",${NL}`;
   readme += `    "react-icons/${name}":  "https://cdn.jsdelivr.net/gh/urielch/react-icons-${name}${nextTag}/mod.ts",${NL}`;
-  readme += `    "react-icons/${name}/": "https://cdn.jsdelivr.net/gh/urielch/react-icons-${name}/ico/",${NL}`;
+  readme += `    "react-icons/${name}/": "https://cdn.jsdelivr.net/gh/urielch/react-icons-${name}${nextTag}/ico/",${NL}`;
   readme += `  }${NL}`;
   readme += `}${NL}`;
   readme += `${BQ3}${NL2}`;
