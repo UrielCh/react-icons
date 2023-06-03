@@ -3,6 +3,8 @@
 // Maximum allowed size is 20971520 bytes, 20480 Kbytes
 import * as path from "https://deno.land/std@0.190.0/path/mod.ts";
 import * as fs from "https://deno.land/std@0.190.0/fs/mod.ts";
+import * as pc from "https://deno.land/std@0.190.0/fmt/colors.ts";
+
 import { providers } from "./lib/providers.ts";
 
 const src = "node_modules/react-icons";
@@ -24,7 +26,7 @@ async function writeFile(dest: string, content: string): Promise<void> {
   const v1 = oldContent.replaceAll(/[\r\n]+/g, "");
   const v2 = content.replaceAll(/[\r\n]+/g, "");
   if (v1 === v2) return;
-  console.log(`updating ${dest}`);
+  console.log(`${pc.yellow("updating")} ${dest}`);
   await Deno.writeTextFile(dest, content);
 }
 
@@ -210,7 +212,7 @@ for await (const dirEntry of Deno.readDir(src)) {
     icoName = icoName.toLocaleLowerCase();
     const ret = lowercase.has(icoName);
     lowercase.add(icoName);
-    if (ret) console.log(`drop ${name}.${icoName} case colision.`);
+    if (ret) console.log(`${pc.red("drop")} ${name}.${icoName} case colision.`);
     return !ret;
   });
 
@@ -265,8 +267,12 @@ for await (const dirEntry of Deno.readDir(src)) {
   );
 
   await writeFile(path.join(destDir, "README.md"), markDown);
-
-  let mod = await Deno.readTextFile("mod.ts");
-  mod = mod.replaceAll(/@[0-9.]+\/(mod.ts|ico)/g, `${nextTag}/$1`);
-  await writeFile("mod.ts", mod);
 }
+
+let mod = await Deno.readTextFile("mod.ts");
+mod = mod.replaceAll(/@[0-9.]+\/(mod.ts|ico)/g, `${nextTag}/$1`);
+await writeFile("mod.ts", mod);
+
+let README = await Deno.readTextFile("README.md");
+README = README.replaceAll(/@[0-9.]+\/(mod.ts|ico)/g, `${nextTag}/$1`);
+await writeFile("README.md", README);
