@@ -41,7 +41,7 @@ done;
 ```bash
 for X in ${pkgs[@]}; do
   cd react-icons-$X; 
-  gh release create 1.0.9 --notes "kebab-case update doc V 1.0.9";
+  gh release create 1.0.9 --notes "improve generator, icon update";
   cd ..;
 done;
 ```
