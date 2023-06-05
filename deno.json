@@ -2,7 +2,7 @@
   "lock": false,
   "tasks": {
     "start": "deno run -A --watch=static/,routes/ dev.ts",
-    "regen": "deno run --allow-read=.. --allow-write=.. regen.ts",
+    "regen": "deno run -A regen.ts",
     "size": "du -s --exclude=node_modules --exclude=.git .",
     "init": "pnpm install react-icons"
   },
