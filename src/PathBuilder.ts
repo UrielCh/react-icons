@@ -35,4 +35,8 @@ export class PathBuilder {
     return path.join(this.destDirico, `${icoName}.ts`);
   }
 
+  getDebugIcon(icoName: string): string {
+    return path.join('components', `${icoName}.tsx`);
+  }
+
 }

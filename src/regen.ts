@@ -9,6 +9,7 @@ import $ from "https://deno.land/x/dax@0.32.0/mod.ts";
 import { genMarkdown, writeFile } from "./utils.ts";
 import { PathBuilder } from "./PathBuilder.ts";
 import {
+  debugIcons,
   EXTRA_COMPRESSION,
   nextTag,
   NL,
@@ -139,7 +140,13 @@ for await (const dirEntry of Deno.readDir(src)) {
     icoName = icoName.toLocaleLowerCase();
     const ret = lowercase.has(icoName);
     lowercase.add(icoName);
-    if (ret) console.log(`${pc.red("drop")} ${name}.${icoName} can cause case-insensitive colision.`);
+    if (ret) {
+      console.log(
+        `${
+          pc.red("drop")
+        } ${name}.${icoName} can cause case-insensitive colision.`,
+      );
+    }
     return !ret;
   });
 
@@ -150,10 +157,14 @@ for await (const dirEntry of Deno.readDir(src)) {
   await Promise.all(
     all.map(async ([code, icoName]) => {
       const def = `export default ${icoName};`;
-      await writeFile(
-        paths.getIconFile(icoName),
-        mainImport2 + NL2 + code + NL + def + NL,
-      );
+      const icoData = mainImport2 + NL2 + code + NL + def + NL;
+      await writeFile(paths.getIconFile(icoName), icoData);
+
+      if (debugIcons.has(icoName)) {
+        console.log(`Write a cody of ${pc.green(icoName)} for debug`);
+        const data = icoData.replace('"../deps.ts"', '"../mod.ts"');
+        await writeFile(paths.getDebugIcon(icoName), data);
+      }
       allIconst[icoName] = code + NL;
       // subMod.push(code + NL);
     }),
