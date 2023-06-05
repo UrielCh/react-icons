@@ -225,4 +225,5 @@ await writeFile("mod.ts", mod);
 
 let README = await Deno.readTextFile("README.md");
 README = README.replaceAll(/@[0-9.]+\/(mod.ts|ico)/g, `${nextTag}/$1`);
+README = README.replaceAll(/x\/react_icons@[0-9.]+/g, `x/react_icons/${reactIconVersion}`);
 await writeFile("README.md", README);

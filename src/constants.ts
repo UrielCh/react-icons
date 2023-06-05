@@ -1,5 +1,5 @@
-export const nextTag = "@1.0.8";
-export const reactIconVersion = "@1.0.8";
+export const nextTag = "@1.0.9";
+export const reactIconVersion = "@1.0.9";
 export const EXTRA_COMPRESSION = false;
 export const NL = "\n";
 export const NL2 = `${NL}${NL}`;
