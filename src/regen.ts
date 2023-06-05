@@ -4,24 +4,21 @@
 import * as path from "https://deno.land/std@0.190.0/path/mod.ts";
 import * as fs from "https://deno.land/std@0.190.0/fs/mod.ts";
 import * as pc from "https://deno.land/std@0.190.0/fmt/colors.ts";
-import { providers } from "./lib/providers.ts";
-import $ from "https://deno.land/x/dax/mod.ts";
-import { SVG_ATTRS, genMarkdown, writeFile } from "./utils.ts";
+import { providers } from "../lib/providers.ts";
+import $ from "https://deno.land/x/dax@0.32.0/mod.ts";
+import { genMarkdown, writeFile } from "./utils.ts";
 import { PathBuilder } from "./PathBuilder.ts";
+import {
+  EXTRA_COMPRESSION,
+  nextTag,
+  NL,
+  NL2,
+  reactIconVersion,
+  SVG_ATTRS,
+} from "./constants.ts";
 
-const src = "node_modules/react-icons";
-const nextTag = "@1.0.8";
-const reactIconVersion = "@1.0.8";
-
-const EXTRA_COMPRESSION = false;
-const NL = "\n";
-const NL2 = `${NL}${NL}`;
-
-const result = await $`npm install react-icons@latest`.text();
-
-console.log('----------');
-console.log(result);
-console.log('----------');
+export const src = "node_modules/react-icons";
+await $`npm install react-icons@latest`;
 
 for await (const dirEntry of Deno.readDir(src)) {
   if (dirEntry.isFile) continue;
@@ -59,11 +56,10 @@ for await (const dirEntry of Deno.readDir(src)) {
   const paths = new PathBuilder("..", name);
   await fs.ensureDir(paths.destDirico);
 
-  
   /**
    * DOC
    */
-  const markDown = genMarkdown(pkg, name, nextTag, first);;
+  const markDown = genMarkdown(pkg, name, nextTag, first);
   let readme = markDown;
   readme += "@module";
   // convert README TO comment README
@@ -143,7 +139,7 @@ for await (const dirEntry of Deno.readDir(src)) {
     icoName = icoName.toLocaleLowerCase();
     const ret = lowercase.has(icoName);
     lowercase.add(icoName);
-    if (ret) console.log(`${pc.red("drop")} ${name}.${icoName} case colision.`);
+    if (ret) console.log(`${pc.red("drop")} ${name}.${icoName} can cause case-insensitive colision.`);
     return !ret;
   });
 
@@ -151,11 +147,13 @@ for await (const dirEntry of Deno.readDir(src)) {
 
   const allIconst: Record<string, string> = {};
 
-
   await Promise.all(
     all.map(async ([code, icoName]) => {
       const def = `export default ${icoName};`;
-      await writeFile(paths.getIconFile(icoName), mainImport2 + NL2 + code + NL + def + NL);
+      await writeFile(
+        paths.getIconFile(icoName),
+        mainImport2 + NL2 + code + NL + def + NL,
+      );
       allIconst[icoName] = code + NL;
       // subMod.push(code + NL);
     }),

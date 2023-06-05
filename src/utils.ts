@@ -1,5 +1,6 @@
 import * as pc from "https://deno.land/std@0.190.0/fmt/colors.ts";
-import { Provider } from "./lib/providers.ts";
+import { Provider } from "../lib/providers.ts";
+import { BQ3, NL, NL2 } from "./constants.ts";
 
 export async function writeFile(dest: string, content: string): Promise<void> {
   let oldContent = "";
@@ -14,33 +15,6 @@ export async function writeFile(dest: string, content: string): Promise<void> {
   console.log(`${pc.yellow("updating")} ${dest}`);
   await Deno.writeTextFile(dest, content);
 }
-
-export const SVG_ATTRS = [
-  "tag",
-  "viewBox",
-  "attr",
-  "child",
-  "d",
-  "id",
-  "dataName",
-  "strokeLinecap",
-  "strokeLinejoin",
-  "strokeWidth",
-  "fill",
-  "ariaHidden",
-  "fillRule",
-  "version",
-  "x",
-  "y",
-  "style",
-  "baseProfile",
-  "enableBackground",
-  "stroke",
-] as const;
-
-const NL = "\n";
-const BQ3 = "```";
-const NL2 = `${NL}${NL}`;
 
 export function genMarkdown(pkg: Provider, name: string, nextTag: string, first: string): string {
     const libName = pkg.name.replace(/ Icons^/, "");
