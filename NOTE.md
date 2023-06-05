@@ -40,7 +40,10 @@ done;
 ### next release
 ```bash
 for X in ${pkgs[@]}; do
+  echo start $X; 
   cd react-icons-$X; 
+  git add .; git commit -avm "add non commiter files";
+  git push;
   gh release create 1.0.9 --notes "improve generator, icon update";
   cd ..;
 done;
