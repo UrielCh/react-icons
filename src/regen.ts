@@ -39,12 +39,13 @@ for await (const dirEntry of Deno.readDir(src)) {
   }
   const lowercase = new Set<string>();
   // filter / convert content
-  const mainImport1 =
-    'import { GenIcon, type IconBaseProps } from "./deps.ts";';
-  const mainImport2 =
-    'import { GenIcon, type IconBaseProps } from "../deps.ts";';
+
+  const mainImport1 =`import { GenIcon } from "./deps.ts";${NL}import type { IconBaseProps, JSX, VNode } from "./deps.ts";`;
+  const mainImport2 =`import { GenIcon } from "../deps.ts";${NL}import type { IconBaseProps, JSX, VNode } from "../deps.ts";`;
+
   content = content.replace(`import { GenIcon } from '../lib';`, mainImport2);
   content = content.replaceAll(` (props) {`, `(props: IconBaseProps) {`);
+  // : VNode<JSX.SVGAttributes>
   for (const att of SVG_ATTRS) {
     content = content.replaceAll(
       new RegExp(`\s?"${att}"\s?:\s?`, "g"),
@@ -53,7 +54,8 @@ for await (const dirEntry of Deno.readDir(src)) {
   }
   content = content.replaceAll(/};(\s+)export/gm, "}$1export");
   content = content.replaceAll(/};(\s+)$/gm, "}$1");
-  // extract first for doc
+
+// extract first for doc
   const first = content.match(/export function ([\w]+)\(props/)![1];
   // console.log(first);
   const paths = new PathBuilder("..", name);
@@ -126,6 +128,8 @@ for await (const dirEntry of Deno.readDir(src)) {
 //    `// export { GenIcon, type IconBaseProps } from "https://deno.land/x/react_icons@${reactIconVersion}/mod.ts";${NL}`;
   mainExport +=
     `export { GenIcon, type IconBaseProps } from "@preact-icons/common";${NL}`;
+    mainExport +=
+    `export type { JSX, VNode } from "preact";${NL}`;
   await writeFile(paths.destDeps, mainExport);
 
   const licenceHeader =
@@ -159,6 +163,7 @@ for await (const dirEntry of Deno.readDir(src)) {
   await Promise.all(
     all.map(async ([code, icoName]) => {
       code = code.replace(",child:[]", "");
+      code = code.replace("(props: IconBaseProps) {", "(props: IconBaseProps): VNode<JSX.SVGAttributes> {");
       const def = `export default ${icoName};`;
       const icoData = mainImport2 + NL2 + code + NL + def + NL;
       await writeFile(paths.getIconFile(icoName), icoData);
@@ -168,6 +173,10 @@ for await (const dirEntry of Deno.readDir(src)) {
         const data = icoData.replace('"../deps.ts"', '"../mod.ts"');
         await writeFile(paths.getDebugIcon(icoName), data);
       }
+      // console.log(`processing ${name} content length:${content.length}`);
+      // content = content.replaceAll("(props: IconBaseProps) {", "(props: IconBaseProps): VNode<JSX.SVGAttributes> {");
+      // console.log(`processing ${name} content length:${content.length}`);
+    
       allIconst[icoName] = code + NL;
       // subMod.push(code + NL);
     }),

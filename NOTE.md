@@ -77,3 +77,22 @@ for X in ${pkgs[@]}; do
 done;
 ```
 
+## init JSR once
+
+```bash
+pkgs=(bs bi ci di fi fc fa fa6 gi go gr hi im md pi ri si sl tb ti wi cg io hi2 io5 lia tfi vsc lu rx)
+pkgs=(ri si sl tb ti wi cg io hi2 io5 lia tfi)
+echo "";
+echo "";
+for X in ${pkgs[@]}; do
+  echo "";
+  echo echo create $X;
+  echo echo react-icons-$X;
+  echo cd react-icons-$X;
+  echo git add .
+  echo git commit -m "'JSR migration'";
+  echo git push
+  echo cd ..;
+  echo "";
+done;
+```

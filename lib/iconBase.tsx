@@ -1,5 +1,5 @@
-import { type ComponentChildren, type VNode, createElement } from "preact";
-import type { JSX } from "preact";
+import { createElement } from "preact";
+import type { ComponentChildren, JSX, VNode } from "preact";
 import { defaultIconContext, type IconContext } from "./iconContext.ts";
 
 const CAMEL_PROPS =
