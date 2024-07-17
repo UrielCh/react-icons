@@ -157,6 +157,7 @@ for await (const dirEntry of Deno.readDir(src)) {
 
   await Promise.all(
     all.map(async ([code, icoName]) => {
+      code = code.replace(",child:[]", "");
       const def = `export default ${icoName};`;
       const icoData = mainImport2 + NL2 + code + NL + def + NL;
       await writeFile(paths.getIconFile(icoName), icoData);
