@@ -45,7 +45,7 @@ for await (const dirEntry of Deno.readDir(src)) {
 
   content = content.replace(`import { GenIcon } from '../lib';`, mainImport2);
   content = content.replaceAll(` (props) {`, `(props: IconBaseProps) {`);
-  // : VNode<JSX.SVGAttributes>
+
   for (const att of SVG_ATTRS) {
     content = content.replaceAll(
       new RegExp(`\s?"${att}"\s?:\s?`, "g"),
@@ -133,7 +133,7 @@ for await (const dirEntry of Deno.readDir(src)) {
   await writeFile(paths.destDeps, mainExport);
 
   const licenceHeader =
-    `// Copyright ${pkg.since}-2022 the ${pkg.name} authors. All rights reserved. ${
+    `// Copyright ${pkg.since}-2024 the ${pkg.name} authors. All rights reserved. ${
       pkg.licence[0]
     } (${pkg.licence[1]}).${NL}`;
 
@@ -199,28 +199,30 @@ for await (const dirEntry of Deno.readDir(src)) {
   //   }
   //   await writeFile(destMod, licenceHeader + readme + content);
   // }
+  const denoConfig = {
+    lock: false,
+    importMap: "./import_map.json",
+    name: `@preact-icons/${name}`,
+    version: nextTag,
+    exports: {
+      ".": "./mod.ts"
+    } as Record<string, string>,
+    compilerOptions: {
+      lib: [
+        "dom",
+        "deno.ns"
+      ],      
+      jsx: "react-jsx",
+      jsxImportSource: "preact",
+    },
+  };
+  for (const iconName of icons) {
+    denoConfig.exports[iconName] = `./ico/${iconName}.ts`;
+  }
 
   await writeFile(
     paths.denoConfig,
-    JSON.stringify(
-      {
-        lock: false,
-        importMap: "./import_map.json",
-        name: `@preact-icons/${name}`,
-        version: nextTag,
-        exports: "./mod.ts",      
-        compilerOptions: {
-          lib: [
-            "dom",
-            "deno.ns"
-          ],      
-          jsx: "react-jsx",
-          jsxImportSource: "preact",
-        },
-      },
-      undefined,
-      2,
-    ) + NL,
+    JSON.stringify(denoConfig, undefined, 2) + NL,
   );
   await writeFile(
     paths.import_map,
