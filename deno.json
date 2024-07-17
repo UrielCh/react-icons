@@ -8,7 +8,7 @@
   },
   "importMap": "./import_map.json",
   "name": "@preact-icons/common",
-  "version": "1.0.0",
+  "version": "1.0.9",
   "exports": "./mod.ts",
   "compilerOptions": {
     "lib": [

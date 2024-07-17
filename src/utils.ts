@@ -1,6 +1,7 @@
 import * as pc from "https://deno.land/std@0.190.0/fmt/colors.ts";
-import { Provider } from "../lib/providers.ts";
+import type { Provider } from "../lib/providers.ts";
 import { BQ3, NL, NL2, preactVersion } from "./constants.ts";
+import { reactIconVersion } from "./constants.ts";
 
 export async function writeFile(dest: string, content: string): Promise<void> {
   let oldContent = "";
@@ -28,14 +29,16 @@ export function genMarkdown(pkg: Provider, name: string, nextTag: string, first:
     readme += `${BQ3}json${NL}`;
     readme += `{${NL}`;
     readme += `  "imports": {${NL}`;
-    readme += `    "preact":  "https://esm.sh/preact@${preactVersion}",${NL}`;
-    readme += `    "preact/": "https://esm.sh/preact@${preactVersion}/",${NL}`;
-    // readme += `    "react-icons/${name}": "https://deno.land/x/react_icons_${name}${nextTag}/mod.ts",${NL}`;
+    readme += `    "@preact-icons/common": "jsr:@preact-icons/common@^${reactIconVersion}",${NL}`;
+    readme += `    "preact": "npm:preact@${preactVersion}",${NL}`;
+    readme += `    "preact/jsx-runtime": "npm:preact@${preactVersion}/jsx-runtime",${NL}`;
+    readme += `    "preact/hooks": "npm:preact@${preactVersion}/hooks",${NL}`;
+    // readme += `    "react-icons/${name}": "https://deno.land/x/react_icons_${name}@${nextTag}/mod.ts",${NL}`;
     // readme += `    "react-icons/${name}/":  "https://deno.land/x/react_icons_${name}/ico/",${NL}`;
     readme +=
-      `    "react-icons/${name}":  "https://cdn.jsdelivr.net/gh/urielch/react-icons-${name}${nextTag}/mod.ts",${NL}`;
+      `    "react-icons/${name}": "jsr:@preact-icons/${name}@^${nextTag}/mod.ts",${NL}`;
     readme +=
-      `    "react-icons/${name}/": "https://cdn.jsdelivr.net/gh/urielch/react-icons-${name}${nextTag}/ico/",${NL}`;
+      `    "react-icons/${name}/": "jsr:@preact-icons/${name}@^${nextTag}/ico/",${NL}`;
     readme += `  }${NL}`;
     readme += `}${NL}`;
     readme += `${BQ3}${NL2}`;
@@ -43,7 +46,7 @@ export function genMarkdown(pkg: Provider, name: string, nextTag: string, first:
       `## Import an icon without import_map by and afer loading all icons from the lib ${name}${NL2}`;
     readme += `${BQ3}ts${NL}`;
     readme +=
-      `import { ${first} } from "https://deno.land/x/react_icons_${name}${nextTag}/mod.ts"${NL}`;
+      `import { ${first} } from "jsr:preact-icons/${name}@${nextTag}/mod.ts"${NL}`;
     readme += `${BQ3}${NL2}`;
     readme += `## import_map import an icon from all icons${NL2}`;
     readme += `${BQ3}ts${NL}`;

@@ -14,6 +14,7 @@ import {
   nextTag,
   NL,
   NL2,
+  preactVersion,
   reactIconVersion,
   SVG_ATTRS,
 } from "./constants.ts";
@@ -121,10 +122,10 @@ for await (const dirEntry of Deno.readDir(src)) {
   //    content = content.replaceAll(/{stroke:"[^"]+",/g, '{');
   //}
 
-  let mainExport =
-    `// export { GenIcon, type IconBaseProps } from "https://deno.land/x/react_icons${reactIconVersion}/mod.ts";${NL}`;
+  let mainExport = "";
+//    `// export { GenIcon, type IconBaseProps } from "https://deno.land/x/react_icons@${reactIconVersion}/mod.ts";${NL}`;
   mainExport +=
-    `export { GenIcon, type IconBaseProps } from "https://cdn.jsdelivr.net/gh/urielch/react-icons${reactIconVersion}/mod.ts";${NL}`;
+    `export { GenIcon, type IconBaseProps } from "@preact-icons/common";${NL}`;
   await writeFile(paths.destDeps, mainExport);
 
   const licenceHeader =
@@ -196,6 +197,9 @@ for await (const dirEntry of Deno.readDir(src)) {
       {
         lock: false,
         importMap: "./import_map.json",
+        name: `@preact-icons/${name}`,
+        version: nextTag,
+        exports: "./mod.ts",      
         compilerOptions: {
           lib: [
             "dom",
@@ -207,30 +211,34 @@ for await (const dirEntry of Deno.readDir(src)) {
       },
       undefined,
       2,
-    ),
+    ) + NL,
   );
   await writeFile(
     paths.import_map,
     JSON.stringify(
       {
         imports: {
-          preact: "https://esm.sh/preact@10.22.1",
-          "preact/": "https://esm.sh/preact@10.22.1/",
+          // preact: "https://esm.sh/preact@10.22.1",
+          // "preact/": "https://esm.sh/preact@10.22.1/",
+          "@preact-icons/common": `jsr:@preact-icons/common@^${reactIconVersion}`,
+          preact: `npm:preact@${preactVersion}`,
+          "preact/jsx-runtime": `npm:preact@${preactVersion}/jsx-runtime`,
+          "preact/hooks": `npm:preact@${preactVersion}/hooks`
         },
       },
       undefined,
       2,
-    ),
+    ) + NL,
   );
 
   await writeFile(paths.README, markDown);
 }
 
 let mod = await Deno.readTextFile("mod.ts");
-mod = mod.replaceAll(/@[0-9.]+\/(mod.ts|ico)/g, `${nextTag}/$1`);
+mod = mod.replaceAll(/@[0-9.]+\/(mod.ts|ico)/g, `@${nextTag}/$1`);
 await writeFile("mod.ts", mod);
 
 let README = await Deno.readTextFile("README.md");
-README = README.replaceAll(/@[0-9.]+\/(mod.ts|ico)/g, `${nextTag}/$1`);
-README = README.replaceAll(/x\/react_icons@[0-9.]+/g, `x/react_icons/${reactIconVersion}`);
+README = README.replaceAll(/@[0-9.]+\/(mod.ts|ico)/g, `@${nextTag}/$1`);
+README = README.replaceAll(/x\/react_icons@[0-9.]+/g, `x/react_icons/@${reactIconVersion}`);
 await writeFile("README.md", README);
