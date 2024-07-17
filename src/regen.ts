@@ -215,6 +215,12 @@ for await (const dirEntry of Deno.readDir(src)) {
       jsx: "react-jsx",
       jsxImportSource: "preact",
     },
+    publish: {
+      exclude: [
+        ".github",
+      ]
+    }
+  
   };
   for (const iconName of icons) {
     denoConfig.exports[iconName] = `./ico/${iconName}.ts`;

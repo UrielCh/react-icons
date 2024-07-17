@@ -21,11 +21,13 @@
   "publish": {
     "exclude": [
       ".github",
+      ".vscode",
       "components",
       "src",
       "routes",
       "static",
       "deps.ts",
+      "main.ts",
       "dev.ts",
       "fresh.gen.ts",
       "NOTE.md"

@@ -10,193 +10,46 @@ If you have time to help the project is [here](https://github.com/UrielCh/react-
 
 ## Setup
 
-To use it fill your `import_map.json`
+### install the bundle you want using
 
-### Using jsdelivr (best approch)
+`deno add @preact-icons/ai` for deno
+`npx jsr add @preact-icons/ai` for npm
+`bunx jsr add @preact-icons/ai` for bun
 
-node preact can not be import via `cdn.jsdelivr.net` so keep `esm.sh` for this one.
 
-```json
-{
-  "imports": {
-    "preact": "https://esm.sh/preact@10.22.1",
-    "preact/": "https://esm.sh/preact@10.22.1/",
-    "react-icons/ai":  "https://cdn.jsdelivr.net/gh/urielch/react-icons-ai@1.0.10/mod.ts",
-    "react-icons/bs":  "https://cdn.jsdelivr.net/gh/urielch/react-icons-bs@1.0.10/mod.ts",
-    "react-icons/bi":  "https://cdn.jsdelivr.net/gh/urielch/react-icons-bi@1.0.10/mod.ts",
-    "react-icons/ci":  "https://cdn.jsdelivr.net/gh/urielch/react-icons-ci@1.0.10/mod.ts",
-    "react-icons/di":  "https://cdn.jsdelivr.net/gh/urielch/react-icons-di@1.0.10/mod.ts",
-    "react-icons/fi":  "https://cdn.jsdelivr.net/gh/urielch/react-icons-fi@1.0.10/mod.ts",
-    "react-icons/fc":  "https://cdn.jsdelivr.net/gh/urielch/react-icons-fc@1.0.10/mod.ts",
-    "react-icons/fa":  "https://cdn.jsdelivr.net/gh/urielch/react-icons-fa@1.0.10/mod.ts",
-    "react-icons/fa6":  "https://cdn.jsdelivr.net/gh/urielch/react-icons-fa@1.0.10/mod.ts",
-    "react-icons/gi":  "https://cdn.jsdelivr.net/gh/urielch/react-icons-gi@1.0.10/mod.ts",
-    "react-icons/go":  "https://cdn.jsdelivr.net/gh/urielch/react-icons-go@1.0.10/mod.ts",
-    "react-icons/gr":  "https://cdn.jsdelivr.net/gh/urielch/react-icons-gr@1.0.10/mod.ts",
-    "react-icons/hi":  "https://cdn.jsdelivr.net/gh/urielch/react-icons-hi@1.0.10/mod.ts",
-    "react-icons/hi2": "https://cdn.jsdelivr.net/gh/urielch/react-icons-hi2@1.0.10/mod.ts",
-    "react-icons/io":  "https://cdn.jsdelivr.net/gh/urielch/react-icons-io@1.0.10/mod.ts",
-    "react-icons/io5": "https://cdn.jsdelivr.net/gh/urielch/react-icons-io5@1.0.10/mod.ts",
-    "react-icons/im":  "https://cdn.jsdelivr.net/gh/urielch/react-icons-im@1.0.10/mod.ts",
-    "react-icons/lia":  "https://cdn.jsdelivr.net/gh/urielch/react-icons-lia@1.0.10/mod.ts",
-    "react-icons/md":  "https://cdn.jsdelivr.net/gh/urielch/react-icons-md@1.0.10/mod.ts",
-    "react-icons/pi":  "https://cdn.jsdelivr.net/gh/urielch/react-icons-pi@1.0.10/mod.ts",
-    "react-icons/ri":  "https://cdn.jsdelivr.net/gh/urielch/react-icons-ri@1.0.10/mod.ts",
-    "react-icons/si":  "https://cdn.jsdelivr.net/gh/urielch/react-icons-si@1.0.10/mod.ts",
-    "react-icons/sl":  "https://cdn.jsdelivr.net/gh/urielch/react-icons-sl@1.0.10/mod.ts",
-    "react-icons/tb":  "https://cdn.jsdelivr.net/gh/urielch/react-icons-tb@1.0.10/mod.ts",
-    "react-icons/ti":  "https://cdn.jsdelivr.net/gh/urielch/react-icons-ti@1.0.10/mod.ts",
-    "react-icons/wi":  "https://cdn.jsdelivr.net/gh/urielch/react-icons-wi@1.0.10/mod.ts",
-    "react-icons/cg":  "https://cdn.jsdelivr.net/gh/urielch/react-icons-cg@1.0.10/mod.ts",
-    "react-icons/lu":  "https://cdn.jsdelivr.net/gh/urielch/react-icons-lu@1.0.10/mod.ts",
-    "react-icons/rx":  "https://cdn.jsdelivr.net/gh/urielch/react-icons-rx@1.0.10/mod.ts",
-    "react-icons/tfi": "https://cdn.jsdelivr.net/gh/urielch/react-icons-tfi@1.0.10/mod.ts",
-    "react-icons/vsc": "https://cdn.jsdelivr.net/gh/urielch/react-icons-vsc@1.0.10/mod.ts",
+### update your dependency tu use only jsr / npm source
 
-    "react-icons/ai/":  "https://cdn.jsdelivr.net/gh/urielch/react-icons-ai@1.0.10/ico/",
-    "react-icons/bs/":  "https://cdn.jsdelivr.net/gh/urielch/react-icons-bs@1.0.10/ico/",
-    "react-icons/bi/":  "https://cdn.jsdelivr.net/gh/urielch/react-icons-bi@1.0.10/ico/",
-    "react-icons/ci/":  "https://cdn.jsdelivr.net/gh/urielch/react-icons-ci@1.0.10/ico/",
-    "react-icons/di/":  "https://cdn.jsdelivr.net/gh/urielch/react-icons-di@1.0.10/ico/",
-    "react-icons/fi/":  "https://cdn.jsdelivr.net/gh/urielch/react-icons-fi@1.0.10/ico/",
-    "react-icons/fc/":  "https://cdn.jsdelivr.net/gh/urielch/react-icons-fc@1.0.10/ico/",
-    "react-icons/fa/":  "https://cdn.jsdelivr.net/gh/urielch/react-icons-fa@1.0.10/ico/",
-    "react-icons/fa6/":  "https://cdn.jsdelivr.net/gh/urielch/react-icons-fa6@1.0.10/ico/",
-    "react-icons/gi/":  "https://cdn.jsdelivr.net/gh/urielch/react-icons-gi@1.0.10/ico/",
-    "react-icons/go/":  "https://cdn.jsdelivr.net/gh/urielch/react-icons-go@1.0.10/ico/",
-    "react-icons/gr/":  "https://cdn.jsdelivr.net/gh/urielch/react-icons-gr@1.0.10/ico/",
-    "react-icons/hi/":  "https://cdn.jsdelivr.net/gh/urielch/react-icons-hi@1.0.10/ico/",
-    "react-icons/hi2/": "https://cdn.jsdelivr.net/gh/urielch/react-icons-hi2@1.0.10/ico/",
-    "react-icons/io/":  "https://cdn.jsdelivr.net/gh/urielch/react-icons-io@1.0.10/ico/",
-    "react-icons/io5/": "https://cdn.jsdelivr.net/gh/urielch/react-icons-io5@1.0.10/ico/",
-    "react-icons/im/":  "https://cdn.jsdelivr.net/gh/urielch/react-icons-im@1.0.10/ico/",
-    "react-icons/lia/":  "https://cdn.jsdelivr.net/gh/urielch/react-icons-lia@1.0.10/ico/",
-    "react-icons/md/":  "https://cdn.jsdelivr.net/gh/urielch/react-icons-md@1.0.10/ico/",
-    "react-icons/pi/":  "https://cdn.jsdelivr.net/gh/urielch/react-icons-pi@1.0.10/ico/",
-    "react-icons/ri/":  "https://cdn.jsdelivr.net/gh/urielch/react-icons-ri@1.0.10/ico/",
-    "react-icons/si/":  "https://cdn.jsdelivr.net/gh/urielch/react-icons-si@1.0.10/ico/",
-    "react-icons/sl/":  "https://cdn.jsdelivr.net/gh/urielch/react-icons-sl@1.0.10/ico/",
-    "react-icons/tb/":  "https://cdn.jsdelivr.net/gh/urielch/react-icons-tb@1.0.10/ico/",
-    "react-icons/ti/":  "https://cdn.jsdelivr.net/gh/urielch/react-icons-ti@1.0.10/ico/",
-    "react-icons/wi/":  "https://cdn.jsdelivr.net/gh/urielch/react-icons-wi@1.0.10/ico/",
-    "react-icons/cg/":  "https://cdn.jsdelivr.net/gh/urielch/react-icons-cg@1.0.10/ico/",
-    "react-icons/lu/":  "https://cdn.jsdelivr.net/gh/urielch/react-icons-lu@1.0.10/ico/",
-    "react-icons/rx/":  "https://cdn.jsdelivr.net/gh/urielch/react-icons-rx@1.0.10/ico/",
-    "react-icons/tfi/": "https://cdn.jsdelivr.net/gh/urielch/react-icons-tfi@1.0.10/ico/",
-    "react-icons/vsc/": "https://cdn.jsdelivr.net/gh/urielch/react-icons-vsc@1.0.10/ico/"
-  }
-}
-```
-Later on yu will be able to import a single icon using:
 
-```ts
-import { AiTwotonePrinter } from "https://cdn.jsdelivr.net/gh/urielch/react-icons-ai@1.0.10/ico/AiTwotonePrinter.ts";
-```
-
-Or using your import_map.json:
-
-```ts
-import { AiTwotonePrinter } from "react-icons/ai/AiTwotonePrinter.ts";
-```
-
-### using deno/x
-
-I'm having some issue with deno/x currently, some package cause deno/x to crash or may be not available.
+replace imports like:
 
 ```json
 {
-  "imports": {
-    "preact":  "https://esm.sh/preact@10.22.1",
-    "preact/": "https://esm.sh/preact@10.22.1/",
-    "react-icons/ai":  "https://deno.land/x/react_icons_ai@1.0.10/mod.ts",
-    "react-icons/bs":  "https://deno.land/x/react_icons_bs@1.0.10/mod.ts",
-    "react-icons/bi":  "https://deno.land/x/react_icons_bi@1.0.10/mod.ts",
-    "react-icons/ci":  "https://deno.land/x/react_icons_ci@1.0.10/mod.ts",
-    "react-icons/di":  "https://deno.land/x/react_icons_di@1.0.10/mod.ts",
-    "react-icons/fi":  "https://deno.land/x/react_icons_fi@1.0.10/mod.ts",
-    "react-icons/fc":  "https://deno.land/x/react_icons_fc@1.0.10/mod.ts",
-    "react-icons/fa":  "https://deno.land/x/react_icons_fa@1.0.10/mod.ts",
-    "react-icons/gi":  "https://deno.land/x/react_icons_gi@1.0.10/mod.ts",
-    "react-icons/go":  "https://deno.land/x/react_icons_go@1.0.10/mod.ts",
-    "react-icons/gr":  "https://deno.land/x/react_icons_gr@1.0.10/mod.ts",
-    "react-icons/hi":  "https://deno.land/x/react_icons_hi@1.0.10/mod.ts",
-    "react-icons/hi2": "https://deno.land/x/react_icons_hi2@1.0.10/mod.ts",
-    "react-icons/io":  "https://deno.land/x/react_icons_io@1.0.10/mod.ts",
-    "react-icons/io5": "https://deno.land/x/react_icons_io5@1.0.10/mod.ts",
-    "react-icons/im":  "https://deno.land/x/react_icons_im@1.0.10/mod.ts",
-    "react-icons/md":  "https://deno.land/x/react_icons_md@1.0.10/mod.ts",
-    "react-icons/ri":  "https://deno.land/x/react_icons_ri@1.0.10/mod.ts",
-    "react-icons/si":  "https://deno.land/x/react_icons_si@1.0.10/mod.ts",
-    "react-icons/sl":  "https://deno.land/x/react_icons_sl@1.0.10/mod.ts",
-    "react-icons/tb":  "https://deno.land/x/react_icons_tb@1.0.10/mod.ts",
-    "react-icons/ti":  "https://deno.land/x/react_icons_ti@1.0.10/mod.ts",
-    "react-icons/wi":  "https://deno.land/x/react_icons_wi@1.0.10/mod.ts",
-    "react-icons/cg":  "https://deno.land/x/react_icons_cg@1.0.10/mod.ts",
-    "react-icons/tfi": "https://deno.land/x/react_icons_tfi@1.0.10/mod.ts",
-    "react-icons/vsc": "https://deno.land/x/react_icons_vsc@1.0.10/mod.ts",
-
-    "react-icons/ai/":  "https://deno.land/x/react_icons_ai@1.0.10/ico/",
-    "react-icons/bs/":  "https://deno.land/x/react_icons_bs@1.0.10/ico/",
-    "react-icons/bi/":  "https://deno.land/x/react_icons_bi@1.0.10/ico/",
-    "react-icons/ci/":  "https://deno.land/x/react_icons_ci@1.0.10/ico/",
-    "react-icons/di/":  "https://deno.land/x/react_icons_di@1.0.10/ico/",
-    "react-icons/fi/":  "https://deno.land/x/react_icons_fi@1.0.10/ico/",
-    "react-icons/fc/":  "https://deno.land/x/react_icons_fc@1.0.10/ico/",
-    "react-icons/fa/":  "https://deno.land/x/react_icons_fa@1.0.10/ico/",
-    "react-icons/gi/":  "https://deno.land/x/react_icons_gi@1.0.10/ico/",
-    "react-icons/go/":  "https://deno.land/x/react_icons_go@1.0.10/ico/",
-    "react-icons/gr/":  "https://deno.land/x/react_icons_gr@1.0.10/ico/",
-    "react-icons/hi/":  "https://deno.land/x/react_icons_hi@1.0.10/ico/",
-    "react-icons/hi2/": "https://deno.land/x/react_icons_hi2@1.0.10/ico/",
-    "react-icons/io/":  "https://deno.land/x/react_icons_io@1.0.10/ico/",
-    "react-icons/io5/": "https://deno.land/x/react_icons_io5@1.0.10/ico/",
-    "react-icons/im/":  "https://deno.land/x/react_icons_im@1.0.10/ico/",
-    "react-icons/md/":  "https://deno.land/x/react_icons_md@1.0.10/ico/",
-    "react-icons/ri/":  "https://deno.land/x/react_icons_ri@1.0.10/ico/",
-    "react-icons/si/":  "https://deno.land/x/react_icons_si@1.0.10/ico/",
-    "react-icons/sl/":  "https://deno.land/x/react_icons_sl@1.0.10/ico/",
-    "react-icons/tb/":  "https://deno.land/x/react_icons_tb@1.0.10/ico/",
-    "react-icons/ti/":  "https://deno.land/x/react_icons_ti@1.0.10/ico/",
-    "react-icons/wi/":  "https://deno.land/x/react_icons_wi@1.0.10/ico/",
-    "react-icons/cg/":  "https://deno.land/x/react_icons_cg@1.0.10/ico/",
-    "react-icons/tfi/": "https://deno.land/x/react_icons_tfi@1.0.10/ico/",
-    "react-icons/vsc/": "https://deno.land/x/react_icons_vsc@1.0.10/ico/"
-  }
+  "preact": "https://esm.sh/preact@10.19.6",
+  "preact/": "https://esm.sh/preact@10.19.6/",
 }
 ```
+by npm imports like:
 
-Later on yu will be able to import a single icon using:
 
-```ts
-import { AiTwotonePrinter } from "https://deno.land/x/react_icons_ai@1.0.10/ico/AiTwotonePrinter.ts";
-```
-
-Or using your import_map.json:
-
-```ts
-import { AiTwotonePrinter } from "react-icons/ai/AiTwotonePrinter.ts";
-```
-
-### using esm.sh
-```
+```json
 {
-  "imports": {
-    "preact":  "https://esm.sh/preact@10.22.1",
-    "preact/": "https://esm.sh/preact@10.22.1/",
-    "react-icons/ai":  "https://esm.sh/gh/urielch/react-icons-ai@1.0.10/mod.ts",
-    "react-icons/bs":  "https://esm.sh/gh/urielch/react-icons-bs@1.0.10/mod.ts",
-  }
+    "preact": "npm:preact@10.22.1",
+    "preact/jsx-runtime": "npm:preact@10.22.1/jsx-runtime",
+    "preact/hooks": "npm:preact@10.22.1/hooks",
 }
 ```
-direct icon import do not works with esm.sh
+Later on you will be able to import a single icon using:
 
-ex: `https://cdn.jsdelivr.net/gh/urielch/react-icons-ai@1.0.10/mod.ts` is broken for now.
-
+```ts
+import AiTwotonePrinter from "jsr:@preact-icons/ai@1.0.11/AiTwotonePrinter";
+```
 
 ## sample
 
-Once `import_map.json` is ready, just use it like in a regular `React` app, bur with `Preact`
 
+```bash
+deno add @preact-icons/ai
+```
 
 ```tsx
 import { AiFillAccountBook } from "react-icons/ai";
