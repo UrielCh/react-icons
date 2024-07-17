@@ -59,6 +59,13 @@ export const providers: { [key: string]: Provider } = {
         since: '2015'
     },
     fa: {
+        name: 'Font Awesome 6',
+        licence: ['CC BY 4.0 License', 'https://creativecommons.org/licenses/by/4.0/'],
+        projectUrl: 'https://fontawesome.com/',
+        source: 'https://github.com/FortAwesome/Font-Awesome',
+        since: '2012'
+    },
+    fa6: {
         name: 'Font Awesome',
         licence: ['CC BY 4.0 License', 'https://creativecommons.org/licenses/by/4.0/'],
         projectUrl: 'https://fontawesome.com/',
@@ -113,6 +120,13 @@ export const providers: { [key: string]: Provider } = {
     io5: {
         name: 'Ionicons 5',
         licence: ['MIT', 'https://github.com/ionic-team/ionicons/blob/master/LICENSE'],
+        projectUrl: 'https://icons8.com/',
+        source: 'https://github.com/icons8/bower-webicon',
+        since: "2015",
+    },
+    lia: {
+        name: 'Icons8 Line Awesome',
+        licence: ['MIT', 'https://icons8.com/license'],
         projectUrl: 'https://ionicons.com/',
         source: 'https://github.com/ionic-team/ionicons',
         since: "2020",
@@ -130,6 +144,13 @@ export const providers: { [key: string]: Provider } = {
         projectUrl: 'http://google.github.io/material-design-icons/',
         source: 'https://github.com/google/material-design-icons',
         since: "2016",
+    },
+    pi: {
+        name: 'Phosphor Icons',
+        licence: ['MIT', 'https://raw.githubusercontent.com/phosphor-icons/core/main/LICENSE'],
+        projectUrl: 'https://phosphoricons.com/',
+        source: 'https://github.com/phosphor-icons/core',
+        since: "2022",
     },
     ri: {
         name: 'Remix Icon',

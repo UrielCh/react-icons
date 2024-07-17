@@ -26,13 +26,14 @@ for await (const dirEntry of Deno.readDir(src)) {
   const { name } = dirEntry;
   if (name === "lib") continue; // lib is not a provider
   const pkg = providers[name];
-  if (!pkg) throw Error(`no Licence for lib ${name}`);
+  if (!pkg) throw Error(`no Licence for lib "${name}", please add it to providers in lib/providers.ts`);
   // load original icon data
-  const esm = path.join(src, name, "index.esm.js");
+  const esm = path.join(src, name, "index.mjs");
   let content = "";
   try {
     content = await Deno.readTextFile(esm);
   } catch (_) {
+    console.log(`no ${esm} SKIP`);
     continue;
   }
   const lowercase = new Set<string>();
