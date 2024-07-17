@@ -230,8 +230,29 @@ for await (const dirEntry of Deno.readDir(src)) {
       2,
     ) + NL,
   );
-
   await writeFile(paths.README, markDown);
+
+  await fs.ensureDir(paths.destWorkflows);
+  await writeFile(paths.destpublishYml, `name: Publish
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      id-token: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Publish package
+        run: npx jsr publish
+`);
 }
 
 let mod = await Deno.readTextFile("mod.ts");

@@ -11,6 +11,14 @@ export class PathBuilder {
     return path.join(this.destDir, "ico");
   }
 
+  get destWorkflows(): string {
+    return path.join(this.destDir, ".github", "workflows");
+  }
+
+  get destpublishYml(): string {
+    return path.join(this.destWorkflows, "publish.yml");
+  }
+
   get destMod(): string {
     return path.join(this.destDir, "mod.ts");
   }
