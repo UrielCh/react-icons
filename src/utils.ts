@@ -1,5 +1,5 @@
 import * as pc from "https://deno.land/std@0.190.0/fmt/colors.ts";
-import type { Provider } from "../lib/providers.ts";
+import type { Provider } from "./providers.ts";
 import { BQ3, NL, NL2, preactVersion } from "./constants.ts";
 import { reactIconVersion } from "./constants.ts";
 

@@ -8,7 +8,7 @@
   },
   "importMap": "./import_map.json",
   "name": "@preact-icons/common",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "exports": "./mod.ts",
   "compilerOptions": {
     "lib": [
@@ -17,5 +17,18 @@
     ],
     "jsx": "react-jsx",
     "jsxImportSource": "preact"
+  },
+  "publish": {
+    "exclude": [
+      ".github",
+      "components",
+      "src",
+      "routes",
+      "static",
+      "deps.ts",
+      "dev.ts",
+      "fresh.gen.ts",
+      "NOTE.md"
+    ]
   }
 }

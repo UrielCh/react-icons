@@ -4,7 +4,7 @@
 import * as path from "https://deno.land/std@0.190.0/path/mod.ts";
 import * as fs from "https://deno.land/std@0.190.0/fs/mod.ts";
 import * as pc from "https://deno.land/std@0.190.0/fmt/colors.ts";
-import { providers } from "../lib/providers.ts";
+import { providers } from "./providers.ts";
 import $ from "https://deno.land/x/dax@0.32.0/mod.ts";
 import { genMarkdown, writeFile } from "./utils.ts";
 import { PathBuilder } from "./PathBuilder.ts";
