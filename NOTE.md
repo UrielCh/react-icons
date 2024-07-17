@@ -2,8 +2,10 @@
 
 ## prepare env
 
+add fa6 pi lia
+
 ```bash
-pkgs=(ai bs bi ci di fi fc fa gi go gr hi im md ri si sl tb ti wi cg io hi2 io5 tfi vsc lu rx)
+pkgs=(ai bs bi ci di fi fc fa fa6 gi go gr hi im md pi ri si sl tb ti wi cg io hi2 io5 lia tfi vsc lu rx)
 ```
 
 ## maintains

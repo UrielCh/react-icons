@@ -59,14 +59,14 @@ export const providers: { [key: string]: Provider } = {
         since: '2015'
     },
     fa: {
-        name: 'Font Awesome 6',
+        name: 'Font Awesome',
         licence: ['CC BY 4.0 License', 'https://creativecommons.org/licenses/by/4.0/'],
         projectUrl: 'https://fontawesome.com/',
         source: 'https://github.com/FortAwesome/Font-Awesome',
         since: '2012'
     },
     fa6: {
-        name: 'Font Awesome',
+        name: 'Font Awesome 6',
         licence: ['CC BY 4.0 License', 'https://creativecommons.org/licenses/by/4.0/'],
         projectUrl: 'https://fontawesome.com/',
         source: 'https://github.com/FortAwesome/Font-Awesome',

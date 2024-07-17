@@ -193,6 +193,7 @@ for await (const dirEntry of Deno.readDir(src)) {
     paths.denoConfig,
     JSON.stringify(
       {
+        lock: false,
         importMap: "./import_map.json",
         compilerOptions: {
           jsx: "react-jsx",
@@ -208,8 +209,8 @@ for await (const dirEntry of Deno.readDir(src)) {
     JSON.stringify(
       {
         imports: {
-          preact: "https://esm.sh/preact@10.15.1",
-          "preact/": "https://esm.sh/preact@10.15.1/",
+          preact: "https://esm.sh/preact@10.22.1",
+          "preact/": "https://esm.sh/preact@10.22.1/",
         },
       },
       undefined,

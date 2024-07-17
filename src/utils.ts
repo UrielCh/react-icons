@@ -1,6 +1,6 @@
 import * as pc from "https://deno.land/std@0.190.0/fmt/colors.ts";
 import { Provider } from "../lib/providers.ts";
-import { BQ3, NL, NL2 } from "./constants.ts";
+import { BQ3, NL, NL2, preactVersion } from "./constants.ts";
 
 export async function writeFile(dest: string, content: string): Promise<void> {
   let oldContent = "";
@@ -28,8 +28,8 @@ export function genMarkdown(pkg: Provider, name: string, nextTag: string, first:
     readme += `${BQ3}json${NL}`;
     readme += `{${NL}`;
     readme += `  "imports": {${NL}`;
-    readme += `    "preact":  "https://esm.sh/preact@10.15.1",${NL}`;
-    readme += `    "preact/": "https://esm.sh/preact@10.15.1/",${NL}`;
+    readme += `    "preact":  "https://esm.sh/preact@${preactVersion}",${NL}`;
+    readme += `    "preact/": "https://esm.sh/preact@${preactVersion}/",${NL}`;
     // readme += `    "react-icons/${name}": "https://deno.land/x/react_icons_${name}${nextTag}/mod.ts",${NL}`;
     // readme += `    "react-icons/${name}/":  "https://deno.land/x/react_icons_${name}/ico/",${NL}`;
     readme +=
