@@ -2,7 +2,6 @@ import { type ComponentChildren, type VNode, createElement } from "preact";
 import type { JSX } from "preact";
 import { defaultIconContext, type IconContext } from "./iconContext.ts";
 
-
 const CAMEL_PROPS =
   /^(?:accent|alignment|arabic|baseline|cap|clip(?!PathU)|color|dominant|fill|flood|font|glyph(?!R)|horiz|image(!S)|letter|lighting|marker(?!H|W|U)|overline|paint|pointer|shape|stop|strikethrough|stroke|text(?!L)|transform|underline|unicode|units|v|vector|vert|word|writing|x(?!C))[A-Z]/;
 const CAMEL_REPLACE = /[A-Z0-9]/g;

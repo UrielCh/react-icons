@@ -197,6 +197,10 @@ for await (const dirEntry of Deno.readDir(src)) {
         lock: false,
         importMap: "./import_map.json",
         compilerOptions: {
+          lib: [
+            "dom",
+            "deno.ns"
+          ],      
           jsx: "react-jsx",
           jsxImportSource: "preact",
         },

@@ -48,11 +48,6 @@
  * ```
  * @module
  */
-/// <reference no-default-lib="true" />
-/// <reference lib="dom" />
-/// <reference lib="dom.iterable" />
-/// <reference lib="dom.asynciterable" />
-/// <reference lib="deno.ns" />
 
 export { type IconTree, type IconBaseProps, GenIcon, IconBase } from "./lib/iconBase.tsx";
 export { type IconContext, defaultIconContext, defaultContext } from "./lib/iconContext.ts";
