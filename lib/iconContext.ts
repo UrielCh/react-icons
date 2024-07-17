@@ -1,4 +1,4 @@
-import * as React from "preact";
+import { createContext, type Context } from "preact";
 import type { JSX } from "preact";
 
 export interface IconContext {
@@ -21,4 +21,4 @@ export const defaultContext: IconContext = {
   attr: undefined,
 };
 
-export const defaultIconContext: React.Context<IconContext> = React.createContext && React.createContext(defaultContext);
+export const defaultIconContext: Context<IconContext> = createContext && createContext(defaultContext);

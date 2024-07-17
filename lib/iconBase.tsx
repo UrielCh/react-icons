@@ -47,7 +47,7 @@ function Tree2Element(tree: IconTree[]): ComponentChildren[] { // React.ReactEle
 /**
  * build a SVG componant from an IconTree
  */
-export function GenIcon(data: IconTree) {
+export function GenIcon(data: IconTree): (props: IconBaseProps) => VNode<JSX.SVGAttributes> {
   return (props: IconBaseProps) => (
     <IconBase attr={{ ...data.attr }} {...props}>
       {Tree2Element(data.child || [])}
