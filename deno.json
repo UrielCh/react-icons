@@ -7,6 +7,9 @@
     "init": "pnpm install react-icons"
   },
   "importMap": "./import_map.json",
+  "name": "@preact-icons/common",
+  "version": "1.0.0",
+  "exports": "./mod.ts",
   "compilerOptions": {
     "jsx": "react-jsx",
     "jsxImportSource": "preact"

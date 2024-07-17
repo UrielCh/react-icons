@@ -1,5 +1,5 @@
 import * as React from "preact";
-import { JSX } from "preact";
+import type { JSX } from "preact";
 
 export interface IconContext {
   color?: string;

@@ -1,14 +1,14 @@
 import { type ComponentChildren, type VNode, createElement } from "preact";
-import { type JSX } from "preact";
-import { defaultIconContext, IconContext } from "./iconContext.ts";
+import type { JSX } from "preact";
+import { defaultIconContext, type IconContext } from "./iconContext.ts";
 
 
 const CAMEL_PROPS =
   /^(?:accent|alignment|arabic|baseline|cap|clip(?!PathU)|color|dominant|fill|flood|font|glyph(?!R)|horiz|image(!S)|letter|lighting|marker(?!H|W|U)|overline|paint|pointer|shape|stop|strikethrough|stroke|text(?!L)|transform|underline|unicode|units|v|vector|vert|word|writing|x(?!C))[A-Z]/;
 const CAMEL_REPLACE = /[A-Z0-9]/g;
 
-function filterKebabCase<T extends Record<string, any>>(attrs: T): T {
-  const newAttrs: Record<string, any> = {};
+function filterKebabCase<T extends Record<string, unknown>>(attrs: T): T {
+  const newAttrs: Record<string, unknown> = {};
   for (const key in attrs) {
     if (key.indexOf('-') === -1 && CAMEL_PROPS.test(key))
       newAttrs[key.replace(CAMEL_REPLACE, '-$&').toLowerCase()] = attrs[key];
@@ -57,7 +57,7 @@ export function GenIcon(data: IconTree) {
 }
 
 /**
- * attribut for all custom SVG
+ * attributes for all custom SVG
  */
 export interface IconBaseProps extends JSX.SVGAttributes<SVGSVGElement> {
   children?: ComponentChildren; // was React.ReactNode

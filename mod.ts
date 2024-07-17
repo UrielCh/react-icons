@@ -5,30 +5,16 @@
  * 
  * ## setup
  * 
- * To use it simply fill your `import_map.json`
- * 
- * ```json
- * {
- *   "imports": {
- *     "preact":  "https://esm.sh/preact",
- *     "preact/": "https://esm.sh/preact/",
- *     "react-icons/ai":  "https://cdn.jsdelivr.net/gh/urielch/react-icons-ai@1.0.10/mod.ts",
- *     "react-icons/bs":  "https://cdn.jsdelivr.net/gh/urielch/react-icons-bs@1.0.10/mod.ts",
- *     ...
- *     "react-icons/ai/":  "https://cdn.jsdelivr.net/gh/urielch/react-icons-ai@1.0.10/ico/",
- *     "react-icons/bs/":  "https://cdn.jsdelivr.net/gh/urielch/react-icons-bs@1.0.10/ico/",
- *   }
- * }
- * ```
+ * deno add @preact-icons/ai
  * 
  * Now just use it like in a regular `React` app, but with `Preact`
  * 
  * ## sample
  * 
  * ```tsx
- * import { AiFillAccountBook } from "react-icons/ai";
+ * import { AiFillAccountBook } from "@preact-icons/ai";
  * // or
- * import AiFillAccountBook from "react-icons/ai/AiFillAccountBook.ts";
+ * import AiFillAccountBook from "@preact-icons/ai/AiFillAccountBook.ts";
  * 
  * export default function TesSvg() {
  *   return (<AiFillAccountBook />)
@@ -51,7 +37,7 @@
  * can be convert as:
  * 
  * ```tsx
- * import { FaBeer } from 'react-icons/fa';
+ * import { FaBeer } from '@preact-icons/fa';
  * import { Component } from 'preact'
  * 
  * class Question extends Component {

@@ -5,6 +5,9 @@
 add fa6 pi lia
 
 ```bash
+pkgs=(ai bs bi ci di fi fc fa gi go gr hi im md ri si sl tb ti wi cg io hi2 io5 tfi vsc lu rx)
+pkgs=(fa6 pi lia)
+
 pkgs=(ai bs bi ci di fi fc fa fa6 gi go gr hi im md pi ri si sl tb ti wi cg io hi2 io5 lia tfi vsc lu rx)
 ```
 
@@ -46,7 +49,7 @@ for X in ${pkgs[@]}; do
   cd react-icons-$X; 
   git add .; git commit -avm "add non commiter files";
   git push;
-  gh release create 1.0.9 --notes "improve generator, icon update";
+  gh release create 1.0.10 --notes "improve generator, icon update";
   cd ..;
 done;
 ```
@@ -56,7 +59,7 @@ done;
 ### create all repo
 ```bash
 for X in ${pkgs[@]}; do
-  gh repo create react-icons-$X --public --clone --description "deno fresh react-icons for ai"  --disable-issues --disable-wiki
+  gh repo create react-icons-$X --public --clone --description "deno fresh react-icons for $X"  --disable-issues --disable-wiki
 done;
 ```
 
