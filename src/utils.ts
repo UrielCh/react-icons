@@ -78,7 +78,7 @@ export function genMarkdown(
   readme.push(`or using default export`);
   readme.push("");
   readme.push(`${BQ3}ts`);
-  readme.push(`import ${first} from "react-icons/${name}/${first}.ts"`);
+  readme.push(`import ${first} from "react-icons/${name}/${first}"`);
   readme.push(BQ3);
   readme.push("");
   return readme.join(NL);
