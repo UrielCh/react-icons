@@ -71,7 +71,7 @@ async function processOneLib(
   /**
    * DOC for readme.MD and @module
    */
-  const markDown = genMarkdown(pkg, name, nextTag, first);
+  const markDown = genMarkdown({pkg, name, nextTag, first});
   let readme = markDown;
   readme += "@module";
   // convert README TO comment README
@@ -148,7 +148,8 @@ async function processOneLib(
   );
   let all = [...blocks].map(([code, name]) => {
     const nameLt = name.substring(job.name.length);
-    code  = `/**${NL} * ${nameLt} from ${job.pkg.name}${NL} */${NL}` + code;
+    // add JS doc on function
+    code  = `/**${NL} * ${nameLt} icon from ${job.pkg.name}${NL} */${NL}` + code;
     return [code, name];
   });  
 
@@ -179,7 +180,9 @@ async function processOneLib(
         "(props: IconBaseProps): VNode<JSX.SVGAttributes> {",
       );
       const def = `export default ${icoName};`;
-      const icoData = mainImport2 + NL2 + code + NL + def + NL;
+      // same as the main code but with a @module comment
+      const subCode = code.replace(`${NL} */${NL}`, `${NL} * @module${NL} */${NL}`);
+      const icoData = mainImport2 + NL2 + subCode + NL + def + NL;
       await writeFile(paths.getIconFile(icoName), icoData);
 
       if (debugIcons.has(icoName)) {

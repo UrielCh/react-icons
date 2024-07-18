@@ -1,6 +1,6 @@
 # preact version of react-icons
 
-[![JSR](https://jsr.io/badges/@preact-icons/common)](https://jsr.io/@preact-icons/common)`;
+[![JSR](https://jsr.io/badges/@preact-icons/common)](https://jsr.io/@preact-icons/common)
 
 This library is preact version of react-icons build to be use with deno fresh project.
 
@@ -51,7 +51,7 @@ deno add @preact-icons/ai
 ```
 
 ```tsx
-import { AiFillAccountBook } from "react-icons/ai";
+import { AiFillAccountBook } from "@preact-icons/ai";
 
 export default function TesSvg() {
   return (<AiFillAccountBook />)
@@ -74,7 +74,10 @@ class Question extends React.Component {
 can be convert as:
 
 ```tsx
-import { FaBeer } from 'react-icons/fa';
+import { FaBeer } from '@preact-icons/fa';
+// or 
+import FaBeer from '@preact-icons/fa/FaBeer';
+
 import { Component } from 'preact'
 
 class Question extends Component {
