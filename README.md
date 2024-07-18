@@ -23,8 +23,8 @@ replace imports like:
 
 ```json
 {
-  "preact": "https://esm.sh/preact@10.19.6",
-  "preact/": "https://esm.sh/preact@10.19.6/",
+  "preact": "https://esm.sh/preact@10.22.1",
+  "preact/": "https://esm.sh/preact@10.22.1/",
 }
 ```
 by npm imports like:
@@ -37,10 +37,11 @@ by npm imports like:
     "preact/hooks": "npm:preact@10.22.1/hooks",
 }
 ```
-Later on you will be able to import a single icon using:
+
+you can now import a single icon using:
 
 ```ts
-import AiTwotonePrinter from "jsr:@preact-icons/ai@1.0.11/AiTwotonePrinter";
+import AiTwotonePrinter from "@preact-icons/ai/AiTwotonePrinter";
 ```
 
 ## sample
