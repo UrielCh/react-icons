@@ -236,7 +236,7 @@ async function processOneLib(
     },
   };
   for (const iconName of icons) {
-    denoConfig.exports[iconName] = `./ico/${iconName}.ts`;
+    denoConfig.exports[`./${iconName}`] = `./ico/${iconName}.ts`;
   }
 
   await writeFile(

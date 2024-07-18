@@ -19,7 +19,8 @@ export async function writeFile(dest: string, content: string): Promise<void> {
 
 export function genMarkdown(pkg: Provider, name: string, nextTag: string, first: string): string {
     const libName = pkg.name.replace(/ Icons^/, "");
-    let readme = `# ${libName} icons for deno / Preact${NL2}`;
+    let readme = `# ${libName} icons for preact${NL2}`;
+    readme += `[![JSR](https://jsr.io/badges/@preact-icons/${name})](https://jsr.io/@preact-icons/name)`;
     readme += `**License** [${pkg.licence[0]}](${pkg.licence[1]})${NL2}`;
     readme += `**Project** [${pkg.projectUrl}](${pkg.projectUrl})${NL2}`;
     readme +=

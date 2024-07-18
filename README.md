@@ -1,10 +1,10 @@
-# Preact + deno convertion of react-icons
+# preact version of react-icons
 
-[deno main package](https://deno.land/x/react_icons/@1.0.9)
+[![JSR](https://jsr.io/badges/@preact-icons/common)](https://jsr.io/@preact-icons/common)`;
 
 This library is preact version of react-icons build to be use with deno fresh project.
 
-All icons available can be test [here](https://react-icons.deno.dev/) click on the icon you wantm the copy the import statement to your code.
+All icons available can be test [here](https://react-icons.deno.dev/) click on the icon you want the copy the import statement to your code.
 
 If you have time to help the project is [here](https://github.com/UrielCh/react-icons-web)
 
@@ -15,7 +15,6 @@ If you have time to help the project is [here](https://github.com/UrielCh/react-
 `deno add @preact-icons/ai` for deno
 `npx jsr add @preact-icons/ai` for npm
 `bunx jsr add @preact-icons/ai` for bun
-
 
 ### update your dependency tu use only jsr / npm source
 
