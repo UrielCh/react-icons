@@ -214,7 +214,7 @@ export async function processOneLib(
     // }
     const denoConfig = {
         lock: false,
-        importMap: "./import_map.json",
+        // importMap: "./import_map.json",
         name: `@preact-icons/${name}`,
         version: nextTag,
         exports: {
@@ -226,7 +226,17 @@ export async function processOneLib(
                 "deno.ns",
             ],
             jsx: "react-jsx",
-            jsxImportSource: "preact",
+            jsxImportSource: `npm:preact@^${preactVersion}`,
+            //jsxImportSource: "preact",
+        },
+        imports: {
+            // preact: "https://esm.sh/preact@${reactIconVersion}",
+            // "preact/": "https://esm.sh/preact@${reactIconVersion}/",
+            "@preact-icons/common":
+                `jsr:@preact-icons/common@^${reactIconVersion}`,
+            preact: `npm:preact@${preactVersion}`,
+            "preact/jsx-runtime": `npm:preact@${preactVersion}/jsx-runtime`,
+            "preact/hooks": `npm:preact@${preactVersion}/hooks`,
         },
         publish: {
             exclude: [
@@ -242,25 +252,11 @@ export async function processOneLib(
         paths.denoConfig,
         JSON.stringify(denoConfig, undefined, 2) + NL,
     );
-    await writeFile(
-        paths.import_map,
-        JSON.stringify(
-            {
-                imports: {
-                    // preact: "https://esm.sh/preact@10.22.1",
-                    // "preact/": "https://esm.sh/preact@10.22.1/",
-                    "@preact-icons/common":
-                        `jsr:@preact-icons/common@^${reactIconVersion}`,
-                    preact: `npm:preact@${preactVersion}`,
-                    "preact/jsx-runtime":
-                        `npm:preact@${preactVersion}/jsx-runtime`,
-                    "preact/hooks": `npm:preact@${preactVersion}/hooks`,
-                },
-            },
-            undefined,
-            2,
-        ) + NL,
-    );
+    // try {
+    //     await Deno.remove(paths.import_map);
+    // } catch (_) {
+    //     // ignore
+    // }
     await writeFile(paths.README, markDown);
 
     await fs.ensureDir(paths.destWorkflows);
