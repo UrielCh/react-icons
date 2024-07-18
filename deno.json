@@ -15,7 +15,7 @@
       "deno.ns"
     ],
     "jsx": "react-jsx",
-    "jsxImportSource": "preact"
+    "jsxImportSource": "npm:preact@^10.22.1"
   },
   "publish": {
     "exclude": [
