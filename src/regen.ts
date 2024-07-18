@@ -1,11 +1,13 @@
 // deno run --allow-read --allow-write .\regen.ts
 // du --exclude .git --exclude node_modules --bytes .
 // Maximum allowed size is 20971520 bytes, 20480 Kbytes
-import * as path from "https://deno.land/std@0.190.0/path/mod.ts";
-import * as fs from "https://deno.land/std@0.190.0/fs/mod.ts";
-import * as pc from "https://deno.land/std@0.190.0/fmt/colors.ts";
+// import * as path from "https://deno.land/std@0.190.0/path/mod.ts";
+import * as path from "@std/path";
+
+import * as fs from "@std/fs";
+import * as pc from "@std/fmt/colors";
 import { providers } from "./providers.ts";
-import $ from "https://deno.land/x/dax@0.32.0/mod.ts";
+import $ from "jsr:@david/dax/";
 import { genMarkdown, writeFile } from "./utils.ts";
 import { PathBuilder } from "./PathBuilder.ts";
 import {
@@ -18,34 +20,40 @@ import {
   reactIconVersion,
   SVG_ATTRS,
 } from "./constants.ts";
+import type { Provider } from "./providers.ts";
 
 export const src = "node_modules/react-icons";
 await $`npm install react-icons@latest`;
 
-for await (const dirEntry of Deno.readDir(src)) {
-  if (dirEntry.isFile) continue;
-  const { name } = dirEntry;
-  if (name === "lib") continue; // lib is not a provider
-  const pkg = providers[name];
-  if (!pkg) throw Error(`no Licence for lib "${name}", please add it to providers in lib/providers.ts`);
-  // load original icon data
-  const esm = path.join(src, name, "index.mjs");
+/**
+ * process a single lib like "react-icons/bs" or "react-icons/fa"
+ * @param job
+ * @returns
+ */
+async function processOneLib(
+  job: { name: string; esm: string; pkg: Provider },
+) {
+  const { name, esm, pkg } = job;
   let content = "";
   try {
     content = await Deno.readTextFile(esm);
   } catch (_) {
     console.log(`no ${esm} SKIP`);
-    continue;
+    return;
   }
   const lowercase = new Set<string>();
   // filter / convert content
 
-  const mainImport1 =`import { GenIcon } from "./deps.ts";${NL}import type { IconBaseProps, JSX, VNode } from "./deps.ts";`;
-  const mainImport2 =`import { GenIcon } from "../deps.ts";${NL}import type { IconBaseProps, JSX, VNode } from "../deps.ts";`;
+  const mainImport1 =
+    `import { GenIcon } from "./deps.ts";${NL}import type { IconBaseProps, JSX, VNode } from "./deps.ts";`;
+  const mainImport2 =
+    `import { GenIcon } from "../deps.ts";${NL}import type { IconBaseProps, JSX, VNode } from "../deps.ts";`;
 
+  // drop the first line
+  content = content.replace("// THIS FILE IS AUTO GENERATED\n", "");
   content = content.replace(`import { GenIcon } from '../lib';`, mainImport2);
   content = content.replaceAll(` (props) {`, `(props: IconBaseProps) {`);
-
+  // remove quotes from attributes to reduce size
   for (const att of SVG_ATTRS) {
     content = content.replaceAll(
       new RegExp(`\s?"${att}"\s?:\s?`, "g"),
@@ -54,15 +62,14 @@ for await (const dirEntry of Deno.readDir(src)) {
   }
   content = content.replaceAll(/};(\s+)export/gm, "}$1export");
   content = content.replaceAll(/};(\s+)$/gm, "}$1");
-
-// extract first for doc
+  // extract first for doc
   const first = content.match(/export function ([\w]+)\(props/)![1];
   // console.log(first);
   const paths = new PathBuilder("..", name);
   await fs.ensureDir(paths.destDirico);
 
   /**
-   * DOC
+   * DOC for readme.MD and @module
    */
   const markDown = genMarkdown(pkg, name, nextTag, first);
   let readme = markDown;
@@ -123,13 +130,12 @@ for await (const dirEntry of Deno.readDir(src)) {
   //    content = content.replaceAll(/,stroke:"[^"]+"/g, '');
   //    content = content.replaceAll(/{stroke:"[^"]+",/g, '{');
   //}
-
+  /**  generate deps.ts */
   let mainExport = "";
-//    `// export { GenIcon, type IconBaseProps } from "https://deno.land/x/react_icons@${reactIconVersion}/mod.ts";${NL}`;
+  //    `// export { GenIcon, type IconBaseProps } from "https://deno.land/x/react_icons@${reactIconVersion}/mod.ts";${NL}`;
   mainExport +=
     `export { GenIcon, type IconBaseProps } from "@preact-icons/common";${NL}`;
-    mainExport +=
-    `export type { JSX, VNode } from "preact";${NL}`;
+  mainExport += `export type { JSX, VNode } from "preact";${NL}`;
   await writeFile(paths.destDeps, mainExport);
 
   const licenceHeader =
@@ -140,7 +146,12 @@ for await (const dirEntry of Deno.readDir(src)) {
   const blocks = content.matchAll(
     /export function ([^\(]+)\(props: IconBaseProps\) {[\r\n]+.+[\r\n]+}/g,
   );
-  let all = [...blocks];
+  let all = [...blocks].map(([code, name]) => {
+    const nameLt = name.substring(job.name.length);
+    code  = `/**${NL} * ${nameLt} from ${job.pkg.name}${NL} */${NL}` + code;
+    return [code, name];
+  });  
+
   // drop case colision
   all = all.filter(([, icoName]) => {
     icoName = icoName.toLocaleLowerCase();
@@ -163,7 +174,10 @@ for await (const dirEntry of Deno.readDir(src)) {
   await Promise.all(
     all.map(async ([code, icoName]) => {
       code = code.replace(",child:[]", "");
-      code = code.replace("(props: IconBaseProps) {", "(props: IconBaseProps): VNode<JSX.SVGAttributes> {");
+      code = code.replace(
+        "(props: IconBaseProps) {",
+        "(props: IconBaseProps): VNode<JSX.SVGAttributes> {",
+      );
       const def = `export default ${icoName};`;
       const icoData = mainImport2 + NL2 + code + NL + def + NL;
       await writeFile(paths.getIconFile(icoName), icoData);
@@ -176,7 +190,7 @@ for await (const dirEntry of Deno.readDir(src)) {
       // console.log(`processing ${name} content length:${content.length}`);
       // content = content.replaceAll("(props: IconBaseProps) {", "(props: IconBaseProps): VNode<JSX.SVGAttributes> {");
       // console.log(`processing ${name} content length:${content.length}`);
-    
+
       allIconst[icoName] = code + NL;
       // subMod.push(code + NL);
     }),
@@ -205,22 +219,21 @@ for await (const dirEntry of Deno.readDir(src)) {
     name: `@preact-icons/${name}`,
     version: nextTag,
     exports: {
-      ".": "./mod.ts"
+      ".": "./mod.ts",
     } as Record<string, string>,
     compilerOptions: {
       lib: [
         "dom",
-        "deno.ns"
-      ],      
+        "deno.ns",
+      ],
       jsx: "react-jsx",
       jsxImportSource: "preact",
     },
     publish: {
       exclude: [
         ".github",
-      ]
-    }
-  
+      ],
+    },
   };
   for (const iconName of icons) {
     denoConfig.exports[iconName] = `./ico/${iconName}.ts`;
@@ -237,10 +250,11 @@ for await (const dirEntry of Deno.readDir(src)) {
         imports: {
           // preact: "https://esm.sh/preact@10.22.1",
           // "preact/": "https://esm.sh/preact@10.22.1/",
-          "@preact-icons/common": `jsr:@preact-icons/common@^${reactIconVersion}`,
+          "@preact-icons/common":
+            `jsr:@preact-icons/common@^${reactIconVersion}`,
           preact: `npm:preact@${preactVersion}`,
           "preact/jsx-runtime": `npm:preact@${preactVersion}/jsx-runtime`,
-          "preact/hooks": `npm:preact@${preactVersion}/hooks`
+          "preact/hooks": `npm:preact@${preactVersion}/hooks`,
         },
       },
       undefined,
@@ -250,7 +264,9 @@ for await (const dirEntry of Deno.readDir(src)) {
   await writeFile(paths.README, markDown);
 
   await fs.ensureDir(paths.destWorkflows);
-  await writeFile(paths.destpublishYml, `name: Publish
+  await writeFile(
+    paths.destpublishYml,
+    `name: Publish
 on:
   push:
     branches:
@@ -269,14 +285,39 @@ jobs:
 
       - name: Publish package
         run: npx jsr publish
-`);
+`,
+  );
 }
 
+for await (const dirEntry of Deno.readDir(src)) {
+  if (dirEntry.isFile) continue;
+  const { name } = dirEntry;
+  if (name === "lib") continue; // lib is not a provider
+  const pkg = providers[name];
+  if (!pkg) {
+    throw Error(
+      `no Licence for lib "${name}", please add it to providers in lib/providers.ts`,
+    );
+  }
+  // load original icon data
+  const esm = path.join(src, name, "index.mjs");
+
+  await processOneLib({
+    name: name,
+    esm: esm,
+    pkg: pkg,
+  });
+}
+
+// update local mod.ts and README.md
 let mod = await Deno.readTextFile("mod.ts");
 mod = mod.replaceAll(/@[0-9.]+\/(mod.ts|ico)/g, `@${nextTag}/$1`);
 await writeFile("mod.ts", mod);
 
 let README = await Deno.readTextFile("README.md");
 README = README.replaceAll(/@[0-9.]+\/(mod.ts|ico)/g, `@${nextTag}/$1`);
-README = README.replaceAll(/x\/react_icons@[0-9.]+/g, `x/react_icons/@${reactIconVersion}`);
+README = README.replaceAll(
+  /x\/react_icons@[0-9.]+/g,
+  `x/react_icons/@${reactIconVersion}`,
+);
 await writeFile("README.md", README);

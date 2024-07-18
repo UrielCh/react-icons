@@ -1,4 +1,4 @@
-import * as path from "https://deno.land/std@0.190.0/path/mod.ts";
+import * as path from "@std/path";
 
 export class PathBuilder {
   destDir: string;
@@ -46,5 +46,4 @@ export class PathBuilder {
   getDebugIcon(icoName: string): string {
     return path.join('components', `${icoName}.tsx`);
   }
-
 }

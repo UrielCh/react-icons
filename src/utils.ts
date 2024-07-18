@@ -1,4 +1,4 @@
-import * as pc from "https://deno.land/std@0.190.0/fmt/colors.ts";
+import * as pc from "@std/fmt/colors";
 import type { Provider } from "./providers.ts";
 import { BQ3, NL, NL2, preactVersion } from "./constants.ts";
 import { reactIconVersion } from "./constants.ts";
