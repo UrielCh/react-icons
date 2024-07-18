@@ -18,43 +18,68 @@ export async function writeFile(dest: string, content: string): Promise<void> {
   await Deno.writeTextFile(dest, content);
 }
 
-export function genMarkdown(opts: {pkg: Provider, name: string, nextTag: string, first: string}): string {
-    const {pkg, name, first} = opts;
-    const libName = pkg.name.replace(/ Icons^/, "");
-    let readme = `# ${libName} icons for preact${NL2}`;
-    readme += `[![JSR](https://jsr.io/badges/@preact-icons/${name})](https://jsr.io/@preact-icons/${name})${NL2}`;
-    readme += `**License** [${pkg.licence[0]}](${pkg.licence[1]})${NL2}`;
-    readme += `**Project** [${pkg.projectUrl}](${pkg.projectUrl})${NL2}`;
-    readme +=
-      `[See available icons here](https://react-icons.deno.dev/${name})${NL2}`;
-    readme += `## install the module${NL2}`;
-    readme += `${BQ3}bash${NL}`;
-    readme += `deno add @preact-icons/${name}${NL}`;
-    readme += `dnpx jsr add @preact-icons/${name}${NL}`;
-    readme += `pnpm dlx jsr add @preact-icons/${name}${NL}`;
-    readme += `bunx jsr add @preact-icons/${name}${NL}`;
-    readme += `${BQ3}${NL2}`;
-    readme += `You may need to update your preact mapping to avoid mixing JSR and http import:${NL}`;
-    readme += `Currently Deno fresh import preact using https://esm.sh/preact http import can not be mixed with JSR package, so you may need to update your preact mapping:${NL}`;
-    readme += `${BQ3}json${NL}`;
-    readme += `{`;    
-    readme += ` "preact": "npm:preact@${preactVersion}",${NL}`;
-    readme += ` "preact/jsx-runtime": "npm:preact@${preactVersion}/jsx-runtime",${NL}`;
-    readme += ` "preact/hooks": "npm:preact@${preactVersion}/hooks",${NL}`;
-    readme += `}`;
-    readme += `${BQ3}${NL2}`;
-    readme +=
-    readme += `## import an icon from all icons${NL2}`;
-    readme += `${BQ3}ts${NL}`;
-    readme += `import { ${first} } from "@preact-icons/${name}"${NL}`;
-    readme += `${BQ3}${NL2}`;
-    readme += `## import a single icon, downloading just one icon${NL2}`;
-    readme += `${BQ3}ts${NL}`;
-    readme += `import { ${first} } from "react-icons/${name}/${first}"${NL}`;
-    readme += `${BQ3}${NL2}`;
-    readme += `or using default export${NL2}`;
-    readme += `${BQ3}ts${NL}`;
-    readme += `import ${first} from "react-icons/${name}/${first}.ts"${NL}`;
-    readme += `${BQ3}${NL2}`;
-    return readme;
+export function genMarkdown(
+  opts: { pkg: Provider; name: string; nextTag: string; first: string },
+): string {
+  const { pkg, name, first } = opts;
+  const libName = pkg.name.replace(/ Icons^/, "");
+  const readme: string[] = [];
+  readme.push(`# ${libName} icons for preact`);
+  readme.push("");
+  readme.push(
+    `[![JSR](https://jsr.io/badges/@preact-icons/${name})](https://jsr.io/@preact-icons/${name})`,
+  );
+  readme.push("");
+  readme.push(`**License** [${pkg.licence[0]}](${pkg.licence[1]})`);
+  readme.push("");
+  readme.push(`**Project** [${pkg.projectUrl}](${pkg.projectUrl})`);
+  readme.push("");
+  readme.push(
+    `[See available icons here](https://react-icons.deno.dev/${name})`,
+  );
+  readme.push("");
+  readme.push(`## install the module`);
+  readme.push("");
+  readme.push(`${BQ3}bash`);
+  readme.push(`deno add @preact-icons/${name}`);
+  readme.push(`dnpx jsr add @preact-icons/${name}`);
+  readme.push(`pnpm dlx jsr add @preact-icons/${name}`);
+  readme.push(`bunx jsr add @preact-icons/${name}`);
+  readme.push(BQ3);
+  readme.push("");
+  readme.push(
+    `You may need to update your preact mapping to avoid mixing JSR and http import:`,
+  );
+  readme.push(
+    `Currently Deno fresh import preact using https://esm.sh/preact http import can not be mixed with JSR package, so you may need to update your preact mapping:`,
+  );
+  readme.push(`${BQ3}json`);
+  readme.push(`{`);
+  readme.push(` "preact": "npm:preact@${preactVersion}",`);
+  readme.push(
+    ` "preact/jsx-runtime": "npm:preact@${preactVersion}/jsx-runtime",`,
+  );
+  readme.push(` "preact/hooks": "npm:preact@${preactVersion}/hooks",`);
+  readme.push(`}`);
+  readme.push(BQ3);
+  readme.push("");
+  readme.push(`## import an icon from all icons`);
+  readme.push("");
+  readme.push(`${BQ3}ts`);
+  readme.push(`import { ${first} } from "@preact-icons/${name}"`);
+  readme.push(`${BQ3}`);
+  readme.push("");
+  readme.push(`## import a single icon, downloading just one icon`);
+  readme.push("");
+  readme.push(`${BQ3}ts`);
+  readme.push(`import { ${first} } from "react-icons/${name}/${first}"`);
+  readme.push(BQ3);
+  readme.push("");
+  readme.push(`or using default export`);
+  readme.push("");
+  readme.push(`${BQ3}ts`);
+  readme.push(`import ${first} from "react-icons/${name}/${first}.ts"`);
+  readme.push(BQ3);
+  readme.push("");
+  return readme.join(NL);
 }
