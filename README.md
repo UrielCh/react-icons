@@ -13,13 +13,15 @@ If you have time to help the project is [here](https://github.com/UrielCh/react-
 ### install the bundle you want using
 
 `deno add @preact-icons/ai` for deno
+
 `npx jsr add @preact-icons/ai` for npm
+
 `bunx jsr add @preact-icons/ai` for bun
 
 ### update your dependency tu use only jsr / npm source
 
 
-replace imports like:
+replace http imports like:
 
 ```json
 {
