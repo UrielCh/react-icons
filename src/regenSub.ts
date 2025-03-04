@@ -1,5 +1,6 @@
-import * as fs from "@std/fs";
-import * as pc from "@std/fmt/colors";
+import { ensureDir } from "jsr:@std/fs";
+import * as pc from "jsr:@std/fmt/colors";
+
 import { genMarkdown, writeFile } from "./utils.ts";
 import { PathBuilder } from "./PathBuilder.ts";
 import {
@@ -14,6 +15,17 @@ import {
 } from "./constants.ts";
 import type { Provider } from "./providers.ts";
 
+// const bugList = new Set(["Ri4kLine", "Ri4kFill", "TbSignal4gPlus", "DiHtml53dEffects", "BsFillBadge8kFill", "BsFillBadge4kFill", "BsFillBadge3dFill",
+// "BsBadge3dFill",
+// "BsBadge4kFill",
+// "BsBadge8kFill",
+// "Md1kPlus","Md1xMobiledata","Md2kPlus","Md3dRotation","Md3gMobiledata","Md3kPlus","Md4gMobiledata","Md4gPlusMobiledata","Md4kPlus","Md5kPlus","Md6kPlus","Md7kPlus","Md8kPlus","Md9kPlus","MdOutline1kPlus","MdOutline1xMobiledata","MdOutline2kPlus","MdOutline3dRotation","MdOutline3gMobiledata","MdOutline3kPlus","MdOutline4gMobiledata","MdOutline4gPlusMobiledata","MdOutline4kPlus","MdOutline5kPlus","MdOutline6kPlus","MdOutline7kPlus","MdOutline8kPlus","MdOutline9kPlus",
+// "Gi3dGlasses", 
+// "Gi3dHammer", 
+// "Gi3dMeeple", 
+// "Gi3dStairs", 
+// "GiBottomRight3dArrow",
+// ]);
 /**
  * process a single lib like "react-icons/bs" or "react-icons/fa"
  * @param job
@@ -55,7 +67,7 @@ export async function processOneLib(
     const first = content.match(/export function ([\w]+)\(props/)![1];
     // console.log(first);
     const paths = new PathBuilder("..", name);
-    await fs.ensureDir(paths.destDirico);
+    await ensureDir(paths.destDirico);
 
     /**
      * DOC for readme.MD and @module
@@ -244,7 +256,20 @@ export async function processOneLib(
             ],
         },
     };
+
+
+    const lowercase2 = new Set<string>();
+
     for (const iconName of icons) {
+        // ignore bug icons
+        const lc = iconName.toLocaleLowerCase();
+        if (lowercase2.has(lc)) 
+            continue
+        lowercase2.add(lc);
+        // if (bugList.has(iconName)){
+        //     console.log(`skip ${iconName} due to bug`);
+        //     continue;
+        // }
         denoConfig.exports[`./${iconName}`] = `./ico/${iconName}.ts`;
     }
 
@@ -259,7 +284,7 @@ export async function processOneLib(
     // }
     await writeFile(paths.README, markDown);
 
-    await fs.ensureDir(paths.destWorkflows);
+    await ensureDir(paths.destWorkflows);
     await writeFile(
         paths.destpublishYml,
         `name: Publish

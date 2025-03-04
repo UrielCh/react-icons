@@ -4,16 +4,15 @@
     "start": "deno run -A --watch=static/,routes/ dev.ts",
     "regen": "deno run -A src/regen.ts",
     "size": "du -s --exclude=node_modules --exclude=.git .",
-    "init": "pnpm install react-icons"
+    "init": "pnpm install react-icons",
+    "build": "deno run -A dev.ts build",
+    "preview": "deno run -A main.ts"
   },
   "name": "@preact-icons/common",
   "version": "1.0.12",
   "exports": "./mod.ts",
   "compilerOptions": {
-    "lib": [
-      "dom",
-      "deno.ns"
-    ],
+    "lib": ["dom", "deno.ns"],
     "jsx": "react-jsx",
     "jsxImportSource": "npm:preact@^10.22.1"
   },
@@ -36,13 +35,16 @@
     "@std/fmt": "jsr:@std/fmt@^0.225.6",
     "@std/fs": "jsr:@std/fs@^0.229.3",
     "@std/path": "jsr:@std/path@^1.0.0",
-    "$fresh/": "https://deno.land/x/fresh@1.6.8/",
-    "preact": "npm:preact@^10.22.1",
+    "$fresh/": "https://deno.land/x/fresh@1.7.3/",
+    "preact": "https://esm.sh/preact@10.22.0",
     "preact/jsx-runtime": "npm:preact@^10.22.1/jsx-runtime",
     "preact/hooks": "npm:preact@^10.22.1/hooks",
     "preact-render-to-string": "npm:preact-render-to-string@6.0.3",
-    "@preact/signals": "npm:@preact/signals@1.3.0",
-    "@preact/signals-core": "npm:@preact/signals-core@1.7.0",
-    "@std/dotenv": "jsr:@std/dotenv@^0.224.2"
-  }
+    "@preact/signals": "https://esm.sh/*@preact/signals@1.2.2",
+    "@preact/signals-core": "https://esm.sh/*@preact/signals-core@1.5.1",
+    "@std/dotenv": "jsr:@std/dotenv@^0.224.2",
+    "preact/": "https://esm.sh/preact@10.22.0/"
+  },
+  "lint": { "rules": { "tags": ["fresh", "recommended"] } },
+  "exclude": ["**/_fresh/*"]
 }

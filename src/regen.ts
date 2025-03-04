@@ -2,10 +2,11 @@
 // du --exclude .git --exclude node_modules --bytes .
 // Maximum allowed size is 20971520 bytes, 20480 Kbytes
 // import * as path from "https://deno.land/std@0.190.0/path/mod.ts";
-import * as path from "@std/path";
+import * as path from "jsr:@std/path";
 
 import { providers } from "./providers.ts";
-import $ from "jsr:@david/dax/";
+// import $ from "jsr:@david/dax/";
+import $ from "jsr:@david/dax";
 import { writeFile } from "./utils.ts";
 import {
   nextTag,

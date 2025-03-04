@@ -1,5 +1,7 @@
 # batch script
 
+function forceCase { git mv $(ls | grep -i $1) $1; }
+
 ## prepare env
 
 add fa6 pi lia
@@ -22,6 +24,7 @@ done;
 ```
 
 ### status
+
 ```bash
 for X in ${pkgs[@]}; do
   echo start $X; cd react-icons-$X; git status; cd ..;
@@ -29,6 +32,7 @@ done;
 ```
 
 ### diff
+
 ```bash
 for X in ${pkgs[@]}; do
   echo start $X; cd react-icons-$X; git diff; cd ..;
@@ -36,13 +40,23 @@ done;
 ```
 
 ### commit
+
 ```bash
 for X in ${pkgs[@]}; do
-  echo start $X; cd react-icons-$X; git add .; git commit -avm "order icons by name"; git push; cd ..;
+  echo start $X; cd react-icons-$X; git add .; git commit -avm "regen"; git push; cd ..;
+done;
+```
+
+### dry run publish
+
+```bash
+for X in ${pkgs[@]}; do
+  cd react-icons-$X; deno publish --allow-dirty --dry-run --no-check 2>&1 | grep -v file | grep -v dry-run | grep -v public\ API; cd ..;
 done;
 ```
 
 ### next release
+
 ```bash
 for X in ${pkgs[@]}; do
   echo start $X; 
@@ -57,6 +71,7 @@ done;
 ## init once
 
 ### create all repo
+
 ```bash
 for X in ${pkgs[@]}; do
   gh repo create react-icons-$X --public --clone --description "deno fresh react-icons for $X"  --disable-issues --disable-wiki
@@ -64,6 +79,7 @@ done;
 ```
 
 ### init repo
+
 ```bash
 for X in ${pkgs[@]}; do
   echo start $X;
