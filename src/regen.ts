@@ -1,4 +1,4 @@
-// deno run --allow-read --allow-write .\regen.ts
+// deno run --allow-env --allow-read --allow-write regen.ts
 // du --exclude .git --exclude node_modules --bytes .
 // Maximum allowed size is 20971520 bytes, 20480 Kbytes
 // import * as path from "https://deno.land/std@0.190.0/path/mod.ts";
@@ -15,7 +15,9 @@ import {
 import { processOneLib } from "./regenSub.ts";
 
 export const src = "node_modules/react-icons";
+console.time("npm install react-icons@latest");
 await $`npm install react-icons@latest`;
+console.timeEnd("npm install react-icons@latest");
 
 for await (const dirEntry of Deno.readDir(src)) {
   if (dirEntry.isFile) continue;

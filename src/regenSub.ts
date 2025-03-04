@@ -14,6 +14,8 @@ import {
     SVG_ATTRS,
 } from "./constants.ts";
 import type { Provider } from "./providers.ts";
+import $ from "jsr:@david/dax";
+
 
 // const bugList = new Set(["Ri4kLine", "Ri4kFill", "TbSignal4gPlus", "DiHtml53dEffects", "BsFillBadge8kFill", "BsFillBadge4kFill", "BsFillBadge3dFill",
 // "BsBadge3dFill",
@@ -68,7 +70,13 @@ export async function processOneLib(
     // console.log(first);
     const paths = new PathBuilder("..", name);
     await ensureDir(paths.destDirico);
-
+    try {
+        await $`git pull`.cwd(paths.destDir);
+    } catch (e) {
+        console.error(`git pull failed in ${paths.destDir}, clone instead`);
+        return;
+        // await $`git clone https://github.com/react-icons/react-icons.git`.cwd(paths.destDir);
+    }
     /**
      * DOC for readme.MD and @module
      */
@@ -227,7 +235,9 @@ export async function processOneLib(
     const denoConfig = {
         lock: false,
         // importMap: "./import_map.json",
+
         name: `@preact-icons/${name}`,
+        license: pkg.licence[0],
         version: nextTag,
         exports: {
             ".": "./mod.ts",

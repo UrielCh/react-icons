@@ -1,5 +1,5 @@
 // next released version
-export const nextTag = "1.0.12";
+export const nextTag = "1.0.13";
 // version of the current package
 export const reactIconVersion = "1.0.12";
 // get version from https://esm.sh/preact

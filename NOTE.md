@@ -27,7 +27,7 @@ done;
 
 ```bash
 for X in ${pkgs[@]}; do
-  echo start $X; cd react-icons-$X; git status; cd ..;
+  [ -d "react-icons-$X" ] &&  echo start $X; cd react-icons-$X; git status; cd ..;
 done;
 ```
 
@@ -35,7 +35,7 @@ done;
 
 ```bash
 for X in ${pkgs[@]}; do
-  echo start $X; cd react-icons-$X; git diff; cd ..;
+  [ -d "react-icons-$X" ] && echo start $X; cd react-icons-$X; git diff; cd ..;
 done;
 ```
 
@@ -43,7 +43,7 @@ done;
 
 ```bash
 for X in ${pkgs[@]}; do
-  echo start $X; cd react-icons-$X; git add .; git commit -avm "regen"; git push; cd ..;
+  [ -d "react-icons-$X" ] && echo start $X; cd react-icons-$X; git add .; git commit -avm "regen"; git push; cd ..;
 done;
 ```
 
@@ -51,7 +51,7 @@ done;
 
 ```bash
 for X in ${pkgs[@]}; do
-  cd react-icons-$X; deno publish --allow-dirty --dry-run --no-check 2>&1 | grep -v file | grep -v dry-run | grep -v public\ API; cd ..;
+  [ -d "react-icons-$X" ] && cd react-icons-$X; deno publish --allow-dirty --dry-run --no-check 2>&1 | grep -v file | grep -v dry-run | grep -v public\ API; cd ..;
 done;
 ```
 
@@ -63,7 +63,7 @@ for X in ${pkgs[@]}; do
   cd react-icons-$X; 
   git add .; git commit -avm "add non commiter files";
   git push;
-  gh release create 1.0.10 --notes "improve generator, icon update";
+  gh release create 1.0.13 --notes "improve generator, icon update";
   cd ..;
 done;
 ```
