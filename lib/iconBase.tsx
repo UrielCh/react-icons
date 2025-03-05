@@ -75,20 +75,20 @@ export function IconBase(
   props: IconBaseProps & { attr?: Record<string, string> },
 ): VNode<JSX.SVGAttributes> {
   const elem = (conf: IconContext) => {
-    const { attr, size, title, ...svgProps } = props;
-    let clazz = props.class || '';
+    const { attr, size, title, class: clazz, className, ...svgProps } = props;
+    let computedClazz = clazz || className || '';
     const computedSize = size || conf.size || "1em";
     if (conf.class) {
-      if (clazz)
-        clazz = `${clazz} ${conf.class}`;
-      else
-        clazz = conf.class;
+      computedClazz = `${computedClazz} ${conf.class}`;
+    }
+    if (conf.className) {
+      computedClazz = `${computedClazz} ${conf.className}`;
     }
     let attrs = {
       stroke: conf.stroke || "currentColor",
       fill: conf.fill || "currentColor",
       strokeWidth: conf.strokeWidth || 0,
-      class: clazz,
+      class: computedClazz,
       ...conf.attr,
       ...attr,
       ...svgProps,

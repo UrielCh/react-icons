@@ -104,3 +104,8 @@ class Question extends Component {
 
 - Original [react-icons](https://www.npmjs.com/package/react-icons) npm package.
 - The R§eact-Icons [doc](https://react-icons.github.io/react-icons/)
+
+## changelog
+
+# 1.1.0
+- allows class and classname attribute
