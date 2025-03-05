@@ -55,6 +55,7 @@ export {
   type IconBaseProps,
   type IconTree,
 } from "./lib/iconBase.tsx";
+
 export {
   defaultContext,
   defaultIconContext,

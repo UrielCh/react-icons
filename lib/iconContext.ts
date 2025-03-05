@@ -1,6 +1,9 @@
 import { createContext, type Context } from "preact";
 import type { JSX } from "preact";
 
+/**
+ * IconContext type
+ */
 export interface IconContext {
   color?: string;
   size?: string;
@@ -14,6 +17,9 @@ export interface IconContext {
   attr?: JSX.SVGAttributes<SVGSVGElement>;
 }
 
+/**
+ * default values for IconContext
+ */
 export const defaultContext: IconContext = {
   color: undefined,
   size: undefined,
@@ -23,4 +29,7 @@ export const defaultContext: IconContext = {
   attr: undefined,
 };
 
+/**
+ * default IconContext provider
+ */
 export const defaultIconContext: Context<IconContext> = createContext && createContext(defaultContext);
