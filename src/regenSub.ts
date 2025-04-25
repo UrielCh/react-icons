@@ -248,17 +248,12 @@ export async function processOneLib(
                 "deno.ns",
             ],
             jsx: "react-jsx",
-            jsxImportSource: `npm:preact@^${preactVersion}`,
-            //jsxImportSource: "preact",
+            jsxImportSource: "preact",
         },
         imports: {
-            // preact: "https://esm.sh/preact@${reactIconVersion}",
-            // "preact/": "https://esm.sh/preact@${reactIconVersion}/",
             "@preact-icons/common":
                 `jsr:@preact-icons/common@^${reactIconVersion}`,
-            preact: `npm:preact@${preactVersion}`,
-            "preact/jsx-runtime": `npm:preact@${preactVersion}/jsx-runtime`,
-            "preact/hooks": `npm:preact@${preactVersion}/hooks`,
+            preact: `npm:preact@^${preactVersion}`,
         },
         publish: {
             exclude: [
