@@ -1,6 +1,6 @@
 import * as pc from "@std/fmt/colors";
 import type { Provider } from "./providers.ts";
-import { BQ3, NL, NL2, preactVersion } from "./constants.ts";
+import { BQ3, NL, preactVersion } from "./constants.ts";
 
 export async function writeFile(dest: string, content: string): Promise<void> {
   let oldContent = "";

@@ -4,7 +4,7 @@
     "start": "deno run -A --watch=static/,routes/ dev.ts",
     "regen": "deno run -A src/regen.ts",
     "size": "du -s --exclude=node_modules --exclude=.git .",
-    "init": "pnpm install react-icons",
+    "init": "deno add npm:react-icons",
     "build": "deno run -A dev.ts build",
     "preview": "deno run -A main.ts"
   },
@@ -32,6 +32,7 @@
     ]
   },
   "imports": {
+    "@david/dax": "jsr:@david/dax@^0.43.1",
     "@std/fmt": "jsr:@std/fmt@^1.0.6",
     "@std/fs": "jsr:@std/fs@^@1.0.14",
     "@std/path": "jsr:@std/path@^1.0.8",
