@@ -55,11 +55,11 @@ export function genMarkdown(
   );
   readme.push(`${BQ3}json`);
   readme.push(`{`);
-  readme.push(` "preact": "npm:preact@${preactVersion}",`);
+  readme.push(` "preact": "npm:preact@^${preactVersion}",`);
   readme.push(
-    ` "preact/jsx-runtime": "npm:preact@${preactVersion}/jsx-runtime",`,
+    ` "preact/jsx-runtime": "npm:preact@^${preactVersion}/jsx-runtime",`,
   );
-  readme.push(` "preact/hooks": "npm:preact@${preactVersion}/hooks",`);
+  readme.push(` "preact/hooks": "npm:preact@^${preactVersion}/hooks",`);
   readme.push(`}`);
   readme.push(BQ3);
   readme.push("");
