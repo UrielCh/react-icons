@@ -34,7 +34,7 @@ export default function Home() {
       
       <h2 className="page-title">GrAction using class or className</h2>
       <div className="icon-card-container">
-      <IconCard title='in red using "class"' description='<GrAction size={iconSize} class="text-red-500" />'>
+        <IconCard title='in red using "class"' description='<GrAction size={iconSize} class="text-red-500" />'>
           <GrAction size={iconSize} class="text-red-500" />
         </IconCard>
         <IconCard title='in red using attribut "className"' description='<GrAction size={iconSize} className="text-red-500" />'>
@@ -44,21 +44,36 @@ export default function Home() {
 
       <h2 className="page-title">Using defaultIconContext.Provider to pass a IconContext</h2>
       <div className="icon-card-container">
-        <IconCard title="Using IconContext value.class" description='<defaultIconContext.Provider value={{ class: "text-blue-500" }}>...'>
+        <IconCard title="Using IconContext class" description='using <defaultIconContext.Provider value={{ class: "text-blue-500", size: iconSize.toString() }}>...'>
           <defaultIconContext.Provider value={{ class: "text-blue-500", size: iconSize.toString() }}>
             <GrCentos />
           </defaultIconContext.Provider>
         </IconCard>
-        <IconCard title="Using IconContext value.className" description='<defaultIconContext.Provider value={{ className: "text-blue-500" }}>...'>
+        <IconCard title="Using IconContext className" description='using <defaultIconContext.Provider value={{ className: "text-blue-500", size: iconSize }}>...'>
           <defaultIconContext.Provider value={{ className: "text-blue-500", size: iconSize }}>
             <GrCentos />
           </defaultIconContext.Provider>
         </IconCard>
+
+        <IconCard title="Using IconContext strokeWidth: 3" description='using <defaultIconContext.Provider value={{ size: iconSize, strokeWidth: 3, color: "red" }}>...'>
+          <defaultIconContext.Provider value={{ size: iconSize, strokeWidth: 3, color: "red" }}>
+            <GrCentos />
+          </defaultIconContext.Provider>
+        </IconCard>
+        
+        { /*
+        <IconCard title="Using mkti-conContext" description='bubbleing IconContext.Provider'>
+          <defaultIconContext.Provider value={{ color: "red" }}>
+            <defaultIconContext.Provider value={{ size: iconSize, strokeWidth: 3 }}>
+              <GrCentos />
+            </defaultIconContext.Provider>
+          </defaultIconContext.Provider>
+        </IconCard>
+      */ }
       </div>
     </div>
   );
 }
-
 
 export const config = {
   title: "Fresh App"
