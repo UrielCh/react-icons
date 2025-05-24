@@ -6,7 +6,7 @@ import type { JSX } from "preact";
  */
 export interface IconContext {
   color?: string;
-  size?: string;
+  size?: string | number;
   class?: string;
   className?: string;
   stroke?: string | JSX.SignalLike<string | undefined>; // allow overide stroke color "currentColor"

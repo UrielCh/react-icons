@@ -7,10 +7,7 @@ export default function App({ Component }: PageProps) {
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>react-icons</title>
-        <style>
-          {`.text-red-500 { color: rgb(239, 68, 68); }
-           .text-blue-500 { color: rgb(68, 68, 239); }`}
-        </style>
+        <link rel="stylesheet" href="./index.css" />
       </head>
       <body>
         <Component />

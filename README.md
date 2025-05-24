@@ -27,8 +27,8 @@ replace http imports like:
 
 ```json
 {
-  "preact": "https://esm.sh/preact@10.22.1",
-  "preact/": "https://esm.sh/preact@10.22.1/"
+  "preact": "https://esm.sh/preact@^10.22.1",
+  "preact/": "https://esm.sh/preact@^10.22.1/"
 }
 ```
 
@@ -36,9 +36,9 @@ by npm imports like:
 
 ```json
 {
-  "preact": "npm:preact@10.22.1",
-  "preact/jsx-runtime": "npm:preact@10.22.1/jsx-runtime",
-  "preact/hooks": "npm:preact@10.22.1/hooks"
+  "preact": "npm:preact@^10.22.1",
+  "preact/jsx-runtime": "npm:preact@^10.22.1/jsx-runtime",
+  "preact/hooks": "npm:preact@^10.22.1/hooks"
 }
 ```
 

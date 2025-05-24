@@ -12,9 +12,12 @@
   "version": "1.1.0",
   "exports": "./mod.ts",
   "compilerOptions": {
-    "lib": ["dom", "deno.ns"],
+    "lib": [
+      "dom",
+      "deno.ns"
+    ],
     "jsx": "react-jsx",
-    "jsxImportSource": "npm:preact@^10.22.1"
+    "jsxImportSource": "preact"
   },
   "publish": {
     "exclude": [
@@ -33,16 +36,16 @@
   },
   "imports": {
     "@david/dax": "jsr:@david/dax@^0.43.1",
-    "@std/fmt": "jsr:@std/fmt@^1.0.6",
-    "@std/fs": "jsr:@std/fs@^@1.0.14",
-    "@std/path": "jsr:@std/path@^1.0.8",
+    "@std/fmt": "jsr:@std/fmt@^1.0.8",
+    "@std/fs": "jsr:@std/fs@^1.0.17",
+    "@std/path": "jsr:@std/path@^1.0.9",
     "$fresh/": "https://deno.land/x/fresh@1.7.3/",
     "preact": "npm:preact@^10.22.1",
     "preact/debug": "npm:preact@^10.22.1/debug",
     "preact/jsx-runtime": "npm:preact@^10.22.1/jsx-runtime",
     "preact/hooks": "npm:preact@^10.22.1/hooks",
     "preact-render-to-string": "npm:preact-render-to-string@6.0.3",
-    "@std/dotenv": "jsr:@std/dotenv@^0.225.3"
+    "@std/dotenv": "jsr:@std/dotenv@^0.225.4"
   },
   "lint": { "rules": { "tags": ["fresh", "recommended"] } },
   "exclude": ["**/_fresh/*"],

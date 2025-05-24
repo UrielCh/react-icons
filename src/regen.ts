@@ -5,7 +5,6 @@
 import * as path from "jsr:@std/path";
 
 import { providers } from "./providers.ts";
-// import $ from "jsr:@david/dax/";
 import $ from "jsr:@david/dax";
 import { writeFile } from "./utils.ts";
 import {
